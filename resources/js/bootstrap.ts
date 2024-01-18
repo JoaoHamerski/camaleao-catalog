@@ -1,32 +1,73 @@
-/**
- * We'll load the axios HTTP library which allows us to easily issue requests
- * to our Laravel back-end. This library automatically handles sending the
- * CSRF token as a header based on the value of the "XSRF" token cookie.
- */
+import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { App, DefineComponent, Plugin } from 'vue'
+import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
 
-import axios from 'axios';
-window.axios = axios;
+import MainLayout from './components/layouts/MainLayout.vue'
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+export default class Bootstrap {
+  protected app: App
 
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
+  constructor(app: App) {
+    this.app = app
+  }
 
-// import Echo from 'laravel-echo';
+  mount(el: Element) {
+    this.app.mount(el)
+  }
 
-// import Pusher from 'pusher-js';
-// window.Pusher = Pusher;
+  addInertiaPlugin(plugin: Plugin) {
+    this.app.use(plugin)
 
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: import.meta.env.VITE_PUSHER_APP_KEY,
-//     cluster: import.meta.env.VITE_PUSHER_APP_CLUSTER ?? 'mt1',
-//     wsHost: import.meta.env.VITE_PUSHER_HOST ? import.meta.env.VITE_PUSHER_HOST : `ws-${import.meta.env.VITE_PUSHER_APP_CLUSTER}.pusher.com`,
-//     wsPort: import.meta.env.VITE_PUSHER_PORT ?? 80,
-//     wssPort: import.meta.env.VITE_PUSHER_PORT ?? 443,
-//     forceTLS: (import.meta.env.VITE_PUSHER_SCHEME ?? 'https') === 'https',
-//     enabledTransports: ['ws', 'wss'],
-// });
+    return this
+  }
+
+  addFontAwesome() {
+    this.app.component('FWIcon', FontAwesomeIcon)
+
+    return this
+  }
+
+  addAutoAnimate() {
+    this.app.use(autoAnimatePlugin)
+
+    return this
+  }
+
+  addZiggy() {
+    this.app.use(ZiggyVue)
+
+    return this
+  }
+
+  protected static definePageLayout(page: DefineComponent) {
+    page.default.layout = page.default.layout || MainLayout
+  }
+
+  static resolvePageComponent(name: string) {
+    const pages = import.meta.glob<DefineComponent>('./pages/**/*.vue', {
+      eager: true,
+    })
+
+    const page = pages[`./pages/${name}.vue`]
+
+    Bootstrap.definePageLayout(page)
+
+    return page
+  }
+
+  addGlobalComponents() {
+    const components = import.meta.glob('./**/App*.vue', { eager: true })
+
+    Object.entries(components).forEach(([path, definition]: [string, any]) => {
+      const componentName = path
+        .split('/')
+        .pop()!
+        .replace(/\.\w+$/, '')
+
+      this.app.component(componentName, definition.default)
+    })
+
+    return this
+  }
+}
