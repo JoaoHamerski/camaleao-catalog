@@ -1,0 +1,26 @@
+<script setup lang="ts">
+import { MenuItem, MenuItems } from '@headlessui/vue'
+import DropdownContentItemsItem from './DropdownContentItemsItem.vue'
+import type { DropdownItem } from './DropdownContentItemsItem.vue'
+
+interface DropdownContentItemsProps {
+  items: DropdownItem[]
+}
+
+defineProps<DropdownContentItemsProps>()
+</script>
+
+<template>
+  <MenuItems
+    class="absolute shadow-lg py-3 bg-base-100 rounded-lg w-52 flex flex-col gap-1"
+    as="ul"
+  >
+    <MenuItem
+      v-for="item in items"
+      :key="item.label"
+      as="li"
+    >
+      <DropdownContentItemsItem v-bind="item" />
+    </MenuItem>
+  </MenuItems>
+</template>

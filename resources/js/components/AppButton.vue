@@ -2,6 +2,7 @@
 interface AppButtonProps {
   label?: string
   icon?: string
+  loading?: boolean
 }
 
 defineProps<AppButtonProps>()
@@ -9,8 +10,12 @@ defineProps<AppButtonProps>()
 
 <template>
   <button class="btn">
+    <span
+      v-if="loading"
+      class="loading loading-spinner"
+    />
     <FWIcon
-      v-if="icon"
+      v-else-if="icon"
       :icon="icon"
       fixed-width
     />

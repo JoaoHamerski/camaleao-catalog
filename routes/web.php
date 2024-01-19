@@ -1,6 +1,7 @@
 <?php
 
 use Domains\User\Controllers\UserLoginController;
+use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -21,6 +22,10 @@ Route::get('/', function () {
 
 Route::middleware('guest')->name('auth.')->group(function () {
     Route::post('/entrar', UserLoginController::class)->name('login');
+});
+
+Route::middleware('auth')->name('auth.')->group(function () {
+    Route::post('/sair', UserLogoutController::class)->name('logout');
 });
 
 // require __DIR__ . '/auth.php';

@@ -15,20 +15,23 @@ defineEmits(['login-clicked', 'register-clicked'])
         class="text-white"
       />
     </template>
+
     <template #content="{ close }">
-      <div class="mx-2 my-4 flex flex-col gap-2">
+      <div
+        class="mx-4 my-4 flex flex-col gap-2"
+        @click.capture="close"
+      >
         <div class="text-xs text-secondary text-center mb-2">
           Crie uma conta para salvar seus favoritos
         </div>
         <AppButton
           label="Entrar"
           class="btn-primary btn-sm btn-block"
-          @click.prevent="$emit('login-clicked'), close()"
+          @click.prevent="$emit('login-clicked')"
         />
         <AppButton
           label="Criar agora"
           class="btn-success btn-sm btn-block"
-          @click.prevent="close()"
         />
       </div>
     </template>
