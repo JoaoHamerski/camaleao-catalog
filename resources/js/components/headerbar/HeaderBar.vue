@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useAuthStore } from '@/store/auth-store'
+import { useUserStore } from '@/store/user-store'
 import { watch } from 'vue'
 import { computed } from 'vue'
 
@@ -16,7 +16,7 @@ const openLoginModal = () => {
   loginModalShow.value = true
 }
 
-const authStore = useAuthStore()
+const authStore = useUserStore()
 const isAuth = computed(() => authStore.isAuth)
 
 watch(
