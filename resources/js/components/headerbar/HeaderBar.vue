@@ -1,15 +1,32 @@
 <script setup lang="ts">
-import LoginModal from '@/components/auth/LoginModal.vue'
 import { ref } from 'vue'
+import { useAuthStore } from '@/store/auth-store'
+import { watch } from 'vue'
+import { computed } from 'vue'
+
+import LoginModal from '@/components/auth/LoginModal.vue'
 import HeaderBarBrand from './HeaderBarBrand.vue'
 import HeaderBarItems from './HeaderBarItems.vue'
-import HeaderBarUser from './HeaderBarUser.vue'
+import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
+import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
 
 const loginModalShow = ref(false)
 
 const openLoginModal = () => {
   loginModalShow.value = true
 }
+
+const authStore = useAuthStore()
+const isAuth = computed(() => authStore.isAuth)
+
+watch(
+  () => isAuth.value,
+  () => {
+    if (isAuth.value) {
+      loginModalShow.value = false
+    }
+  },
+)
 </script>
 
 <template>
@@ -21,7 +38,11 @@ const openLoginModal = () => {
       </div>
     </div>
     <div class="navbar-end">
-      <HeaderBarUser @login-clicked="openLoginModal" />
+      <HeaderBarUserAuth v-if="isAuth" />
+      <HeaderBarUserGuest
+        v-else
+        @login-clicked="openLoginModal"
+      />
     </div>
     <LoginModal v-model:show="loginModalShow" />
   </div>

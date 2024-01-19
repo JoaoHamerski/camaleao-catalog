@@ -6,7 +6,6 @@ import BaseInputPassword from './BaseInputPassword.vue'
 import InputError from './InputError.vue'
 import InputHint from './InputHint.vue'
 import InputLabel from './InputLabel.vue'
-import { TransitionRoot } from '@headlessui/vue'
 
 export interface AppInputProps {
   type?: 'text' | 'password'

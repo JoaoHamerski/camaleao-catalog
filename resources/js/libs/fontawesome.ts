@@ -3,6 +3,7 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle'
 import { faEye } from '@fortawesome/free-regular-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 import { faShapes } from '@fortawesome/free-solid-svg-icons/faShapes'
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
@@ -17,4 +18,5 @@ library.add(
   faEye,
   faEyeSlash,
   faGoogle,
+  faRightFromBracket,
 )
