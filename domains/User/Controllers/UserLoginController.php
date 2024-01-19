@@ -4,6 +4,7 @@ namespace Domains\User\Controllers;
 
 use App\Http\Controllers\Controller;
 use Domains\User\Requests\UserLoginRequest;
+use Inertia\Inertia;
 
 class UserLoginController extends Controller
 {
@@ -11,6 +12,6 @@ class UserLoginController extends Controller
     {
         $request->authenticate();
 
-        return redirect('home');
+        return redirect()->route('home');
     }
 }

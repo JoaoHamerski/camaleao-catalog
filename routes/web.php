@@ -17,7 +17,7 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Home/TheHome');
-});
+})->name('home');
 
 Route::middleware('guest')->name('auth.')->group(function () {
     Route::post('/entrar', UserLoginController::class)->name('login');

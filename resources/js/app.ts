@@ -18,9 +18,11 @@ createInertiaApp({
     bootstrap
         .addInertiaPlugin(plugin)
         .addZiggy()
+        .addPinia()
         .addFontAwesome()
         .addGlobalComponents()
         .addAutoAnimate()
+        .initAuthStore()
         .mount(el)
   },
   progress: {
