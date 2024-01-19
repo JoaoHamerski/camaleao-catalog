@@ -6,9 +6,9 @@ import { ref } from 'vue'
 
 const userStore = useUserStore()
 
-const authItem: DropdownItem = {
-  icon: 'fas fa-user-circle',
-  label: 'Painel admin',
+const adminPanelItem: DropdownItem = {
+  icon: 'fas fa-gauge',
+  label: 'Painel',
   link: '',
 }
 
@@ -28,7 +28,7 @@ const authDropdownItems = ref<DropdownItem[]>([
 
 onMounted(() => {
   if (userStore.hasPermission('access_admin_panel')) {
-    authDropdownItems.value.unshift(authItem)
+    authDropdownItems.value.unshift(adminPanelItem)
   }
 })
 </script>
