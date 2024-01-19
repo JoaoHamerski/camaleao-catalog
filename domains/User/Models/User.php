@@ -4,6 +4,7 @@ namespace Domains\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,5 +59,12 @@ class User extends Authenticatable
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function hasRoles(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => !!$this->roles()->count()
+        );
     }
 }
