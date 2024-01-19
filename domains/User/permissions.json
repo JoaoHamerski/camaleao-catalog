@@ -1,0 +1,9 @@
+{
+    "SUPER_ADMIN": ["*"],
+    "ADMIN": [
+        "access_admin_panel"
+    ],
+    "ATENDIMENTO": [
+        "access_admin_panel"
+    ]
+}

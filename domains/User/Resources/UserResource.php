@@ -19,7 +19,7 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'permissions' => $this->when(
                 $this->has_roles,
-                PermissionResource::collection($this->getAllPermissions())
+                $this->getAllPermissions()->pluck('name')
             ),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

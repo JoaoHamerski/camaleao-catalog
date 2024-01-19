@@ -3,24 +3,25 @@
 namespace Domains\User\Commands;
 
 use Domains\User\Actions\BootUserPermissionsAction;
+use Domains\User\Actions\SyncUsersPermissionsAction;
 use Error;
 use Illuminate\Console\Command;
 
-class BootUserPermissionsCommand extends Command
+class SyncUsersPermissionsCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:boot-user-permissions';
+    protected $signature = 'app:sync-permissions';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Inicializa as regras e permissões de autenticação.';
+    protected $description = 'Inicializa as regras e permissões de autenticação';
 
     /**
      * Execute the console command.
@@ -28,7 +29,7 @@ class BootUserPermissionsCommand extends Command
     public function handle()
     {
         try {
-            BootUserPermissionsAction::execute();
+            SyncUsersPermissionsAction::execute();
             $this->info('Regras de autenticação inicializadas!');
         } catch (Error $e) {
             $this->error($e->getMessage());

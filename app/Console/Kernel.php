@@ -2,14 +2,14 @@
 
 namespace App\Console;
 
-use Domains\User\Commands\BootUserPermissionsCommand;
+use Domains\User\Commands\SyncUsersPermissionsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
     protected $commands = [
-        BootUserPermissionsCommand::class
+        SyncUsersPermissionsCommand::class
     ];
 
     /**

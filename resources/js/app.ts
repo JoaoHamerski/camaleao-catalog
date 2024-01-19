@@ -22,7 +22,6 @@ createInertiaApp({
         .addFontAwesome()
         .addGlobalComponents()
         .addAutoAnimate()
-        .initAuthStore()
         .mount(el)
   },
   progress: {
