@@ -6,6 +6,7 @@ import BaseInputPassword from './BaseInputPassword.vue'
 import InputError from './InputError.vue'
 import InputHint from './InputHint.vue'
 import InputLabel from './InputLabel.vue'
+import { TransitionRoot } from '@headlessui/vue'
 
 export interface AppInputProps {
   type?: 'text' | 'password'
@@ -76,9 +77,7 @@ onMounted(() => {
     />
 
     <div class="label flex-col items-start">
-      <InputError v-if="hasError">
-        {{ errorMessage }}
-      </InputError>
+      <InputError :message="errorMessage" />
       <InputHint v-if="hint">
         {{ hint }}
       </InputHint>
