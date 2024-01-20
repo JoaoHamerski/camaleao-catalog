@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .navbar .btn { @apply btn-ghost text-white }
+    
+    .navbar-user { @apply bg-camaleao }
+    .navbar-user .btn { @apply bg-camaleao hover:bg-black/20 }
+    .navbar-user .active { @apply bg-black/30 }
+
+    .navbar-admin { @apply bg-slate-800}
+    .navbar-admin .btn { @apply bg-slate-800 hover:bg-white/20 }
+    .navbar-admin .active { @apply bg-white/30 }
+}

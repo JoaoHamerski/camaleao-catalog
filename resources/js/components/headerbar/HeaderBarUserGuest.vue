@@ -5,7 +5,7 @@ defineEmits(['login-clicked', 'register-clicked'])
 <template>
   <AppDropdown
     class="dropdown-end"
-    btn-class="btn btn-ghost btn-sm w-10 h-10 rounded-full"
+    btn-class="btn btn-sm w-10 h-10 rounded-full"
     align="right"
   >
     <template #label>
