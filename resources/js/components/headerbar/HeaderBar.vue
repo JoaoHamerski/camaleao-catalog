@@ -9,6 +9,7 @@ import HeaderBarBrand from './HeaderBarBrand.vue'
 import HeaderBarItems from './HeaderBarItems.vue'
 import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
 import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
+import { useRouteStore } from '@/store/route-store'
 
 const loginModalShow = ref(false)
 
@@ -17,8 +18,9 @@ const openLoginModal = () => {
 }
 
 const authStore = useUserStore()
-const isAuth = computed(() => authStore.isAuth)
+const routeStore = useRouteStore()
 
+const isAuth = computed(() => authStore.isAuth)
 watch(
   () => isAuth.value,
   () => {
@@ -30,12 +32,15 @@ watch(
 </script>
 
 <template>
-  <div class="navbar p-0 min-h-14 px-5 bg-camaleao">
+  <div
+    class="navbar p-0 min-h-14 px-5 transition-colors"
+    :class="[
+      routeStore.isCurrent('dashboard.*') ? 'bg-slate-800' : 'bg-camaleao',
+    ]"
+  >
     <div class="navbar-start gap-10">
       <HeaderBarBrand />
-      <div>
-        <HeaderBarItems />
-      </div>
+      <HeaderBarItems />
     </div>
     <div class="navbar-end">
       <HeaderBarUserAuth v-if="isAuth" />

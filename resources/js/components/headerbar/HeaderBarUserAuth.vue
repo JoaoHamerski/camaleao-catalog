@@ -9,7 +9,7 @@ const userStore = useUserStore()
 const adminPanelItem: DropdownItem = {
   icon: 'fas fa-gauge',
   label: 'Painel',
-  link: '',
+  link: route('dashboard.index'),
 }
 
 const authDropdownItems = ref<DropdownItem[]>([
@@ -39,6 +39,7 @@ onMounted(() => {
     btn-class="btn btn-ghost btn-sm w-fit h-10 rounded-full"
     align="right"
     :items="authDropdownItems"
+    close-on-click
   >
     <template #label>
       <span class="text-white">

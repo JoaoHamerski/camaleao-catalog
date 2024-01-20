@@ -9,7 +9,7 @@ import navbarItems from './navbar-items'
       :key="item.label"
     >
       <AppButton
-        class="btn-ghost text-camaleao-content text-sm min-h-10 h-10"
+        class="btn-ghost text-white text-sm min-h-10 h-10"
         :class="{
           'bg-black bg-opacity-20 text-white': false,
         }"

@@ -1,5 +1,6 @@
 <?php
 
+use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,10 @@ Route::middleware('guest')->name('auth.')->group(function () {
 
 Route::middleware('auth')->name('auth.')->group(function () {
     Route::post('/sair', UserLogoutController::class)->name('logout');
+});
+
+Route::middleware(['auth', 'can:access_admin_panel'])->name('dashboard.')->group(function () {
+    Route::get('/dashboard', DashboardHomeController::class)->name('index');
 });
 
 // require __DIR__ . '/auth.php';
