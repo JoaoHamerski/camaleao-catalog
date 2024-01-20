@@ -23,6 +23,7 @@ const props = withDefaults(defineProps<AppDropdownProps>(), {
   btnClass: 'btn btn-ghost',
   items: () => [],
   align: 'left',
+  closeOnClick: false,
 })
 
 const alignClass = computed(() => ALIGN_CLASSES_MAP[props.align])

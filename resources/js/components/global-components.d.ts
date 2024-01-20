@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import AppButton from './AppButton.vue'
-import AppDropdown from './AppDropdown.vue'
 import AppModal from './AppModal.vue'
+import AppDropdown from './dropdown/AppDropdown.vue'
 import AppInput from './input/AppInput.vue'
 
 declare module '@vue/runtime-core' {

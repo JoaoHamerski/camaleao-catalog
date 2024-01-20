@@ -1,9 +1,11 @@
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { router } from '@inertiajs/vue3'
 import { createPinia } from 'pinia'
 import { App, DefineComponent, Plugin } from 'vue'
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
 import MainLayout from './components/layouts/MainLayout.vue'
+import { useRouteStore } from './store/route-store'
 
 export default class Bootstrap {
   protected app: App
@@ -44,6 +46,16 @@ export default class Bootstrap {
     const pinia = createPinia()
 
     this.app.use(pinia)
+
+    return this
+  }
+
+  addRouteNavigationListener() {
+    const route = useRouteStore()
+
+    router.on('navigate', () => {
+      route.updateRoute()
+    })
 
     return this
   }

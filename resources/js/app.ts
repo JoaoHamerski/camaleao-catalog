@@ -22,6 +22,7 @@ createInertiaApp({
         .addFontAwesome()
         .addGlobalComponents()
         .addAutoAnimate()
+        .addRouteNavigationListener()
         .mount(el)
   },
   progress: {

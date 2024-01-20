@@ -17,10 +17,14 @@ defineProps<DropdownContentItemsProps>()
   >
     <MenuItem
       v-for="item in items"
+      v-slot="{ close }"
       :key="item.label"
       as="li"
     >
-      <DropdownContentItemsItem v-bind="item" />
+      <DropdownContentItemsItem
+        v-bind="item"
+        @click.capture="close"
+      />
     </MenuItem>
   </MenuItems>
 </template>
