@@ -34,9 +34,9 @@ watch(
 <template>
   <div
     class="navbar p-0 min-h-14 px-5 transition-colors"
-    :class="[
-      routeStore.isCurrent('dashboard.*') ? 'bg-slate-800' : 'bg-camaleao',
-    ]"
+    :class="
+      routeStore.isCurrent('dashboard.*') ? 'navbar-admin' : 'navbar-user'
+    "
   >
     <div class="navbar-start gap-10">
       <HeaderBarBrand />

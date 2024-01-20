@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import navbarItems from './navbar-items'
-import HeaderBarButton from './HeaderBarButton.vue'
 </script>
 
 <template>
   <div class="flex gap-2">
-    <template
+    <AppButton
       v-for="item in navbarItems"
       :key="item.label"
-    >
-      <HeaderBarButton
-        :label="item.label"
-        :icon="item.icon"
-      />
-    </template>
+      class="text-white text-sm min-h-10 h-10"
+      :class="{
+        active: false, // TODO: Se ativo
+      }"
+      :label="item.label"
+      :icon="item.icon"
+    />
   </div>
 </template>
