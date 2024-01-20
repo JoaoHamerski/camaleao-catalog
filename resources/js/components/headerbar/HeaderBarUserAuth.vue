@@ -3,8 +3,10 @@ import { useUserStore } from '@/store/user-store'
 import { DropdownItem } from '../dropdown/DropdownContentItemsItem.vue'
 import { onMounted } from 'vue'
 import { ref } from 'vue'
+import { useRouteStore } from '@/store/route-store'
 
 const userStore = useUserStore()
+const routeStore = useRouteStore()
 
 const adminPanelItem: DropdownItem = {
   icon: 'fas fa-gauge',
@@ -36,7 +38,12 @@ onMounted(() => {
 <template>
   <AppDropdown
     class="dropdown-end"
-    btn-class="btn btn-ghost btn-sm w-fit h-10 rounded-full"
+    :btn-class="[
+      'btn btn-ghost btn-sm w-fit h-10 rounded-full',
+      routeStore.isCurrent('dashboard.*')
+        ? 'hover:bg-white/20'
+        : 'hover:bg-black/20',
+    ]"
     align="right"
     :items="authDropdownItems"
     close-on-click

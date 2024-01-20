@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import navbarItems from './navbar-items'
+import HeaderBarButton from './HeaderBarButton.vue'
 </script>
 
 <template>
@@ -8,11 +9,7 @@ import navbarItems from './navbar-items'
       v-for="item in navbarItems"
       :key="item.label"
     >
-      <AppButton
-        class="btn-ghost text-white text-sm min-h-10 h-10"
-        :class="{
-          'bg-black bg-opacity-20 text-white': false,
-        }"
+      <HeaderBarButton
         :label="item.label"
         :icon="item.icon"
       />

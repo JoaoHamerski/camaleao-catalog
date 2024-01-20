@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useRouteStore } from '@/store/route-store'
 import type { Method } from '@inertiajs/core'
 import { Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
+
+const routeStore = useRouteStore()
 
 export type DropdownItem = {
   label: string
@@ -20,7 +23,12 @@ const linkAs = computed(() =>
 <template>
   <Link
     :href="link"
-    class="hover:bg-base-300 active:bg-camaleao cursor-pointer active:text-camaleao-content transition-colors duration-75 block px-4 py-2"
+    class="hover:bg-base-300 cursor-pointer transition-colors duration-75 block px-4 py-2"
+    :class="
+      routeStore.isCurrent('dashboard.*')
+        ? 'active:bg-slate-800 active:text-slate-200'
+        : 'active:bg-camaleao active:text-camaleao-content'
+    "
     :method="method"
     :as="linkAs"
   >
