@@ -8,7 +8,7 @@ import DropdownContentCustom from './DropdownContentCustom.vue'
 
 interface AppDropdownProps {
   label?: string
-  btnClass?: string
+  btnClass?: string | string[]
   items?: DropdownItem[]
   align?: 'left' | 'right'
 }
@@ -36,6 +36,7 @@ const alignClass = computed(() => ALIGN_CLASSES_MAP[props.align])
   >
     <MenuButton
       as="button"
+      class="aci"
       :class="btnClass"
     >
       <template v-if="label"> {{ label }}</template>

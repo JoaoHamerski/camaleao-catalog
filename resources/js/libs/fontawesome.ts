@@ -2,6 +2,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle'
 import { faEye } from '@fortawesome/free-regular-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faGauge } from '@fortawesome/free-solid-svg-icons/faGauge'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
@@ -21,4 +22,5 @@ library.add(
   faGoogle,
   faRightFromBracket,
   faGauge,
+  faBars,
 )
