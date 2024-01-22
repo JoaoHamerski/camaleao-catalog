@@ -12,6 +12,7 @@ const onFormSuccess = () => {
   <AppModal
     color="success"
     size="sm"
+    @update:show="onFormSuccess"
   >
     <template #title> Cadastre uma nova categoria</template>
 
