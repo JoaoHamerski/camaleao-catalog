@@ -7,10 +7,10 @@ import navbarItems from './navbar-items'
     <AppButton
       v-for="item in navbarItems"
       :key="item.label"
-      class="text-white text-sm min-h-10 h-10"
-      :class="{
-        active: false, // TODO: Se ativo
-      }"
+      class="text-white text-sm min-h-10 h-10 btn-ghost"
+      :class="[
+        { active: false }, // TODO: Se ativo
+      ]"
       :label="item.label"
       :icon="item.icon"
     />

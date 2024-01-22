@@ -36,10 +36,9 @@ onMounted(() => {
 <template>
   <AppDropdown
     class="dropdown-end"
-    :btn-class="['btn btn-sm w-fit h-10 rounded-full']"
+    :btn-class="['btn btn-sm h-10 rounded-full']"
     align="right"
     :items="authDropdownItems"
-    close-on-click
   >
     <template #label>
       <span class="text-white">

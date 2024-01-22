@@ -5,7 +5,7 @@ defineEmits(['login-clicked', 'register-clicked'])
 <template>
   <AppDropdown
     class="dropdown-end"
-    btn-class="btn btn-sm w-10 h-10 rounded-full"
+    :btn-class="['btn btn-sm w-10 h-10 rounded-full']"
     align="right"
   >
     <template #label>
@@ -24,11 +24,13 @@ defineEmits(['login-clicked', 'register-clicked'])
         <div class="text-xs text-secondary text-center mb-2">
           Crie uma conta para salvar seus favoritos
         </div>
+
         <AppButton
           label="Entrar"
           class="btn-primary btn-sm btn-block"
           @click.prevent="$emit('login-clicked')"
         />
+
         <AppButton
           label="Criar agora"
           class="btn-success btn-sm btn-block"

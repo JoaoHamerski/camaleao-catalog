@@ -9,7 +9,9 @@ import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFro
 import { faShapes } from '@fortawesome/free-solid-svg-icons/faShapes'
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
+import { faTshirt } from '@fortawesome/free-solid-svg-icons/faTshirt'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
+import { faUserShield } from '@fortawesome/free-solid-svg-icons/faUserShield'
 
 library.add(
   faUserCircle,
@@ -23,4 +25,6 @@ library.add(
   faRightFromBracket,
   faGauge,
   faBars,
+  faTshirt,
+  faUserShield,
 )
