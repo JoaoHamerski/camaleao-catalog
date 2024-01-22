@@ -5,7 +5,7 @@ import { watch } from 'vue'
 import { computed } from 'vue'
 
 import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
-import LoginModal from '@/components/auth/LoginModal.vue'
+import LoginModal from '@/pages/Shared/auth/LoginModal.vue'
 import HeaderBarBrand from './HeaderBarBrand.vue'
 import HeaderBarItems from './HeaderBarItems.vue'
 import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
