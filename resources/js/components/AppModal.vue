@@ -10,8 +10,8 @@ import {
 import { computed } from 'vue'
 
 interface AppModalProps {
-  size: keyof typeof MODAL_SIZES_MAP
-  color: keyof typeof COLORS_MAP
+  size?: keyof typeof MODAL_SIZES_MAP
+  color?: keyof typeof COLORS_MAP
   initialFocus?: HTMLElement | null
 }
 
@@ -24,6 +24,7 @@ const MODAL_SIZES_MAP = {
 
 const COLORS_MAP = {
   primary: 'bg-primary text-primary-content',
+  success: 'bg-success text-success-content',
   warning: 'bg-warning text-warning-content',
   camaleao: 'bg-camaleao text-camaleao-content',
   error: 'bg-error text-error-content',

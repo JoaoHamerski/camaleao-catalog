@@ -9,6 +9,7 @@ import InputLabel from './InputLabel.vue'
 
 export interface AppInputProps {
   type?: 'text' | 'password'
+  accept?: string
   label?: string
   name: string
   error?: boolean
@@ -22,6 +23,7 @@ export interface AppInputProps {
 
 const props = withDefaults(defineProps<AppInputProps>(), {
   type: 'text',
+  accept: undefined,
   label: undefined,
   error: false,
   hint: undefined,
@@ -33,7 +35,7 @@ const props = withDefaults(defineProps<AppInputProps>(), {
 })
 
 const input = ref()
-const model = defineModel<string>()
+const model = defineModel<string | File>()
 
 const inputClasses = computed(() => [
   props.inputClass,
@@ -72,6 +74,7 @@ onMounted(() => {
         inputClasses,
         placeholder,
         autocomplete,
+        accept,
       }"
     />
 

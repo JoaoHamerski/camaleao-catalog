@@ -11,7 +11,7 @@ const emit = defineEmits(['update:modelValue'])
 defineProps<BaseInputProps>()
 
 const input = ref<HTMLInputElement | null>(null)
-const model = defineModel<string>()
+const model = defineModel<string | File>()
 
 const focusInput = async () => {
   if (!input.value) {
@@ -40,8 +40,8 @@ defineExpose({
     ref="input"
     :value="model"
     class="input input-bordered w-full focus:input-primary text-black"
-    :type="type"
     :class="{ 'input-error': hasError }"
+    :type="type"
     @input="onInput"
   />
 </template>

@@ -13,3 +13,7 @@ export type PageProps<
     user: User | undefined
   }
 }
+
+export type Pagination = {
+  current_page: number
+}
