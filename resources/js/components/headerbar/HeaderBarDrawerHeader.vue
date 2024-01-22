@@ -17,5 +17,5 @@ const user = computed(() => userStore.user)
       {{ user?.name }}
     </div>
   </div>
-  <div class="divider divider-primary" />
+  <div class="divider after:bg-camaleao before:bg-camaleao" />
 </template>
