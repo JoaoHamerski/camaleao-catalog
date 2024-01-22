@@ -28,7 +28,7 @@ const onSubmit = () => {
 
 <template>
   <form
-    class="flex flex-col gap-3"
+    class="flex flex-col gap-8"
     @submit.prevent="onSubmit"
   >
     <AppInput
