@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUserStore } from '@/store/user-store'
-import { DropdownItem } from '../dropdown/DropdownContentItemsItem.vue'
+import { DropdownItem } from '@/components/dropdown/DropdownContentItemsItem.vue'
 import { onMounted } from 'vue'
 import { ref } from 'vue'
 
