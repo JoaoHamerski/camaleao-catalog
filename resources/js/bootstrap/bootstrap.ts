@@ -1,11 +1,10 @@
+import { useRouteStore } from '@/store/route-store'
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { router } from '@inertiajs/vue3'
 import { createPinia } from 'pinia'
-import { App, DefineComponent, Plugin } from 'vue'
-import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m'
-import MainLayout from './pages/Shared/layouts/MainLayout.vue'
-import { useRouteStore } from './store/route-store'
+import { App, Plugin } from 'vue'
+import { ZiggyVue } from '../../../vendor/tightenco/ziggy/dist/vue.m'
 
 export default class Bootstrap {
   protected app: App
@@ -60,28 +59,8 @@ export default class Bootstrap {
     return this
   }
 
-  protected static definePageLayout(page: DefineComponent) {
-    page.default.layout = page.default.layout || MainLayout
-  }
-
-  protected static getRequestedPage(name: string) {
-    const pages = import.meta.glob<DefineComponent>('./pages/**/*.vue', {
-      eager: true,
-    })
-
-    return pages[`./pages/${name}.vue`]
-  }
-
-  static resolvePageComponent(name: string) {
-    const page = Bootstrap.getRequestedPage(name)
-
-    Bootstrap.definePageLayout(page)
-
-    return page
-  }
-
   addGlobalComponents() {
-    const components = import.meta.glob('./**/App*.vue', { eager: true })
+    const components = import.meta.glob('../**/App*.vue', { eager: true })
 
     Object.entries(components).forEach(([path, definition]: [string, any]) => {
       const componentName = path

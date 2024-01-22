@@ -1,8 +1,8 @@
 <?php
 
-use Domains\Dashboard\Controllers\DashboardCategoryIndexController;
-use Domains\Dashboard\Controllers\DashboardCategoryStoreController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
+use Domains\DashboardCategory\Controllers\DCategoryIndexController;
+use Domains\DashboardCategory\Controllers\DCategoryStoreController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +35,8 @@ Route::middleware(['auth', 'can:access_admin_panel'])->name('dashboard.')->group
     Route::get('/painel', DashboardHomeController::class)->name('index');
 
     Route::name('categories.')->group(function () {
-        Route::get('/painel/categorias', DashboardCategoryIndexController::class)->name('index');
-        Route::post('/painel/categorias', DashboardCategoryStoreController::class)->name('store');
+        Route::get('/painel/categorias', DCategoryIndexController::class)->name('index');
+        Route::post('/painel/categorias', DCategoryStoreController::class)->name('store');
     });
 });
 
