@@ -17,13 +17,14 @@ defineProps<SidebarDrawerItemProps>()
       :href="url"
       class="px-5 py-3 rounded-none hover:bg-slate-700 block transition-colors"
       :class="{
-        'font-bold text-white bg-slate-600': active,
+        'font-bold text-white bg-slate-600 ': active,
       }"
     >
       <FWIcon
         fixed-width
         :icon="icon"
         class="mr-3"
+        :class="active ? 'text-camaleao' : ''"
       />
       <span>{{ label }}</span>
     </Link>
