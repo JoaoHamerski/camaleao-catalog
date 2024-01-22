@@ -9,12 +9,18 @@ defineProps<DCategoryContentItem>()
 </script>
 
 <template>
-  <div>
+  <div class="flex gap-4">
     <div>
       <img
-        :src="category.image"
+        :src="category.image.url"
+        class="w-40 rounded"
         alt=""
       />
+    </div>
+    <div>
+      <span class="text-lg font-bold">
+        {{ category.name }}
+      </span>
     </div>
   </div>
 </template>

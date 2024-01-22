@@ -15,11 +15,13 @@ defineProps<DCategoryContentProps>()
     label="Categorias"
   >
     <template #content>
-      <DCategoryContentItem
+      <template
         v-for="category in categories"
         :key="category.id"
-        :category="category"
-      />
+      >
+        <DCategoryContentItem :category="category" />
+        <div class="divider my-2 last:hidden" />
+      </template>
     </template>
   </AppCard>
 </template>

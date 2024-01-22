@@ -3,7 +3,10 @@ import type { Pagination } from '../index'
 export type Category = {
   id: number
   name: string
-  image: string
+  image: {
+    name?: string
+    url: string
+  }
 }
 
 export interface CategoryData extends Pagination {
