@@ -4,23 +4,25 @@ import { useUserStore } from '@/store/user-store'
 import { watch } from 'vue'
 import { computed } from 'vue'
 
+import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
 import LoginModal from '@/components/auth/LoginModal.vue'
 import HeaderBarBrand from './HeaderBarBrand.vue'
 import HeaderBarItems from './HeaderBarItems.vue'
-import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
 import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
+import HeaderBarDrawer from './HeaderBarDrawer.vue'
 import { useRouteStore } from '@/store/route-store'
 
 const loginModalShow = ref(false)
+
+const userStore = useUserStore()
+const routeStore = useRouteStore()
+
+const isAuth = computed(() => userStore.isAuth)
 
 const openLoginModal = () => {
   loginModalShow.value = true
 }
 
-const authStore = useUserStore()
-const routeStore = useRouteStore()
-
-const isAuth = computed(() => authStore.isAuth)
 watch(
   () => isAuth.value,
   () => {
@@ -33,12 +35,16 @@ watch(
 
 <template>
   <div
-    class="navbar p-0 min-h-14 px-5 transition-colors"
-    :class="
-      routeStore.isCurrent('dashboard.*') ? 'navbar-admin' : 'navbar-user'
-    "
+    class="navbar px-5 transition-colors"
+    :class="[
+      routeStore.isCurrent('dashboard.*') ? 'navbar-admin' : 'navbar-user',
+    ]"
   >
-    <div class="navbar-start gap-10">
+    <div class="navbar-start gap-5">
+      <HeaderBarDrawer
+        v-if="userStore.hasPermission('access_admin_panel')"
+        class="w-fit"
+      />
       <HeaderBarBrand />
       <HeaderBarItems />
     </div>

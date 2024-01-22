@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/vue3'
 <template>
   <Link
     :href="route('home')"
-    class="w-24"
+    class="max-w-24"
   >
     <HeaderBarBrandSvg class="fill-white" />
   </Link>
