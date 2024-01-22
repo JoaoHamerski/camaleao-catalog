@@ -4,6 +4,7 @@ namespace Domains\DashboardCategory\Controllers;
 
 use App\Http\Controllers\Controller;
 use Domains\Category\Models\Category;
+use Domains\DashboardCategory\Resources\CategoryResource;
 use Inertia\Inertia;
 
 class DCategoryIndexController extends Controller
@@ -13,7 +14,7 @@ class DCategoryIndexController extends Controller
         $categories = Category::query()->paginate(10);
 
         return Inertia::render('DashboardCategory/TheDashboardCategories', [
-            'categories' => $categories
+            'categories' => CategoryResource::collection($categories)
         ]);
     }
 }

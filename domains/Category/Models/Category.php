@@ -15,8 +15,8 @@ class Category extends Model
     use HasUuids;
     use HasSlug;
 
-    // public static $FILES_FOLDER = 'public/categorias/';
-    // public static $FILES_PUBLIC_FOLDER = 'storage/categorias/';
+    public static $FILES_FOLDER = '/public/categorias';
+    public static $FILES_PUBLIC_FOLDER = '/storage/categorias';
 
     // protected $appends = [
     //     'uniforms_count'
@@ -27,6 +27,10 @@ class Category extends Model
         'image'
     ];
 
+    protected $casts = [
+        'image' => 'json'
+    ];
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
@@ -34,6 +38,12 @@ class Category extends Model
             ->saveSlugsTo('slug');
     }
 
+    public function imageUrl(): Attribute
+    {
+        return Attribute::make(
+            fn () => self::$FILES_PUBLIC_FOLDER . '/' . $this->image['filename']
+        );
+    }
     // public function deleteStoredImage(): void
     // {
     //     $filepath = static::$FILES_FOLDER . $this->imageFilename;
@@ -61,19 +71,6 @@ class Category extends Model
     //     );
     // }
 
-    // public function image(): Attribute
-    // {
-    //     return Attribute::make(
-    //         get: function ($value) {
-    //             $image = json_decode($value);
-
-    //             return [
-    //                 'name' => $image->name,
-    //                 'url' => url(static::$FILES_PUBLIC_FOLDER . $image->filename)
-    //             ];
-    //         }
-    //     );
-    // }
 
     // public function uniformsCount(): Attribute
     // {
