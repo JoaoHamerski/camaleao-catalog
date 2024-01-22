@@ -1,14 +1,14 @@
 <?php
 
-namespace Domains\Dashboard\Controllers;
+namespace Domains\DashboardCategory\Controllers;
 
 use App\Http\Controllers\Controller;
 use Domains\Category\Models\Category;
-use Domains\Dashboard\Requests\DashboardCategoryStoreRequest;
+use Domains\DashboardCategory\Requests\DCategoryStoreRequest;
 
-class DashboardCategoryStoreController extends Controller
+class DCategoryStoreController extends Controller
 {
-    public function __invoke(DashboardCategoryStoreRequest $request)
+    public function __invoke(DCategoryStoreRequest $request)
     {
         $file = $request->image->store('/public/categorias');
         $filename = explode('/', $file)[2];

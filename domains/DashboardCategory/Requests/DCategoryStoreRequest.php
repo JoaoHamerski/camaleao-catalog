@@ -1,10 +1,10 @@
 <?php
 
-namespace Domains\Dashboard\Requests;
+namespace Domains\DashboardCategory\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DashboardCategoryStoreRequest extends FormRequest
+class DCategoryStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

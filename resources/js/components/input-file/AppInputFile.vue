@@ -8,16 +8,36 @@ interface AppInputFileProps {
   name: string
   errorMessage?: string
   hint?: string
+  multiple?: boolean
 }
 
-const emit = defineEmits(['input'])
+const emit = defineEmits(['change'])
+const modelValue = defineModel<FileList | File | null>()
 
-defineProps<AppInputFileProps>()
+const props = withDefaults(defineProps<AppInputFileProps>(), {
+  label: '',
+  errorMessage: '',
+  hint: '',
+  multiple: false,
+})
+
+const setFiles = (files: FileList | File | null) => {
+  emit('change', files)
+  modelValue.value = files
+}
 
 const onInput = (event: Event) => {
   const target = event.target as HTMLInputElement
+  const files = target.files
 
-  emit('input', target.files)
+  if (props.multiple) {
+    setFiles(files)
+    return
+  }
+
+  if (files) {
+    setFiles(files?.[0])
+  }
 }
 </script>
 
@@ -32,6 +52,7 @@ const onInput = (event: Event) => {
       :name="name"
       v-bind="$attrs"
       type="file"
+      :multiple="multiple"
       @input="onInput"
     />
 

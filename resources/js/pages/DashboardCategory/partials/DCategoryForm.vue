@@ -1,21 +1,13 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3'
-
-type FormProps = {
-  name: string
-  image?: File
-}
+import type { DCategoryFormProps } from '@/types/pages'
 
 const emit = defineEmits(['success'])
 
-const form = useForm<FormProps>({
+const form = useForm<DCategoryFormProps>({
   name: '',
-  image: undefined,
+  image: null,
 })
-
-const onFileChange = (files: FileList) => {
-  form.image = files[0]
-}
 
 const onSubmit = () => {
   form.post(route('dashboard.categories.store'), {
@@ -37,14 +29,15 @@ const onSubmit = () => {
       label="Nome"
       placeholder="Digite o nome..."
       :error-message="form.errors.name"
+      autofocus
     />
 
     <AppInputFile
+      v-model="form.image"
       accept="image/*"
       hint="Tamanho máximo: 1MB"
       name="image"
       :error-message="form.errors.image"
-      @input="onFileChange"
     />
 
     <AppButton
