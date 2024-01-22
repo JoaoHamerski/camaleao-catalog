@@ -5,6 +5,7 @@ import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 import { faGauge } from '@fortawesome/free-solid-svg-icons/faGauge'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
+import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 import { faShapes } from '@fortawesome/free-solid-svg-icons/faShapes'
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
@@ -27,4 +28,5 @@ library.add(
   faBars,
   faTshirt,
   faUserShield,
+  faPlus,
 )

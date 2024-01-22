@@ -1,6 +1,7 @@
 <?php
 
 use Domains\Dashboard\Controllers\DashboardCategoryIndexController;
+use Domains\Dashboard\Controllers\DashboardCategoryStoreController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'can:access_admin_panel'])->name('dashboard.')->group
 
     Route::name('categories.')->group(function () {
         Route::get('/painel/categorias', DashboardCategoryIndexController::class)->name('index');
+        Route::post('/painel/categorias', DashboardCategoryStoreController::class)->name('store');
     });
 });
 
