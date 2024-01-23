@@ -9,20 +9,26 @@ const userStore = useUserStore()
 const adminPanelItem: DropdownItem = {
   icon: 'fas fa-gauge',
   label: 'Painel',
-  link: route('dashboard.index'),
+  link: {
+    url: route('dashboard.index'),
+  },
 }
 
 const authDropdownItems = ref<DropdownItem[]>([
   {
     icon: 'fas fa-user-circle',
     label: 'Minha conta',
-    link: '',
+    link: {
+      url: '',
+    },
   },
   {
     icon: 'fas fa-right-from-bracket',
     label: 'Sair',
-    link: route('auth.logout'),
-    method: 'post',
+    link: {
+      url: route('auth.logout'),
+      method: 'post',
+    },
   },
 ])
 
