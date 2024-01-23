@@ -2,8 +2,7 @@
 
 namespace Domains\User\Commands;
 
-use Domains\User\Actions\BootUserPermissionsAction;
-use Domains\User\Actions\SyncUsersPermissionsAction;
+use Domains\Shared\Actions\SyncPermissionsAction;
 use Error;
 use Illuminate\Console\Command;
 
@@ -29,7 +28,7 @@ class SyncUsersPermissionsCommand extends Command
     public function handle()
     {
         try {
-            SyncUsersPermissionsAction::execute();
+            SyncPermissionsAction::execute();
             $this->info('Regras de autenticação inicializadas!');
         } catch (Error $e) {
             $this->error($e->getMessage());

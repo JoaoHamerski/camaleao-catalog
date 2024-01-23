@@ -11,16 +11,17 @@ interface TheDashboardCategoriesProps {
 
 defineProps<TheDashboardCategoriesProps>()
 
-const categoryModalShow = ref(false)
+const categoryCreateModal = ref(false)
 
 const openModal = () => {
-  categoryModalShow.value = true
+  categoryCreateModal.value = true
 }
 </script>
 
 <template>
-  <div class="w-1/2 mx-auto mt-5">
-    <DCategoryModalCreate v-model:show="categoryModalShow" />
+  <div class="w-1/2 mx-auto">
+    <DCategoryModalCreate v-model:show="categoryCreateModal" />
+
     <div class="mb-3">
       <AppButton
         icon="fas fa-plus"

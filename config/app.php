@@ -83,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -109,7 +109,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,4 +186,8 @@ return [
         // 'Example' => App\Facades\Example::class,
     ])->toArray(),
 
+    'super_admin' => [
+        'email' => env('SUPER_ADMIN_EMAIL', 'admin@email.com'),
+        'password' => env('SUPER_ADMIN_PASSWORD', '123456')
+    ]
 ];

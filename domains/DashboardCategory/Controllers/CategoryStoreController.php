@@ -4,14 +4,14 @@ namespace Domains\DashboardCategory\Controllers;
 
 use App\Http\Controllers\Controller;
 use Domains\Category\Data\CategoryData;
-use Domains\DashboardCategory\Actions\DCategoryCreateAction;
-use Domains\DashboardCategory\Requests\DCategoryStoreRequest;
+use Domains\DashboardCategory\Actions\CategoryCreateAction;
+use Domains\DashboardCategory\Requests\CategoryStoreRequest;
 
-class DCategoryStoreController extends Controller
+class CategoryStoreController extends Controller
 {
-    public function __invoke(DCategoryStoreRequest $request)
+    public function __invoke(CategoryStoreRequest $request)
     {
-        DCategoryCreateAction::execute(
+        CategoryCreateAction::execute(
             CategoryData::fromArray($request->all())
         );
 
