@@ -1,19 +1,21 @@
 <script setup lang="ts">
 import { DropdownItem } from '@/components/dropdown/DropdownContentItemsItem.vue'
 
+const emit = defineEmits(['edit', 'delete'])
+
 const DROPDOWN_ITEMS: DropdownItem[] = [
   {
     label: 'Editar',
     icon: 'fas fa-edit',
     onclick: () => {
-      console.log('editar')
+      emit('edit')
     },
   },
   {
     label: 'Excluir',
     icon: 'fas fa-trash',
     onclick: () => {
-      console.log('excluir')
+      emit('delete')
     },
   },
 ]

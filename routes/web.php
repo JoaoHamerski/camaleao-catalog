@@ -3,6 +3,7 @@
 use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\DashboardCategory\Controllers\CategoryIndexController;
 use Domains\DashboardCategory\Controllers\CategoryStoreController;
+use Domains\DashboardCategory\Controllers\CategoryUpdateController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'can:access_admin_panel'])->name('dashboard.')->group
     Route::name('categories.')->group(function () {
         Route::get('/painel/categorias', CategoryIndexController::class)->name('index');
         Route::post('/painel/categorias', CategoryStoreController::class)->name('store');
+        Route::patch('/painel/categories/{category}', CategoryUpdateController::class)->name('patch');
     });
 });
 
