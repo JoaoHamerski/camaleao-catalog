@@ -1,12 +1,12 @@
 <?php
 
-namespace Domains\User\Actions;
+namespace Domains\Shared\Actions;
 
 use Domains\Shared\Models\Permission;
 use Domains\Shared\Models\Role;
 use Illuminate\Support\Arr;
 
-class SyncUsersPermissionsAction
+class SyncPermissionsAction
 {
     public const SUPER_ADMIN_KEY = 'SUPER_ADMIN';
     public const PERMISSIONS_FILEPATH = 'domains/User/permissions.json';

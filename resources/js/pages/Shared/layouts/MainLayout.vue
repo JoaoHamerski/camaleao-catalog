@@ -5,6 +5,8 @@ import HeaderBar from '../headerbar/HeaderBar.vue'
 <template>
   <div>
     <HeaderBar />
-    <slot />
+    <div class="my-5">
+      <slot />
+    </div>
   </div>
 </template>

@@ -6,7 +6,7 @@ use Illuminate\Support\Arr;
 
 class Helpers
 {
-    public static function getNameFromFilepath(string $value): string
+    public static function getFilenameFromFilepath(string $value): string
     {
         return Arr::last(explode('/', $value));
     }

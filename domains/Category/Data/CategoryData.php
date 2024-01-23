@@ -13,6 +13,7 @@ class CategoryData
         public readonly ?string $imageUrl,
         public readonly array | UploadedFile $image
     ) {
+        //
     }
 
     public static function fromArray(array $data): self

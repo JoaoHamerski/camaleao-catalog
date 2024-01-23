@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 
 class Category extends Model
 {
@@ -40,10 +41,15 @@ class Category extends Model
 
     public function imageUrl(): Attribute
     {
+        $filename = $this->image['filename'];
+        $filepath = self::$FILES_PUBLIC_FOLDER . '/' . $filename;
+
+
         return Attribute::make(
-            fn () => self::$FILES_PUBLIC_FOLDER . '/' . $this->image['filename']
+            fn () => url($filepath)
         );
     }
+
     // public function deleteStoredImage(): void
     // {
     //     $filepath = static::$FILES_FOLDER . $this->imageFilename;
