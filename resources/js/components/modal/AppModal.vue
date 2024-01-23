@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { MODAL_COLORS_MAP, MODAL_SIZES_MAP } from './modal-constants'
+import { MODAL_COLORS, MODAL_SIZES } from './modal-constants'
 import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
 import {
   Dialog,
@@ -23,8 +23,8 @@ const props = withDefaults(defineProps<AppModalProps>(), {
 
 const show = defineModel<boolean>('show')
 
-const sizeClass = computed(() => MODAL_SIZES_MAP[props.size])
-const colorClass = computed(() => MODAL_COLORS_MAP[props.color])
+const sizeClass = computed(() => MODAL_SIZES[props.size])
+const colorClass = computed(() => MODAL_COLORS[props.color])
 
 const closeModal = () => {
   show.value = false
@@ -75,7 +75,7 @@ const closeModal = () => {
             />
 
             <DialogTitle
-              class="text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2"
+              class="text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
               :class="colorClass"
             >
               <slot name="title" />

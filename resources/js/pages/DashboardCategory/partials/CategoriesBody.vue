@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
-import DCategoryContentItem from './DCategoryContentItem.vue'
 import { ref } from 'vue'
-import DCategoryModal from './DCategoryModal.vue'
+import CategoriesBodyItem from './CategoriesBodyItem.vue'
+import CategoryModal from './CategoryModal.vue'
 
 interface DCategoryContentProps {
   categories: Category[]
@@ -24,7 +24,7 @@ const onEditCategory = (category: any) => {
     label="Categorias"
   >
     <template #content>
-      <DCategoryModal
+      <CategoryModal
         v-model:show="editModal.show"
         :category="editModal.category"
       />
@@ -33,7 +33,7 @@ const onEditCategory = (category: any) => {
         v-for="category in categories"
         :key="category.id"
       >
-        <DCategoryContentItem
+        <CategoriesBodyItem
           :category="category"
           @edit="onEditCategory"
         />

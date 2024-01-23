@@ -1,17 +1,7 @@
 <script setup lang="ts">
-import type { Method } from '@inertiajs/core'
 import { Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
-
-export type DropdownItem = {
-  label: string
-  icon?: string
-  onclick?: () => void
-  link?: {
-    url: string
-    method?: Method
-  }
-}
+import type { DropdownItem } from '@/types/components'
 
 const props = defineProps<DropdownItem>()
 

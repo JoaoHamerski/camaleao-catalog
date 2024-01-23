@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Menu, MenuButton, TransitionRoot } from '@headlessui/vue'
 import { computed } from 'vue'
-import type { DropdownItem } from './DropdownContentItemsItem.vue'
+import type { DropdownItem } from '@/types/components'
 
 import DropdownContentItems from './DropdownContentItems.vue'
 import DropdownContentCustom from './DropdownContentCustom.vue'
@@ -14,7 +14,7 @@ interface AppDropdownProps {
   align?: 'left' | 'right'
 }
 
-const ALIGN_CLASSES_MAP = {
+const ALIGN_CLASSES = {
   left: 'left-0',
   right: 'right-0',
 }
@@ -27,7 +27,7 @@ const props = withDefaults(defineProps<AppDropdownProps>(), {
   align: 'left',
 })
 
-const alignClass = computed(() => ALIGN_CLASSES_MAP[props.align])
+const alignClass = computed(() => ALIGN_CLASSES[props.align])
 </script>
 
 <template>

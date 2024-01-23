@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
-import DUniformContent from './partials/DUniformContent.vue'
-import DUniformModal from './partials/DUniformModal.vue'
+import UniformContent from './partials/UniformContent.vue'
 
 const uniformCreateModal = ref(false)
 
@@ -21,7 +20,6 @@ const openModal = () => {
         @click.prevent="openModal"
       />
     </template>
-    <DUniformModal v-model:show="uniformCreateModal" />
-    <DUniformContent />
+    <UniformContent />
   </DashboardContentLayout>
 </template>

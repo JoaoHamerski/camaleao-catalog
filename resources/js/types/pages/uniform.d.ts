@@ -8,12 +8,6 @@ export type Uniform = {
   images: string[]
 }
 
-export type UniformModalAttrs = {
-  icon: string
-  color: AppModalColors
-  label: string
-}
-
 export type UniformFormProps = {
   _method: Method
   name: string
