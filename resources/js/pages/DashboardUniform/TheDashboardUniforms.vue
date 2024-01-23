@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-// import type { CategoryData } from '@/types/pages/category'
-
-// import DCategoryModalCreate from './partials/DCategoryModalCreate.vue'
-// import DCategoryContent from './partials/DCategoryContent.vue'
-
-interface TheDashboardCategoriesProps {
-  // categories: CategoryData
-}
-
-defineProps<TheDashboardCategoriesProps>()
+import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
+import DUniformContent from './partials/DUniformContent.vue'
+import DUniformModal from './partials/DUniformModal.vue'
 
 const uniformCreateModal = ref(false)
 
@@ -19,14 +12,16 @@ const openModal = () => {
 </script>
 
 <template>
-  <div class="w-1/2 mx-auto">
-    <div class="mb-3">
+  <DashboardContentLayout>
+    <template #header>
       <AppButton
         icon="fas fa-plus"
         class="btn-success rounded-md"
-        label="Nova categoria"
+        label="Novo uniforme"
         @click.prevent="openModal"
       />
-    </div>
-  </div>
+    </template>
+    <DUniformModal v-model:show="uniformCreateModal" />
+    <DUniformContent />
+  </DashboardContentLayout>
 </template>

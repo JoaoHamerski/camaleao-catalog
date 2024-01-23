@@ -4,6 +4,7 @@ import type { CategoryData } from '@/types/pages/category'
 
 import DCategoryContent from './partials/DCategoryContent.vue'
 import DCategoryModal from './partials/DCategoryModal.vue'
+import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
 
 interface TheDashboardCategoriesProps {
   categories: CategoryData
@@ -19,18 +20,17 @@ const openModal = () => {
 </script>
 
 <template>
-  <div class="w-1/2 mx-auto">
-    <DCategoryModal v-model:show="categoryCreateModal" />
-
-    <div class="mb-3">
+  <DashboardContentLayout>
+    <template #header>
       <AppButton
         icon="fas fa-plus"
         class="btn-success rounded-md"
         label="Nova categoria"
         @click.prevent="openModal"
       />
-    </div>
+    </template>
 
+    <DCategoryModal v-model:show="categoryCreateModal" />
     <DCategoryContent :categories="categories.data" />
-  </div>
+  </DashboardContentLayout>
 </template>
