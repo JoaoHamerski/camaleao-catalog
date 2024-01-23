@@ -1,5 +1,5 @@
 import type { Method } from '@inertiajs/core'
-import { AppModalColors } from '../components/modal'
+import type { AppModalColors } from '../components/modal'
 import type { Pagination } from '../index'
 
 export type Category = {
