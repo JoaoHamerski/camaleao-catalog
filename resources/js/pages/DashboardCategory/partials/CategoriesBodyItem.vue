@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
-import DCategoryContentItemDropdown from './DCategoryContentItemDropdown.vue'
+import CategoriesBodyItemDropdown from './CategoriesBodyItemDropdown.vue'
 
 interface DCategoryContentItem {
   category: Category
@@ -35,7 +35,7 @@ const onDelete = () => {
       </div>
     </div>
 
-    <DCategoryContentItemDropdown
+    <CategoriesBodyItemDropdown
       @edit="onEdit"
       @delete="onDelete"
     />

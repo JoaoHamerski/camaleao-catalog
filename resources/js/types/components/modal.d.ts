@@ -1,7 +1,7 @@
 import {
-  MODAL_COLORS_MAP,
-  MODAL_SIZES_MAP,
+  MODAL_COLORS,
+  MODAL_SIZES,
 } from '@/components/modal/modal-constants.ts'
 
-export type AppModalColors = keyof typeof MODAL_COLORS_MAP
-export type AppModalSizes = keyof typeof MODAL_SIZES_MAP
+export type AppModalColors = keyof typeof MODAL_COLORS
+export type AppModalSizes = keyof typeof MODAL_SIZES

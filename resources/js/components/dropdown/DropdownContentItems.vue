@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { MenuItem, MenuItems } from '@headlessui/vue'
 import DropdownContentItemsItem from './DropdownContentItemsItem.vue'
-import type { DropdownItem } from './DropdownContentItemsItem.vue'
+import type { DropdownItem } from '@/types/components'
 
 interface DropdownContentItemsProps {
   items: DropdownItem[]

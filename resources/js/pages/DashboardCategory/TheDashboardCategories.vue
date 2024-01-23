@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { CategoryData } from '@/types/pages/category'
-
-import DCategoryContent from './partials/DCategoryContent.vue'
-import DCategoryModal from './partials/DCategoryModal.vue'
+import CategoriesBody from './partials/CategoriesBody.vue'
+import CategoryModal from './partials/CategoryModal.vue'
 import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
 
 interface TheDashboardCategoriesProps {
@@ -30,7 +29,7 @@ const openModal = () => {
       />
     </template>
 
-    <DCategoryModal v-model:show="categoryCreateModal" />
-    <DCategoryContent :categories="categories.data" />
+    <CategoryModal v-model:show="categoryCreateModal" />
+    <CategoriesBody :categories="categories.data" />
   </DashboardContentLayout>
 </template>
