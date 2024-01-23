@@ -32,7 +32,6 @@ class CategoryFactory extends Factory
      */
     public function storeImage()
     {
-
         $filename = $this->generateImage();
 
         return [
