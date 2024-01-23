@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { Menu, MenuButton, TransitionRoot } from '@headlessui/vue'
 import { computed } from 'vue'
-import { type DropdownItem } from './DropdownContentItemsItem.vue'
+import type { DropdownItem } from './DropdownContentItemsItem.vue'
 
 import DropdownContentItems from './DropdownContentItems.vue'
 import DropdownContentCustom from './DropdownContentCustom.vue'
 
 interface AppDropdownProps {
+  icon?: string
   label?: string
   btnClass?: string | string[]
   items?: DropdownItem[]
@@ -19,7 +20,8 @@ const ALIGN_CLASSES_MAP = {
 }
 
 const props = withDefaults(defineProps<AppDropdownProps>(), {
-  label: '',
+  icon: undefined,
+  label: undefined,
   btnClass: 'btn btn-ghost',
   items: () => [],
   align: 'left',
@@ -35,10 +37,13 @@ const alignClass = computed(() => ALIGN_CLASSES_MAP[props.align])
   >
     <MenuButton
       as="button"
-      class="aci"
       :class="btnClass"
     >
       <template v-if="label"> {{ label }}</template>
+      <FWIcon
+        v-else-if="icon"
+        :icon="icon"
+      />
       <template v-else>
         <slot name="label" />
       </template>
