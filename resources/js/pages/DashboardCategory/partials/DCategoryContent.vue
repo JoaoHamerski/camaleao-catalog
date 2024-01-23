@@ -2,7 +2,7 @@
 import { Category } from '@/types/pages'
 import DCategoryContentItem from './DCategoryContentItem.vue'
 import { ref } from 'vue'
-import DCategoryModalEdit from './DCategoryModalEdit.vue'
+import DCategoryModal from './DCategoryModal.vue'
 
 interface DCategoryContentProps {
   categories: Category[]
@@ -10,7 +10,7 @@ interface DCategoryContentProps {
 
 defineProps<DCategoryContentProps>()
 
-const editModal = ref({ category: null, show: false })
+const editModal = ref({ category: undefined, show: false })
 
 const onEditCategory = (category: any) => {
   editModal.value.category = category
@@ -24,7 +24,7 @@ const onEditCategory = (category: any) => {
     label="Categorias"
   >
     <template #content>
-      <DCategoryModalEdit
+      <DCategoryModal
         v-model:show="editModal.show"
         :category="editModal.category"
       />

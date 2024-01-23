@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import AppButton from './AppButton.vue'
-import AppModal from './AppModal.vue'
 import AppDropdown from './dropdown/AppDropdown.vue'
 import AppInput from './input/AppInput.vue'
+import AppModal from './modal/AppModal.vue'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {

@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 interface AppButtonProps {
   label?: string
   icon?: string
   loading?: boolean
 }
 
-defineProps<AppButtonProps>()
+const props = defineProps<AppButtonProps>()
+
+const disabled = computed(() => props.loading)
 </script>
 
 <template>
-  <button class="btn">
+  <button
+    class="btn"
+    :disabled="disabled"
+  >
     <span
       v-if="loading"
       class="loading loading-spinner"

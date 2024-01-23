@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { MODAL_COLORS_MAP, MODAL_SIZES_MAP } from './modal-constants'
+import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
 import {
   Dialog,
   DialogDescription,
@@ -7,39 +10,21 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
-import { computed } from 'vue'
 
 interface AppModalProps {
-  size?: keyof typeof MODAL_SIZES_MAP
-  color?: keyof typeof COLORS_MAP
-  initialFocus?: HTMLElement | null
-}
-
-const MODAL_SIZES_MAP = {
-  xs: 'w-1/4',
-  sm: 'w-1/3',
-  md: 'w-2/5',
-  lg: 'w-1/2',
-}
-
-const COLORS_MAP = {
-  primary: 'bg-primary text-primary-content',
-  success: 'bg-success text-success-content',
-  warning: 'bg-warning text-warning-content',
-  camaleao: 'bg-camaleao text-camaleao-content',
-  error: 'bg-error text-error-content',
+  size?: AppModalSizes
+  color?: AppModalColors
 }
 
 const props = withDefaults(defineProps<AppModalProps>(), {
   color: 'primary',
   size: 'md',
-  initialFocus: null,
 })
 
 const show = defineModel<boolean>('show')
 
 const sizeClass = computed(() => MODAL_SIZES_MAP[props.size])
-const colorClass = computed(() => COLORS_MAP[props.color])
+const colorClass = computed(() => MODAL_COLORS_MAP[props.color])
 
 const closeModal = () => {
   show.value = false

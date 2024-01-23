@@ -1,27 +1,25 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { CategoryData } from '@/types/pages/category'
+// import type { CategoryData } from '@/types/pages/category'
 
-import DCategoryContent from './partials/DCategoryContent.vue'
-import DCategoryModal from './partials/DCategoryModal.vue'
+// import DCategoryModalCreate from './partials/DCategoryModalCreate.vue'
+// import DCategoryContent from './partials/DCategoryContent.vue'
 
 interface TheDashboardCategoriesProps {
-  categories: CategoryData
+  // categories: CategoryData
 }
 
 defineProps<TheDashboardCategoriesProps>()
 
-const categoryCreateModal = ref(false)
+const uniformCreateModal = ref(false)
 
 const openModal = () => {
-  categoryCreateModal.value = true
+  uniformCreateModal.value = true
 }
 </script>
 
 <template>
   <div class="w-1/2 mx-auto">
-    <DCategoryModal v-model:show="categoryCreateModal" />
-
     <div class="mb-3">
       <AppButton
         icon="fas fa-plus"
@@ -30,7 +28,5 @@ const openModal = () => {
         @click.prevent="openModal"
       />
     </div>
-
-    <DCategoryContent :categories="categories.data" />
   </div>
 </template>

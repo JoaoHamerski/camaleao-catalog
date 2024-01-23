@@ -16,8 +16,8 @@ const items = computed<SidebarDrawerItemProps[]>(() => [
   {
     label: 'Uniformes',
     icon: 'fas fa-tshirt',
-    url: '',
-    active: false,
+    url: route('dashboard.uniforms.index'),
+    active: useRoute.isCurrent('dashboard.uniforms.*'),
   },
 ])
 </script>

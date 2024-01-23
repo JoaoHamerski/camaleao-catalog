@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { computed } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import type { Category, CategoryFormProps } from '@/types/pages'
 import { urlToFile } from '@/utils/helpers'
+import { computed } from 'vue'
 
 interface DCategoryFormProps {
   category?: Category
+  isEdit?: boolean
 }
 
 const emit = defineEmits(['success'])
-const props = defineProps<DCategoryFormProps>()
+const props = withDefaults(defineProps<DCategoryFormProps>(), {
+  category: undefined,
+  isEdit: false,
+})
 
 const form = useForm<CategoryFormProps>({
   _method: 'post',
@@ -18,7 +22,9 @@ const form = useForm<CategoryFormProps>({
   image: null,
 })
 
-const isEdit = computed(() => !!props.category)
+const submitBtnLabel = computed(() =>
+  props.isEdit ? 'Atualizar' : 'Cadastrar',
+)
 
 const submitForm = (url: string) => {
   form.post(url, {
@@ -29,7 +35,7 @@ const submitForm = (url: string) => {
 }
 
 const onSubmit = () => {
-  if (isEdit.value) {
+  if (props.isEdit) {
     const url = route('dashboard.categories.patch', {
       category: props.category!.id,
     })
@@ -57,7 +63,7 @@ const populateForm = async () => {
 }
 
 onMounted(() => {
-  if (isEdit.value) {
+  if (props.isEdit) {
     populateForm()
   }
 })
@@ -87,7 +93,8 @@ onMounted(() => {
     />
 
     <AppButton
-      label="Cadastrar"
+      :loading="form.processing"
+      :label="submitBtnLabel"
       class="btn-primary font-bold"
     />
   </form>

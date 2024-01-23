@@ -1,4 +1,5 @@
 import type { Method } from '@inertiajs/core'
+import { AppModalColors } from '../components/modal'
 import type { Pagination } from '../index'
 
 export type Category = {
@@ -18,4 +19,10 @@ export type CategoryFormProps = {
   _method: Method
   name: string
   image: File | null
+}
+
+export type CategoryModalAttrs = {
+  icon: string
+  color: AppModalColors
+  label: string
 }
