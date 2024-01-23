@@ -48,7 +48,7 @@ const onInput = (event: Event) => {
     </InputLabel>
 
     <input
-      class="file-input file-input-bordered w-full"
+      class="file-input file-input-bordered file-input-primary border-base-content/20 w-full"
       :name="name"
       v-bind="$attrs"
       type="file"
