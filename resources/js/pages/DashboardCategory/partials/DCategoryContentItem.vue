@@ -6,7 +6,16 @@ interface DCategoryContentItem {
   category: Category
 }
 
-defineProps<DCategoryContentItem>()
+const emit = defineEmits(['edit', 'delete'])
+const props = defineProps<DCategoryContentItem>()
+
+const onEdit = () => {
+  emit('edit', props.category)
+}
+
+const onDelete = () => {
+  emit('delete', props.category)
+}
 </script>
 
 <template>
@@ -26,6 +35,9 @@ defineProps<DCategoryContentItem>()
       </div>
     </div>
 
-    <DCategoryContentItemDropdown />
+    <DCategoryContentItemDropdown
+      @edit="onEdit"
+      @delete="onDelete"
+    />
   </div>
 </template>

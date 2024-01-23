@@ -9,6 +9,7 @@ interface AppInputFileProps {
   errorMessage?: string
   hint?: string
   multiple?: boolean
+  value?: File | null
 }
 
 const emit = defineEmits(['change'])
@@ -19,6 +20,7 @@ const props = withDefaults(defineProps<AppInputFileProps>(), {
   errorMessage: '',
   hint: '',
   multiple: false,
+  value: null,
 })
 
 const setFiles = (files: FileList | File | null) => {

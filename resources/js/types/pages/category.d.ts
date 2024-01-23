@@ -1,7 +1,8 @@
+import type { Method } from '@inertiajs/core'
 import type { Pagination } from '../index'
 
 export type Category = {
-  id: number
+  id: string
   name: string
   image: {
     name?: string
@@ -13,7 +14,8 @@ export interface CategoryData extends Pagination {
   data: Category[]
 }
 
-export type DCategoryFormProps = {
+export type CategoryFormProps = {
+  _method: Method
   name: string
   image: File | null
 }
