@@ -2,6 +2,7 @@
 import InputLabel from '@/components/input/InputLabel.vue'
 import InputError from '../input/InputError.vue'
 import InputHint from '../input/InputHint.vue'
+import { computed } from 'vue'
 
 interface AppInputFileProps {
   label?: string
@@ -22,6 +23,8 @@ const props = withDefaults(defineProps<AppInputFileProps>(), {
   multiple: false,
   value: null,
 })
+
+const hasError = computed(() => !!props.errorMessage)
 
 const setFiles = (files: FileList | File | null) => {
   emit('change', files)
@@ -51,6 +54,7 @@ const onInput = (event: Event) => {
 
     <input
       class="file-input file-input-bordered file-input-primary border-base-content/20 w-full"
+      :class="{ 'border-error': hasError }"
       :name="name"
       v-bind="$attrs"
       type="file"

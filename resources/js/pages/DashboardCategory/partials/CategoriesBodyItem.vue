@@ -19,25 +19,27 @@ const onDelete = () => {
 </script>
 
 <template>
-  <div class="flex justify-between">
-    <div class="flex gap-4">
-      <div>
-        <img
-          :src="category.image.url"
-          class="w-36 rounded"
-          alt=""
-        />
+  <div class="group">
+    <div class="flex justify-between">
+      <div class="flex gap-4">
+        <div>
+          <img
+            :src="category.image.url"
+            class="w-36 rounded"
+            alt=""
+          />
+        </div>
+        <div>
+          <span class="text-lg font-bold">
+            {{ category.name }}
+          </span>
+        </div>
       </div>
-      <div>
-        <span class="text-lg font-bold">
-          {{ category.name }}
-        </span>
-      </div>
+      <CategoriesBodyItemDropdown
+        @edit="onEdit"
+        @delete="onDelete"
+      />
     </div>
-
-    <CategoriesBodyItemDropdown
-      @edit="onEdit"
-      @delete="onDelete"
-    />
+    <div class="divider group-last:hidden" />
   </div>
 </template>

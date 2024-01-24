@@ -1,4 +1,3 @@
-import type { Method } from '@inertiajs/core'
 import type { AppModalColors } from '../components/modal'
 import type { Pagination } from '../index'
 
@@ -15,8 +14,7 @@ export interface CategoryData extends Pagination {
   data: Category[]
 }
 
-export type CategoryFormProps = {
-  _method: Method
+export type CategoryFormFields = {
   name: string
   image: File | null
 }

@@ -6,8 +6,8 @@ export const MODAL_SIZES = {
 }
 
 export const MODAL_COLORS = {
-  primary: 'bg-primary text-primary-content',
-  success: 'bg-success text-success-content',
+  primary: 'bg-gradient-to-tr from-primary to-blue-900 text-primary-content',
+  success: 'bg-gradient-to-tr from-success to-green-900 text-success-content',
   warning: 'bg-warning text-warning-content',
   camaleao: 'bg-camaleao text-camaleao-content',
   error: 'bg-error text-error-content',
