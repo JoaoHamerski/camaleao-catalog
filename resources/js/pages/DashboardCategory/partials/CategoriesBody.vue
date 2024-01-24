@@ -29,16 +29,14 @@ const onEditCategory = (category: any) => {
         :category="editModal.category"
       />
 
-      <template
-        v-for="category in categories"
-        :key="category.id"
-      >
+      <div v-auto-animate>
         <CategoriesBodyItem
+          v-for="category in categories"
+          :key="category.id"
           :category="category"
           @edit="onEditCategory"
         />
-        <div class="divider my-2 last:hidden" />
-      </template>
+      </div>
     </template>
   </AppCard>
 </template>

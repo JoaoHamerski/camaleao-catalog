@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DropdownItem } from '@/components/dropdown/DropdownContentItemsItem.vue'
+import type { DropdownItem } from '@/types/components'
 
 const emit = defineEmits(['edit', 'delete'])
 

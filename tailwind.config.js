@@ -2,7 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./resources/**/*.vue', './resources/views/app.blade.php'],
+  content: ['./resources/**/*.{vue,ts}', './resources/views/app.blade.php'],
   plugins: [require('daisyui')],
   theme: {
     extend: {

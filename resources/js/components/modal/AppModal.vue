@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-import { MODAL_COLORS, MODAL_SIZES } from './modal-constants'
-import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
 import {
   Dialog,
   DialogDescription,
@@ -10,6 +7,10 @@ import {
   TransitionChild,
   TransitionRoot,
 } from '@headlessui/vue'
+import { computed } from 'vue'
+import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
+import { MODAL_COLORS, MODAL_SIZES } from './modal-constants'
+import ModalOverlay from './ModalOverlay.vue'
 
 interface AppModalProps {
   size?: AppModalSizes
@@ -40,19 +41,7 @@ const closeModal = () => {
       class="absolute inset-0 w-full h-full z-50"
       @close="closeModal"
     >
-      <TransitionChild
-        enter="duration-300 ease-out"
-        enter-from="opacity-0"
-        enter-to="opacity-100"
-        leave="duration-200 ease-in"
-        leave-from="opacity-100"
-        leave-to="opacity-0"
-      >
-        <div
-          class="absolute inset-0 bg-black/30"
-          aria-hidden="true"
-        />
-      </TransitionChild>
+      <ModalOverlay />
 
       <TransitionChild
         enter="duration-100 ease-out"
@@ -75,7 +64,7 @@ const closeModal = () => {
             />
 
             <DialogTitle
-              class="text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
+              class="text-white text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
               :class="colorClass"
             >
               <slot name="title" />
