@@ -59,7 +59,7 @@ trait HasFile
     {
         $fileOptions = static::getFileOptions();
 
-        return $fileOptions->getDirsFor($field);
+        return $fileOptions->getDirFor($field);
     }
 
     public function isFilePublic(string $field)
