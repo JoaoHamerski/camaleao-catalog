@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { Category } from '@/types/pages'
+import { Uniform } from '@/types/pages'
 import { computed } from 'vue'
-import CategoryForm from './CategoryForm.vue'
+import UniformForm from './UniformForm.vue'
 import DashboardFormModal from '@/pages/Shared/DashboardFormModal.vue'
 
-interface CategoryModalProps {
-  category?: Category
+interface UniformModalProps {
+  uniform?: Uniform
 }
 
 const emit = defineEmits(['update:show'])
 
 const labels = {
-  create: 'Cadastre uma categoria',
-  edit: 'Altere a categoria',
+  create: 'Cadastre um uniforme',
+  edit: 'Altere o uniforme',
 }
 
-const props = defineProps<CategoryModalProps>()
+const props = defineProps<UniformModalProps>()
 
-const isEdit = computed(() => !!props.category)
+const isEdit = computed(() => !!props.uniform)
 
 const onSuccess = () => {
   emit('update:show', false)
@@ -30,9 +30,9 @@ const onSuccess = () => {
     :labels="labels"
     @update:show="$emit('update:show', $event)"
   >
-    <CategoryForm
+    <UniformForm
       :is-edit="isEdit"
-      :category="category"
+      :uniform="uniform"
       @success="onSuccess"
     />
   </DashboardFormModal>

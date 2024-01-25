@@ -3,17 +3,15 @@
 namespace Domains\DashboardCategory\Controllers;
 
 use App\Http\Controllers\Controller;
-use Domains\Category\Data\CategoryData;
-use Domains\DashboardCategory\Actions\CategoryCreateAction;
+use Domains\DashboardCategory\Actions\CategoryUpsertAction;
 use Domains\DashboardCategory\Requests\CategoryRequest;
+use Illuminate\Support\Facades\DB;
 
 class CategoryStoreController extends Controller
 {
     public function __invoke(CategoryRequest $request)
     {
-        CategoryCreateAction::execute(
-            CategoryData::fromArray($request->all())
-        );
+        CategoryUpsertAction::execute($request);
 
         return redirect()->route('dashboard.categories.index');
     }

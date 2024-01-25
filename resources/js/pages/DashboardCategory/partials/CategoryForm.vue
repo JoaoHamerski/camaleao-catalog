@@ -9,23 +9,25 @@ interface CategoryFormProps {
   category?: Category
   isEdit?: boolean
 }
+
 const props = withDefaults(defineProps<CategoryFormProps>(), {
   category: undefined,
   isEdit: false,
 })
 
-const form = useForm({
+const form = useForm<CategoryFormFields>({
   name: '',
   image: null,
 })
 
 const routes = computed(() => ({
-  post: route('dashboard.categories.store'),
-  patch: props.category
-    ? route('dashboard.categories.patch', {
-        category: props.category.id,
-      })
-    : undefined,
+  post: () => route('dashboard.categories.store'),
+  patch: () =>
+    props.category
+      ? route('dashboard.categories.patch', {
+          category: props.category.id,
+        })
+      : undefined,
 }))
 
 const populateForm = async () => {
