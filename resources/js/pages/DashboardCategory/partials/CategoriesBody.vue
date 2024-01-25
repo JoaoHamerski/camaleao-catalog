@@ -3,6 +3,7 @@ import { Category } from '@/types/pages'
 import { ref } from 'vue'
 import CategoriesBodyItem from './CategoriesBodyItem.vue'
 import CategoryModal from './CategoryModal.vue'
+import NoItemsFound from '@/components/NoItemsFound.vue'
 
 interface DCategoryContentProps {
   categories: Category[]
@@ -28,6 +29,10 @@ const onEditCategory = (category: any) => {
         v-model:show="editModal.show"
         :category="editModal.category"
       />
+
+      <NoItemsFound v-if="!categories.length">
+        Nenhum item encontrado
+      </NoItemsFound>
 
       <div v-auto-animate>
         <CategoriesBodyItem
