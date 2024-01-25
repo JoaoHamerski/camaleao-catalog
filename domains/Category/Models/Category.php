@@ -36,7 +36,7 @@ class Category extends Model
     public static function getFileOptions(): FileOptions
     {
         return FileOptions::create()
-            ->setDirs(['image' => 'public/categorias'])
+            ->setDirsMap(['image' => 'public/categorias'])
             ->setAliases(['image' => 'image.filename']);
     }
 }

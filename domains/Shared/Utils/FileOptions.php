@@ -14,7 +14,7 @@ class FileOptions
         return new static();
     }
 
-    public function getDirsFor(string $field)
+    public function getDirFor(string $field)
     {
         return $this->dirsMap[$field] ?? null;
     }
@@ -31,9 +31,9 @@ class FileOptions
         return Arr::has($this->aliases, $field);
     }
 
-    public function setDirs(array $map)
+    public function setDirsMap(array $dirsMap)
     {
-        $this->dirsMap = $map;
+        $this->dirsMap = $dirsMap;
 
         return $this;
     }
