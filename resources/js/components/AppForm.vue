@@ -7,8 +7,8 @@ interface AppFormProps {
   isEdit?: boolean
   form: InertiaForm<object>
   routes: {
-    post?: string
-    patch?: string
+    post?: () => string | undefined
+    patch?: () => string | undefined
   }
 }
 
@@ -30,21 +30,21 @@ const btnAttrs = computed(() =>
 )
 const submitMethod = computed(() => (isEdit ? 'patch' : 'post'))
 
-const transformForm = () => {
+const transformedForm = computed(() =>
   form.transform((data) => ({
     _method: submitMethod.value,
     ...data,
-  }))
-}
+  })),
+)
 
 const submit = (options?: Partial<VisitOptions>) => {
   if (isEdit && routes.patch) {
-    form.patch(routes.patch, options)
+    transformedForm.value.post(routes.patch()!, options)
     return
   }
 
   if (routes.post) {
-    form.post(routes.post, options)
+    transformedForm.value.post(routes.post()!, options)
     return
   }
 
@@ -52,8 +52,6 @@ const submit = (options?: Partial<VisitOptions>) => {
 }
 
 const onSubmit = () => {
-  transformForm()
-
   submit({
     onSuccess() {
       emit('success')

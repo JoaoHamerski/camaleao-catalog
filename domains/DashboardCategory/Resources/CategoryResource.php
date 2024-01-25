@@ -24,7 +24,7 @@ class CategoryResource extends JsonResource
                     Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
                     $this->image['name']
                 ) ,
-                'url' => $this->imageUrl
+                'url' => $this->getFilePublicUrl('image')
             ]
         ];
     }

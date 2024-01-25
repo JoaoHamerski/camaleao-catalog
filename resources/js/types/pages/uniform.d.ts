@@ -1,4 +1,3 @@
-import type { Method } from '@inertiajs/core'
 import { Category } from '.'
 
 export type Uniform = {
@@ -8,8 +7,7 @@ export type Uniform = {
   images: string[]
 }
 
-export type UniformFormProps = {
-  _method: Method
+export type UniformFormFields = {
   name: string
   category: Category | null
   images: File[] | null

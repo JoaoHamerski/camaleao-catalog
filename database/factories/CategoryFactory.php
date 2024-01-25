@@ -48,7 +48,7 @@ class CategoryFactory extends Factory
     {
         $sizes = $this->getImageSizes();
 
-        $storagePath = storage_path('app' . Category::$FILES_FOLDER);
+        $storagePath =  './storage/app/' . Category::getStoragePath('image');
 
         $filepath = fake()->image($storagePath, $sizes['w'], $sizes['h']);
 

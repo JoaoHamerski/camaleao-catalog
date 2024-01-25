@@ -5,6 +5,8 @@ use Domains\DashboardCategory\Controllers\CategoryIndexController;
 use Domains\DashboardCategory\Controllers\CategoryStoreController;
 use Domains\DashboardCategory\Controllers\CategoryUpdateController;
 use Domains\DashboardUniform\Controllers\UniformIndexController;
+use Domains\DashboardUniform\Controllers\UniformStoreController;
+use Domains\Shared\Models\Permission;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -33,11 +35,12 @@ Route::middleware('auth')->name('auth.')->group(function () {
     Route::post('/sair', UserLogoutController::class)->name('logout');
 });
 
-Route::middleware(['auth', 'can:access_admin_panel'])->name('dashboard.')->group(function () {
+Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dashboard.')->group(function () {
     Route::get('/painel', DashboardHomeController::class)->name('index');
 
     Route::name('uniforms.')->group(function () {
         Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
+        Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
     });
 
     Route::name('categories.')->group(function () {
