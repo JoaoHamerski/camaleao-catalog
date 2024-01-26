@@ -23,6 +23,7 @@ createInertiaApp({
       .addGlobalComponents()
       .addAutoAnimate()
       .addRouteNavigationListener()
+      .addVueQuery()
       .mount(el)
   },
   progress: {

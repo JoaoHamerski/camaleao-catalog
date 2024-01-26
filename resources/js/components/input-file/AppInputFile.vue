@@ -63,7 +63,7 @@ const onInput = (event: Event) => {
     />
 
     <div class="label flex-col items-start">
-      <InputError :message="errorMessage" />
+      <InputError :error="errorMessage" />
       <InputHint v-if="hint">
         {{ hint }}
       </InputHint>

@@ -1,5 +1,6 @@
 <?php
 
+use Domains\Api\Controllers\CategoriesGetController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\DashboardCategory\Controllers\CategoryIndexController;
 use Domains\DashboardCategory\Controllers\CategoryStoreController;
@@ -48,6 +49,10 @@ Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dash
         Route::post('/painel/categorias', CategoryStoreController::class)->name('store');
         Route::patch('/painel/categories/{category}', CategoryUpdateController::class)->name('patch');
     });
+});
+
+Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('api.')->group(function () {
+    Route::get('/api/categorias', CategoriesGetController::class)->name('categories.get');
 });
 
 // require __DIR__ . '/auth.php';
