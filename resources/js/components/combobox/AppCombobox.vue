@@ -18,6 +18,7 @@ defineEmits(['update:modelValue'])
     class="relative"
     as="div"
     :model-value="modelValue"
+    by="id"
     @update:model-value="$emit('update:modelValue', $event)"
   >
     <ComboboxButton class="w-full">

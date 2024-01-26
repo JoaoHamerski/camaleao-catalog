@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
 
-defineProps<{ item: Category }>()
+interface UniformFormCategoryOptionProps {
+  item: Category
+}
+defineProps<UniformFormCategoryOptionProps>()
 </script>
+
 <template>
   <div class="flex items-center gap-4">
     <div class="w-12">

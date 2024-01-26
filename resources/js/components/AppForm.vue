@@ -2,6 +2,7 @@
 import { type InertiaForm } from '@inertiajs/vue3'
 import { type VisitOptions } from '@inertiajs/core'
 import { computed } from 'vue'
+import { onMounted } from 'vue'
 
 interface AppFormProps {
   isEdit?: boolean
@@ -11,14 +12,16 @@ interface AppFormProps {
     patch?: () => string | undefined
   }
   transformedData?: (data: object) => object
+  populateForm?: () => void
 }
 
 const emit = defineEmits(['success', 'error'])
-const { form, isEdit, routes, transformedData } = withDefaults(
+const { form, isEdit, routes, transformedData, populateForm } = withDefaults(
   defineProps<AppFormProps>(),
   {
     isEdit: false,
     transformedData: () => ({}),
+    populateForm: () => {},
   },
 )
 
@@ -74,6 +77,12 @@ const onFocus = (event: Event) => {
 
   form.clearErrors(target.name as never)
 }
+
+onMounted(() => {
+  if (isEdit) {
+    populateForm()
+  }
+})
 </script>
 
 <template>

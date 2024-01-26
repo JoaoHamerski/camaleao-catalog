@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Category, Uniform } from '@/types/pages'
+import type { Category, Uniform, UniformFormFields } from '@/types/pages'
 import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
@@ -69,6 +69,18 @@ const categoryDisplayValue = (item?: Category) => {
 const transformedData = (data: any) => ({
   category: data?.category?.id || null,
 })
+
+const populateForm = () => {
+  if (props.uniform) {
+    return
+  }
+
+  const populatedData: UniformFormFields = {
+    name: props.uniform.name,
+  }
+
+  Object.assign(form, populatedData)
+}
 </script>
 
 <template>
@@ -78,6 +90,7 @@ const transformedData = (data: any) => ({
     :routes="routes"
     :is-edit="isEdit"
     :transformed-data="transformedData"
+    :populate-form="populateForm"
   >
     <AppInput
       v-model="form.name"
