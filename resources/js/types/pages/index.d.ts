@@ -6,3 +6,8 @@ export type DashboardModalAttrs = {
   color: AppModalColors
   label: string
 }
+
+export type Image = {
+  name?: string
+  url: string
+}

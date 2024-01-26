@@ -1,12 +1,9 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, useSlots } from 'vue'
 
 import BaseInput from './BaseInput.vue'
 import BaseInputPassword from './BaseInputPassword.vue'
-import InputError from './InputError.vue'
-import InputHint from './InputHint.vue'
 import InputLabel from './InputLabel.vue'
-import { useSlots } from 'vue'
 import InputFooter from './InputFooter.vue'
 
 export interface AppInputProps {
@@ -90,7 +87,7 @@ onMounted(() => {
     </div>
 
     <InputFooter
-      :error-message="errorMessage"
+      :error="errorMessage"
       :hint="hint"
     />
   </label>

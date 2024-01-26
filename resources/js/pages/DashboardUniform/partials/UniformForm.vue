@@ -31,6 +31,7 @@ const props = withDefaults(defineProps<UniformFormProps>(), {
 const form = useForm({
   name: '',
   category: null,
+  images: [],
 })
 
 const routes = computed(() => ({
@@ -64,6 +65,10 @@ const categoryDisplayValue = (item?: Category) => {
 
   return item.name
 }
+
+const transformedData = (data: any) => ({
+  category: data?.category?.id || null,
+})
 </script>
 
 <template>
@@ -72,6 +77,7 @@ const categoryDisplayValue = (item?: Category) => {
     :form="form"
     :routes="routes"
     :is-edit="isEdit"
+    :transformed-data="transformedData"
   >
     <AppInput
       v-model="form.name"
@@ -90,11 +96,22 @@ const categoryDisplayValue = (item?: Category) => {
       :items="categories"
       :display-value="categoryDisplayValue"
       :loading="isCategoriesFetching"
+      :error-message="form.errors.category"
       @input="onCategorySearch"
     >
       <template #option="item">
         <UniformFormCategoryOption :item="item" />
       </template>
     </AppCombobox>
+
+    <AppInputFile
+      v-model="form.images"
+      name="images"
+      label="Imagens do uniforme"
+      multiple
+      accept="image/*"
+      hint="Máx. 300kB por imagem"
+      :error-message="form.errors.images"
+    />
   </AppForm>
 </template>

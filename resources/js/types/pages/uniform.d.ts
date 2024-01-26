@@ -1,10 +1,10 @@
-import { Category } from '.'
+import { Category, Image } from '.'
 
 export type Uniform = {
   id: string
   category: Category
   name: string
-  images: string[]
+  images: Image[]
 }
 
 export type UniformFormFields = {

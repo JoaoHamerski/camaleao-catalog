@@ -1,13 +1,11 @@
+import { Image } from '.'
 import type { AppModalColors } from '../components/modal'
 import type { Pagination } from '../index'
 
 export type Category = {
   id: string
   name: string
-  image: {
-    name?: string
-    url: string
-  }
+  image: Image
 }
 
 export interface CategoryData extends Pagination {

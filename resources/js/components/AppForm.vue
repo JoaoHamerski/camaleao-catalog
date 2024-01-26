@@ -10,12 +10,17 @@ interface AppFormProps {
     post?: () => string | undefined
     patch?: () => string | undefined
   }
+  transformedData?: (data: object) => object
 }
 
 const emit = defineEmits(['success', 'error'])
-const { form, isEdit, routes } = withDefaults(defineProps<AppFormProps>(), {
-  isEdit: false,
-})
+const { form, isEdit, routes, transformedData } = withDefaults(
+  defineProps<AppFormProps>(),
+  {
+    isEdit: false,
+    transformedData: () => ({}),
+  },
+)
 
 const btnAttrs = computed(() =>
   isEdit
@@ -34,10 +39,12 @@ const transformedForm = computed(() =>
   form.transform((data) => ({
     _method: submitMethod.value,
     ...data,
+    ...transformedData(data),
   })),
 )
 
 const submit = (options?: Partial<VisitOptions>) => {
+  console.log(transformedForm.value)
   if (isEdit && routes.patch) {
     transformedForm.value.post(routes.patch()!, options)
     return

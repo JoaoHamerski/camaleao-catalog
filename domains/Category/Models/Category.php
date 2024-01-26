@@ -2,20 +2,22 @@
 
 namespace Domains\Category\Models;
 
-use Domains\Shared\Traits\HasFile;
+use Domains\Shared\Traits\HasFiles;
 use Domains\Shared\Utils\FileOptions;
+use Domains\Uniform\Models\Uniform;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Category extends Model
 {
     use HasFactory;
     use HasUuids;
     use HasSlug;
-    use HasFile;
+    use HasFiles;
 
     protected $fillable = [
         'name',
@@ -38,5 +40,10 @@ class Category extends Model
         return FileOptions::create()
             ->setDirsMap(['image' => 'public/categorias'])
             ->setAliases(['image' => 'image.filename']);
+    }
+
+    public function uniforms(): HasMany
+    {
+        return $this->hasMany(Uniform::class);
     }
 }

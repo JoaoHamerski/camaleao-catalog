@@ -2,7 +2,7 @@
 import { Category } from '@/types/pages'
 import { computed } from 'vue'
 import CategoryForm from './CategoryForm.vue'
-import DashboardFormModal from '@/pages/Shared/DashboardFormModal.vue'
+import DashboardFormModal from '@/pages/Shared/dashboard/DashboardFormModal.vue'
 
 interface CategoryModalProps {
   category?: Category

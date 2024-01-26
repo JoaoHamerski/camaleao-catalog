@@ -3,15 +3,16 @@
 namespace Database\Factories;
 
 use Domains\Category\Models\Category;
+use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domains\Category\Models\Category>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domains\Uniform\Models\Uniform>
  */
-class CategoryFactory extends Factory
+class UniformFactory extends Factory
 {
-    protected $model = Category::class;
+    protected $model = Uniform::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +23,8 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->sentence(2),
-            'image' => $this->storeImage()
+            'category_id' => Category::inRandomOrder()->first()->id,
+            'images' => [$this->storeImage()]
         ];
     }
 
@@ -48,7 +50,7 @@ class CategoryFactory extends Factory
     {
         $sizes = $this->getImageSizes();
 
-        $storagePath =  './storage/app/' . Category::getStoragePath('image');
+        $storagePath =  './storage/app/' . Uniform::getStoragePath('images');
 
         $filepath = fake()->image($storagePath, $sizes['w'], $sizes['h']);
 
