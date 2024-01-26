@@ -4,6 +4,7 @@ import { useForm } from '@inertiajs/vue3'
 import { computed } from 'vue'
 import { ref } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
+import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
 
 interface UniformFormProps {
   uniform?: Uniform
@@ -92,18 +93,7 @@ const categoryDisplayValue = (item?: Category) => {
       @input="onCategorySearch"
     >
       <template #option="item">
-        <div class="flex items-center gap-4">
-          <div class="w-12">
-            <img
-              class="rounded max-h-20"
-              :src="item.image.url"
-              alt=""
-            />
-          </div>
-          <div>
-            {{ item.name }}
-          </div>
-        </div>
+        <UniformFormCategoryOption :item="item" />
       </template>
     </AppCombobox>
   </AppForm>
