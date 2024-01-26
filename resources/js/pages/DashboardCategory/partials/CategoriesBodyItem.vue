@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
 import CategoriesBodyItemDropdown from './CategoriesBodyItemDropdown.vue'
+import DashboardListItem from '@/pages/Shared/dashboard/DashboardListItem.vue'
 
 interface DCategoryContentItem {
   category: Category
@@ -19,27 +20,18 @@ const onDelete = () => {
 </script>
 
 <template>
-  <div class="group">
-    <div class="flex justify-between">
-      <div class="flex gap-4">
-        <div>
-          <img
-            :src="category.image.url"
-            class="w-36 rounded"
-            alt=""
-          />
-        </div>
-        <div>
-          <span class="text-lg font-bold">
-            {{ category.name }}
-          </span>
-        </div>
-      </div>
-      <CategoriesBodyItemDropdown
-        @edit="onEdit"
-        @delete="onDelete"
+  <DashboardListItem>
+    <div>
+      <img
+        :src="category.image.url"
+        class="w-36 rounded"
+        alt=""
       />
     </div>
-    <div class="divider group-last:hidden" />
-  </div>
+    <div>
+      <span class="text-lg font-bold">
+        {{ category.name }}
+      </span>
+    </div>
+  </DashboardListItem>
 </template>

@@ -3,6 +3,7 @@
 namespace Domains\Shared\Utils;
 
 use Error;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 class File
@@ -10,16 +11,15 @@ class File
     public string $filename;
     public string $filepath;
     public string $extension;
-
-    public function __construct(string $filepath)
+    public string $originalName;
+    public function __construct(UploadedFile $file, $storagePath)
     {
-        if (!Str::of($filepath)->contains('/')) {
-            throw new Error("Invalid filepath: {$filepath}");
-        }
+        $filepath = $file->store($storagePath);
 
         $this->filepath = $filepath;
         $this->filename = Str::of($filepath)->afterLast('/');
-        $this->extension = Str::of($filepath)->afterLast('.');
+        $this->extension = $file->getClientOriginalExtension();
+        $this->originalName = $file->getClientOriginalName();
     }
 
     public static function isFilepathValid($filepath)

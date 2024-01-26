@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { Uniform } from '@/types/pages'
 import UniformModal from './UniformModal.vue'
 import UniformsBodyItem from './UniformsBodyItem.vue'
+
+interface UniformsBodyProps {
+  uniforms: Uniform[]
+}
+defineProps<UniformsBodyProps>()
 </script>
+
 <template>
   <AppCard
     icon="fas fa-tshirt"
@@ -11,7 +18,11 @@ import UniformsBodyItem from './UniformsBodyItem.vue'
       <UniformModal />
 
       <div v-auto-animate>
-        <UniformsBodyItem />
+        <UniformsBodyItem
+          v-for="uniform in uniforms"
+          :key="uniform.id"
+          :uniform="uniform"
+        />
       </div>
     </template>
   </AppCard>

@@ -39,15 +39,15 @@ Route::middleware('auth')->name('auth.')->group(function () {
 Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dashboard.')->group(function () {
     Route::get('/painel', DashboardHomeController::class)->name('index');
 
-    Route::name('uniforms.')->group(function () {
-        Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
-        Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
-    });
-
     Route::name('categories.')->group(function () {
         Route::get('/painel/categorias', CategoryIndexController::class)->name('index');
         Route::post('/painel/categorias', CategoryStoreController::class)->name('store');
         Route::patch('/painel/categories/{category}', CategoryUpdateController::class)->name('patch');
+    });
+
+    Route::name('uniforms.')->group(function () {
+        Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
+        Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
     });
 });
 

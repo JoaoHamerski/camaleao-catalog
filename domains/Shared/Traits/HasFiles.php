@@ -6,10 +6,11 @@ use Domains\Shared\Utils\File;
 use Domains\Shared\Utils\FileOptions;
 use Error;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-trait HasFile
+trait HasFiles
 {
     abstract public static function getFileOptions(): FileOptions;
 
@@ -17,20 +18,33 @@ trait HasFile
     {
         $filepath = $this->getFilePath($field);
 
-        if (!$this->isFilePublic($field)) {
-            throw new Error("The file for \"{$field}\" field isn't public");
+        if (is_array($filepath)) {
+            return Arr::map($filepath, fn ($_filepath) => Storage::url($_filepath));
         }
+        // if (!$this->isFilePublic($field)) {
+        //     throw new Error("The file for \"{$field}\" field isn't public");
+        // }
 
         return Storage::url($filepath);
     }
 
-    public static function storeFile(UploadedFile $file, $field)
+    private static function storeFile(UploadedFile $file, string $field)
     {
         $storagePath = static::getStoragePath($field);
 
-        return new File(
-            $file->store($storagePath)
-        );
+        return new File($file, $storagePath);
+    }
+
+    public static function storeFiles(UploadedFile | array $files, $field)
+    {
+        if (is_array($files)) {
+            return Arr::map(
+                $files,
+                fn ($file) => static::storeFile($file, $field)
+            );
+        }
+
+        return static::storeFile($files, $field);
     }
 
     public function deleteFile($field)
@@ -51,6 +65,10 @@ trait HasFile
     public function getFilePath(string $field)
     {
         $filename = $this->getFilename($field);
+
+        if (is_array($filename)) {
+            return Arr::map($filename, fn ($name) => static::getStoragePath($field) .'/'. $name);
+        }
 
         return static::getStoragePath($field) . '/' . $filename;
     }

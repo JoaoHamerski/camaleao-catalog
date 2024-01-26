@@ -2,7 +2,7 @@
 import { Uniform } from '@/types/pages'
 import { computed } from 'vue'
 import UniformForm from './UniformForm.vue'
-import DashboardFormModal from '@/pages/Shared/DashboardFormModal.vue'
+import DashboardFormModal from '@/pages/Shared/dashboard/DashboardFormModal.vue'
 
 interface UniformModalProps {
   uniform?: Uniform
