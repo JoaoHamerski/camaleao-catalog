@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import type { CategoryData } from '@/types/pages/category'
+import type { CategoryPaginated } from '@/types/pages/category'
 import CategoriesBody from './partials/CategoriesBody.vue'
 import CategoryModal from './partials/CategoryModal.vue'
 import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
 
 interface TheDashboardCategoriesProps {
-  categories: CategoryData
+  categories: CategoryPaginated
 }
 
 defineProps<TheDashboardCategoriesProps>()

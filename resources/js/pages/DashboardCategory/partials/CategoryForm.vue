@@ -42,12 +42,6 @@ const populateForm = async () => {
 
   Object.assign(form, populatedData)
 }
-
-onMounted(() => {
-  if (props.isEdit) {
-    populateForm()
-  }
-})
 </script>
 
 <template>
@@ -56,6 +50,7 @@ onMounted(() => {
     :form="form"
     :routes="routes"
     :is-edit="isEdit"
+    :populate-form="populateForm"
   >
     <AppInput
       v-model="form.name"

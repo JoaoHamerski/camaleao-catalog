@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
-import CategoriesBodyItemDropdown from './CategoriesBodyItemDropdown.vue'
 import DashboardListItem from '@/pages/Shared/dashboard/DashboardListItem.vue'
+import { DropdownItem } from '@/types/components'
 
-interface DCategoryContentItem {
+interface CategoriesBodyItem {
   category: Category
 }
 
 const emit = defineEmits(['edit', 'delete'])
-const props = defineProps<DCategoryContentItem>()
+const props = defineProps<CategoriesBodyItem>()
 
 const onEdit = () => {
   emit('edit', props.category)
@@ -17,10 +17,15 @@ const onEdit = () => {
 const onDelete = () => {
   emit('delete', props.category)
 }
+
+const options: DropdownItem[] = [
+  { label: 'Editar', icon: 'fas fa-edit', onclick: onEdit },
+  { label: 'Excluir', icon: 'fas fa-trash', onclick: onDelete },
+]
 </script>
 
 <template>
-  <DashboardListItem>
+  <DashboardListItem :options="options">
     <div>
       <img
         :src="category.image.url"

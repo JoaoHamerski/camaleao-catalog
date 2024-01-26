@@ -5,17 +5,17 @@ import CategoriesBodyItem from './CategoriesBodyItem.vue'
 import CategoryModal from './CategoryModal.vue'
 import NoItemsFound from '@/components/NoItemsFound.vue'
 
-interface DCategoryContentProps {
+interface CategoryBodyProps {
   categories: Category[]
 }
 
-defineProps<DCategoryContentProps>()
+defineProps<CategoryBodyProps>()
 
-const editModal = ref({ category: undefined, show: false })
+const editCategoryModal = ref({ category: undefined, show: false })
 
 const onEditCategory = (category: any) => {
-  editModal.value.category = category
-  editModal.value.show = true
+  editCategoryModal.value.category = category
+  editCategoryModal.value.show = true
 }
 </script>
 
@@ -26,8 +26,8 @@ const onEditCategory = (category: any) => {
   >
     <template #content>
       <CategoryModal
-        v-model:show="editModal.show"
-        :category="editModal.category"
+        v-model:show="editCategoryModal.show"
+        :category="editCategoryModal.category"
       />
 
       <NoItemsFound v-if="!categories.length">
