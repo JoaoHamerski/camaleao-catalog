@@ -2,6 +2,7 @@ import { useRouteStore } from '@/store/route-store'
 import { autoAnimatePlugin } from '@formkit/auto-animate/vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { router } from '@inertiajs/vue3'
+import { VueQueryPlugin } from '@tanstack/vue-query'
 import { createPinia } from 'pinia'
 import { App, Plugin } from 'vue'
 import { ZiggyVue } from '../../../vendor/tightenco/ziggy/dist/vue.m'
@@ -45,6 +46,12 @@ export default class Bootstrap {
     const pinia = createPinia()
 
     this.app.use(pinia)
+
+    return this
+  }
+
+  addVueQuery() {
+    this.app.use(VueQueryPlugin)
 
     return this
   }

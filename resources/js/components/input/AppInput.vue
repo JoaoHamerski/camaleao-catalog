@@ -6,12 +6,14 @@ import BaseInputPassword from './BaseInputPassword.vue'
 import InputError from './InputError.vue'
 import InputHint from './InputHint.vue'
 import InputLabel from './InputLabel.vue'
+import { useSlots } from 'vue'
+import InputFooter from './InputFooter.vue'
 
 export interface AppInputProps {
+  name: string
   type?: 'text' | 'password'
   accept?: string
   label?: string
-  name: string
   error?: boolean
   errorMessage?: string
   hint?: string
@@ -20,7 +22,7 @@ export interface AppInputProps {
   placeholder?: string
   autocomplete?: string
 }
-
+const slots = useSlots()
 const props = withDefaults(defineProps<AppInputProps>(), {
   type: 'text',
   accept: undefined,
@@ -39,7 +41,11 @@ const model = defineModel<string | File>()
 
 const inputClasses = computed(() => [
   props.inputClass,
-  { 'input-error': hasError.value },
+  'input input-bordered w-full focus:input-primary text-black',
+  {
+    'input-error': hasError.value,
+    'pr-10': !!slots['append'],
+  },
 ])
 
 const hasError = computed(() => props.error || !!props.errorMessage)
@@ -63,26 +69,29 @@ onMounted(() => {
       {{ label }}
     </InputLabel>
 
-    <Component
-      :is="inputComponent"
-      ref="input"
-      v-model="model"
-      v-bind="{
-        name,
-        type,
-        hasError,
-        inputClasses,
-        placeholder,
-        autocomplete,
-        accept,
-      }"
-    />
-
-    <div class="label flex-col items-start">
-      <InputError :message="errorMessage" />
-      <InputHint v-if="hint">
-        {{ hint }}
-      </InputHint>
+    <div class="relative flex items-center">
+      <Component
+        :is="inputComponent"
+        ref="input"
+        v-model="model"
+        :class="inputClasses"
+        v-bind="{
+          name,
+          type,
+          hasError,
+          placeholder,
+          autocomplete,
+          accept,
+        }"
+      />
+      <span class="absolute right-4">
+        <slot name="append" />
+      </span>
     </div>
+
+    <InputFooter
+      :error-message="errorMessage"
+      :hint="hint"
+    />
   </label>
 </template>

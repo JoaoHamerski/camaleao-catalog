@@ -4,7 +4,6 @@ import { nextTick, ref } from 'vue'
 export interface BaseInputProps {
   type: 'text' | 'password'
   hasError: boolean
-  inputClasses: string | object
 }
 
 const emit = defineEmits(['update:modelValue'])
@@ -39,8 +38,6 @@ defineExpose({
   <input
     ref="input"
     :value="model"
-    class="input input-bordered w-full focus:input-primary text-black"
-    :class="{ 'input-error': hasError }"
     :type="type"
     @input="onInput"
   />

@@ -1,13 +1,26 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import type { Category, Uniform } from '@/types/pages'
 import { useForm } from '@inertiajs/vue3'
-import type { Uniform, UniformFormFields } from '@/types/pages'
 import { computed } from 'vue'
+import { ref } from 'vue'
+import { useQuery } from '@tanstack/vue-query'
 
 interface UniformFormProps {
   uniform?: Uniform
   isEdit?: boolean
 }
+
+const categorySearch = ref('')
+
+const {
+  data: categories,
+  isFetching: isCategoriesFetching,
+  refetch: refetchCategories,
+} = useQuery({
+  queryKey: ['categories'],
+  queryFn: () => fetchCategories(),
+  initialData: [],
+})
 
 const props = withDefaults(defineProps<UniformFormProps>(), {
   uniform: undefined,
@@ -16,7 +29,7 @@ const props = withDefaults(defineProps<UniformFormProps>(), {
 
 const form = useForm({
   name: '',
-  image: null,
+  category: null,
 })
 
 const routes = computed(() => ({
@@ -29,23 +42,27 @@ const routes = computed(() => ({
       : undefined,
 }))
 
-const populateForm = async () => {
-  if (!props.uniform) {
-    return
-  }
+const fetchCategories = async (): Promise<Category[]> => {
+  const endpoint = route('api.categories.get', { name: categorySearch.value })
 
-  // const populatedData: UniformFormFields = {
-  //
-  // }
-
-  // Object.assign(form, populatedData)
+  return await fetch(endpoint).then((response) => response.json())
 }
 
-onMounted(() => {
-  if (props.isEdit) {
-    populateForm()
+const onCategorySearch = (event: Event) => {
+  const target = event.target as HTMLInputElement
+
+  categorySearch.value = target.value
+
+  refetchCategories()
+}
+
+const categoryDisplayValue = (item?: Category) => {
+  if (!item) {
+    return ''
   }
-})
+
+  return item.name
+}
 </script>
 
 <template>
@@ -63,5 +80,31 @@ onMounted(() => {
       :error-message="form.errors.name"
       autofocus
     />
+
+    <AppCombobox
+      v-model="form.category"
+      label="Categoria"
+      name="category"
+      placeholder="Escolha uma categoria..."
+      :items="categories"
+      :display-value="categoryDisplayValue"
+      :loading="isCategoriesFetching"
+      @input="onCategorySearch"
+    >
+      <template #option="item">
+        <div class="flex items-center gap-4">
+          <div class="w-12">
+            <img
+              class="rounded max-h-20"
+              :src="item.image.url"
+              alt=""
+            />
+          </div>
+          <div>
+            {{ item.name }}
+          </div>
+        </div>
+      </template>
+    </AppCombobox>
   </AppForm>
 </template>

@@ -11,12 +11,14 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 import { faShapes } from '@fortawesome/free-solid-svg-icons/faShapes'
+import { faSort } from '@fortawesome/free-solid-svg-icons/faSort'
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash'
 import { faTshirt } from '@fortawesome/free-solid-svg-icons/faTshirt'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { faUserShield } from '@fortawesome/free-solid-svg-icons/faUserShield'
+
 library.add(
   faUserCircle,
   faShapes,
@@ -36,4 +38,5 @@ library.add(
   faEdit,
   faTrash,
   faFaceFrown,
+  faSort,
 )

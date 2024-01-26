@@ -11,7 +11,7 @@ export type Category = {
 }
 
 export interface CategoryData extends Pagination {
-  data: Category[]
+  data: Category[] | []
 }
 
 export type CategoryFormFields = {

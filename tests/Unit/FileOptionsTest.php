@@ -2,21 +2,22 @@
 
 namespace Tests\Unit;
 
+use Domains\Shared\Utils\FileOptions;
 use PHPUnit\Framework\TestCase;
-use Tests\Setup\FileOptionsSetup;
 
 class FileOptionsTest extends TestCase
 {
     public function test_can_get_dirs_for_field(): void
     {
-        $fileOptions = (new FileOptionsSetup())
-            ->setupDirsMap()
-            ->get();
+        $fileOptions = new FileOptions();
 
-        $field = fake()->randomKey($fileOptions->getDirsMap());
+        $field = 'test_field';
+        $folder = 'test_folder/file.png';
 
-        $this->assertIsString(
-            $fileOptions->getDirFor($field)
-        );
+        $fileOptions->setDirsMap([
+            $field => 'test_folder/file.png'
+        ]);
+
+        $this->assertEquals($fileOptions->getDirFor($field), $folder);
     }
 }
