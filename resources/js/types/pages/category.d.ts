@@ -3,6 +3,7 @@ import type { Pagination } from '../index'
 
 export type Category = {
   id: string
+  slug: string
   name: string
   image: Image
 }

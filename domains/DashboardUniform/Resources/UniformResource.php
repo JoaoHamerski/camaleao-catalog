@@ -22,9 +22,10 @@ class UniformResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'category' => new CategoryResource($this->category),
+            'slug' => $this->slug,
             'images' => Arr::map($this->images, fn ($image, $index) => [
                 'name' => $this->when(
-                    Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
+                    Auth::user() && Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
                     $this->images[$index]['name']
                 ) ,
                 'url' => $this->getFilePublicUrl("images")[$index]

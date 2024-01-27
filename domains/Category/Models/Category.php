@@ -28,6 +28,11 @@ class Category extends Model
         'image' => 'json'
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()

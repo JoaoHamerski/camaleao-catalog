@@ -19,18 +19,25 @@ type PaginationLink = {
   label: string
   url: string | null
 }
+type PaginationLinks = {
+  first: string
+  last: string
+  next: string | null
+  prev: string | null
+}
 
-export type Pagination = {
+export type PaginationMeta = {
   current_page: number
-  first_page_url: string | null
-  last_page_url: string | null
-  last_page: number
-  next_page_url: string | null
-  prev_page_url: string | null
-  links: PagiationLink[]
   from: number
-  to: number
+  last_page: number
+  links: PagiationLink[]
   path: string
   per_page: number
+  to: number
   total: number
+}
+
+export type Pagination = {
+  links: PaginationLinks
+  meta: PaginationeMeta
 }

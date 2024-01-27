@@ -28,6 +28,11 @@ class Uniform extends Model
         'images' => 'json'
     ];
 
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()

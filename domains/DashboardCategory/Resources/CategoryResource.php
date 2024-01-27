@@ -19,9 +19,10 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'slug' => $this->slug,
             'image' => [
                 'name' => $this->when(
-                    Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
+                    Auth::user() && Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
                     $this->image['name']
                 ) ,
                 'url' => $this->getFilePublicUrl('image')

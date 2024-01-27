@@ -4,6 +4,8 @@ import { faEye } from '@fortawesome/free-regular-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
 import { faFaceFrown } from '@fortawesome/free-regular-svg-icons/faFaceFrown'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+import { faCircleLeft } from '@fortawesome/free-solid-svg-icons/faCircleLeft'
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons/faCircleRight'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons/faEllipsis'
 import { faGauge } from '@fortawesome/free-solid-svg-icons/faGauge'
@@ -39,4 +41,6 @@ library.add(
   faTrash,
   faFaceFrown,
   faSort,
+  faCircleLeft,
+  faCircleRight,
 )
