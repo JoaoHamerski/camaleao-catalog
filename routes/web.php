@@ -2,6 +2,7 @@
 
 use Domains\Api\Controllers\CategoriesGetController;
 use Domains\Category\Controllers\CategoriesIndexController;
+use Domains\Category\Controllers\CategoriesShowController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\DashboardCategory\Controllers\CategoryDeleteController;
 use Domains\DashboardCategory\Controllers\CategoryIndexController;
@@ -12,6 +13,7 @@ use Domains\DashboardUniform\Controllers\UniformIndexController;
 use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
 use Domains\Shared\Models\Permission;
+use Domains\Uniform\Controllers\UniformsShowController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -58,8 +60,13 @@ Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dash
     });
 });
 
+Route::name('uniforms.')->group(function () {
+    Route::get('/categorias/{category}/uniformes/{uniform}', UniformsShowController::class)->name('show');
+});
+
 Route::name('categories.')->group(function () {
     Route::get('/categorias', CategoriesIndexController::class)->name('index');
+    Route::get('/categorias/{category}/uniformes', CategoriesShowController::class)->name('show');
 });
 
 Route::name('most-liked.')->group(function () {

@@ -7,6 +7,7 @@ import { computed } from 'vue'
 interface AppCarouselProps {
   srcs: string[]
   alt?: string
+  imgClass?: string
 }
 
 const props = defineProps<AppCarouselProps>()
@@ -26,6 +27,7 @@ const hasMultipleSlides = computed(() => props.srcs.length > 1)
       :key="src"
     >
       <img
+        :class="imgClass"
         :src="src"
         :alt="alt"
       />
