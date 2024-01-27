@@ -10,5 +10,5 @@ export const MODAL_COLORS = {
   success: 'bg-gradient-to-tr from-success to-green-900 text-success-content',
   warning: 'bg-warning text-warning-content',
   camaleao: 'bg-camaleao text-camaleao-content',
-  error: 'bg-error text-error-content',
+  error: 'bg-gradient-to-tr from-error to-red-900 text-error-content',
 }

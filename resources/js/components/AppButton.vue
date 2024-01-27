@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
+import { FontAwesomeIcon as FWIcon } from '@fortawesome/vue-fontawesome'
 
 interface AppButtonProps {
   label?: string
