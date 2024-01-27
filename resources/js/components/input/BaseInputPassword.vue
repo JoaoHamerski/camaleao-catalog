@@ -10,6 +10,7 @@ const input = ref<InstanceType<typeof BaseInput> | null>(null)
 const baseInputProps = computed(() => ({
   ...props,
   ...attrs,
+  class: attrs.class,
   type: dynamicType.value,
 }))
 
@@ -29,10 +30,14 @@ const togglePassword = () => {
   dynamicType.value = isDynamicTypePassword.value ? 'text' : 'password'
   input.value.focusInput()
 }
+
+defineOptions({
+  inheritAttrs: false,
+})
 </script>
 
 <template>
-  <div class="join">
+  <div class="join w-full">
     <BaseInput
       ref="input"
       class="join-item"

@@ -1,18 +1,26 @@
 <script setup lang="ts">
-import navbarItems from './navbar-items'
+import { Link } from '@inertiajs/vue3'
+import { useRouteStore } from '@/store/route-store'
+import NAVBAR_ITEMS from './navbar-items'
+
+const routeStore = useRouteStore()
 </script>
 
 <template>
   <div class="flex gap-2">
-    <AppButton
-      v-for="item in navbarItems"
+    <Link
+      v-for="item in NAVBAR_ITEMS"
       :key="item.label"
-      class="text-white text-sm min-h-10 h-10 btn-ghost"
-      :class="[
-        { active: false }, // TODO: Se ativo
-      ]"
-      :label="item.label"
-      :icon="item.icon"
-    />
+      :href="item.url"
+    >
+      <AppButton
+        class="text-white text-sm min-h-10 h-10 btn btn-ghost"
+        :class="[
+          { active: item.active }, // TODO: Se ativo
+        ]"
+        :icon="item.icon"
+        :label="item.label"
+      />
+    </Link>
   </div>
 </template>

@@ -1,11 +1,13 @@
 <?php
 
 use Domains\Api\Controllers\CategoriesGetController;
+use Domains\Category\Controllers\CategoriesIndexController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
 use Domains\DashboardCategory\Controllers\CategoryIndexController;
 use Domains\DashboardCategory\Controllers\CategoryStoreController;
 use Domains\DashboardCategory\Controllers\CategoryUpdateController;
 use Domains\DashboardUniform\Controllers\UniformIndexController;
+use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
 use Domains\Shared\Models\Permission;
 use Domains\User\Controllers\UserLoginController;
@@ -48,7 +50,20 @@ Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dash
     Route::name('uniforms.')->group(function () {
         Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
         Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
+        Route::patch('/painel/uniformes/{uniform}', UniformPatchController::class)->name('patch');
     });
+});
+
+Route::name('categories.')->group(function () {
+    Route::get('/categorias', CategoriesIndexController::class)->name('index');
+});
+
+Route::name('most-liked.')->group(function () {
+    Route::get('mais-curtidos', fn () => Inertia::render('MostLiked/TheMostLiked'))->name('index');
+});
+
+Route::name('favorites.')->group(function () {
+    Route::get('meus-favoritos', fn () => Inertia::render('Favorites/TheFavorites'))->name('index');
 });
 
 Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('api.')->group(function () {

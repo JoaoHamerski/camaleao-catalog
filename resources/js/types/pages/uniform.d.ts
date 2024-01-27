@@ -10,5 +10,5 @@ export type Uniform = {
 export type UniformFormFields = {
   name: string
   category: Category | null
-  images: File[] | null
+  images: File[] | Promise<File>[] | null
 }

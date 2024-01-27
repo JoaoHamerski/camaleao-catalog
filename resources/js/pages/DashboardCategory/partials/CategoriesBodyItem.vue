@@ -34,7 +34,7 @@ const options: DropdownItem[] = [
       />
     </div>
     <div>
-      <span class="text-lg font-bold">
+      <span class="text-xl font-bold">
         {{ category.name }}
       </span>
     </div>

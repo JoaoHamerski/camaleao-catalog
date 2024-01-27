@@ -9,9 +9,18 @@ use Illuminate\Support\Arr;
 
 class UniformUpsertAction
 {
-    public static function execute(Request $request)
+    public static function execute(Request $request, Uniform $uniform = null)
     {
         $category = Category::find($request->get('category'));
+
+        if ($uniform) {
+            $uniform->update([
+                ...$request->all(),
+                'images' => self::handleFiles($request)
+            ]);
+
+            return;
+        }
 
         $category->uniforms()->create([
             ...$request->all(),

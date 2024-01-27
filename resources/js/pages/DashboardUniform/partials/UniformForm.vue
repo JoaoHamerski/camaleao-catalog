@@ -5,11 +5,17 @@ import { computed } from 'vue'
 import { ref } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
+import { urlToFile } from '@/utils/helpers'
 
 interface UniformFormProps {
   uniform?: Uniform
   isEdit?: boolean
 }
+
+const props = withDefaults(defineProps<UniformFormProps>(), {
+  uniform: undefined,
+  isEdit: false,
+})
 
 const categorySearch = ref('')
 
@@ -21,11 +27,6 @@ const {
   queryKey: ['categories'],
   queryFn: () => fetchCategories(),
   initialData: [],
-})
-
-const props = withDefaults(defineProps<UniformFormProps>(), {
-  uniform: undefined,
-  isEdit: false,
 })
 
 const form = useForm({
@@ -70,13 +71,19 @@ const transformedData = (data: any) => ({
   category: data?.category?.id || null,
 })
 
-const populateForm = () => {
-  if (props.uniform) {
+const populateForm = async () => {
+  if (!props.uniform) {
     return
   }
 
+  const images = props.uniform.images.map(
+    async (image) => await urlToFile(image.url, image.name),
+  )
+
   const populatedData: UniformFormFields = {
     name: props.uniform.name,
+    category: props.uniform.category,
+    images,
   }
 
   Object.assign(form, populatedData)
