@@ -3,9 +3,11 @@
 use Domains\Api\Controllers\CategoriesGetController;
 use Domains\Category\Controllers\CategoriesIndexController;
 use Domains\Dashboard\Controllers\DashboardHomeController;
+use Domains\DashboardCategory\Controllers\CategoryDeleteController;
 use Domains\DashboardCategory\Controllers\CategoryIndexController;
 use Domains\DashboardCategory\Controllers\CategoryStoreController;
 use Domains\DashboardCategory\Controllers\CategoryUpdateController;
+use Domains\DashboardUniform\Controllers\UniformDeleteController;
 use Domains\DashboardUniform\Controllers\UniformIndexController;
 use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
@@ -27,7 +29,7 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
-    return Inertia::render('Home/TheHome');
+    return redirect()->route('categories.index');
 })->name('home');
 
 Route::middleware('guest')->name('auth.')->group(function () {
@@ -45,12 +47,14 @@ Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dash
         Route::get('/painel/categorias', CategoryIndexController::class)->name('index');
         Route::post('/painel/categorias', CategoryStoreController::class)->name('store');
         Route::patch('/painel/categories/{category}', CategoryUpdateController::class)->name('patch');
+        Route::delete('/painel/categories/{category}', CategoryDeleteController::class)->name('delete');
     });
 
     Route::name('uniforms.')->group(function () {
         Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
         Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
         Route::patch('/painel/uniformes/{uniform}', UniformPatchController::class)->name('patch');
+        Route::delete('/painel/uniformes/{uniform}', UniformDeleteController::class)->name('delete');
     });
 });
 

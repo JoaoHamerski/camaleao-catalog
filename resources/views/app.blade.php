@@ -15,5 +15,6 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <div id="dynamic-dialog"></div>
     </body>
 </html>

@@ -11,6 +11,7 @@ import { computed } from 'vue'
 import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
 import { MODAL_COLORS, MODAL_SIZES } from './modal-constants'
 import ModalOverlay from './ModalOverlay.vue'
+import AppButton from '../AppButton.vue'
 
 interface AppModalProps {
   size?: AppModalSizes
@@ -58,12 +59,14 @@ const closeModal = () => {
             :class="sizeClass"
           >
             <AppButton
+              v-if="$slots['title']"
               class="btn-ghost text-gray-200 btn-sm rounded-full h-10 w-10 absolute right-4 top-4"
               icon="fas fa-times"
               @click.prevent="closeModal"
             />
 
             <DialogTitle
+              v-if="$slots['title']"
               class="text-white text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
               :class="colorClass"
             >

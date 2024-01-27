@@ -9,6 +9,6 @@ class DashboardHomeController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('Dashboard/TheDashboard');
+        return redirect()->route('dashboard.categories.index');
     }
 }

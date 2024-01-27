@@ -1,3 +1,4 @@
+<script setup lang="ts"></script>
 <template>
-  <div>Categorias</div>
+  <div>Categories</div>
 </template>

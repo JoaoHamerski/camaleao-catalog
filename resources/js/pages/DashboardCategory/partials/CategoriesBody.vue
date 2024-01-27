@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import CategoriesBodyItem from './CategoriesBodyItem.vue'
 import CategoryModal from './CategoryModal.vue'
 import NoItemsFound from '@/components/NoItemsFound.vue'
+import CategoryModalDelete from './CategoryModalDelete.vue'
 
 interface CategoryBodyProps {
   categories: Category[]
@@ -12,6 +13,12 @@ interface CategoryBodyProps {
 defineProps<CategoryBodyProps>()
 
 const editCategoryModal = ref({ category: undefined, show: false })
+const deleteCategoryModal = ref({ category: undefined, show: false })
+
+const onDeleteCategory = (category: any) => {
+  deleteCategoryModal.value.category = category
+  deleteCategoryModal.value.show = true
+}
 
 const onEditCategory = (category: any) => {
   editCategoryModal.value.category = category
@@ -30,6 +37,11 @@ const onEditCategory = (category: any) => {
         :category="editCategoryModal.category"
       />
 
+      <CategoryModalDelete
+        v-model:show="deleteCategoryModal.show"
+        :category="deleteCategoryModal.category"
+      />
+
       <NoItemsFound v-if="!categories.length">
         Nenhum item encontrado
       </NoItemsFound>
@@ -40,6 +52,7 @@ const onEditCategory = (category: any) => {
           :key="category.id"
           :category="category"
           @edit="onEditCategory"
+          @delete="onDeleteCategory"
         />
       </div>
     </template>
