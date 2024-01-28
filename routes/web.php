@@ -14,6 +14,7 @@ use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
 use Domains\Shared\Models\Permission;
 use Domains\Uniform\Controllers\UniformsShowController;
+use Domains\Uniform\Controllers\UniformToggleFavoriteController;
 use Domains\User\Controllers\UserRegisterController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dash
 
 Route::name('uniforms.')->group(function () {
     Route::get('/categorias/{category}/uniformes/{uniform}', UniformsShowController::class)->name('show');
+    Route::post('/uniformes/{uniform}/favoritar', UniformToggleFavoriteController::class)->name('toggle-favorite');
 });
 
 Route::name('categories.')->group(function () {

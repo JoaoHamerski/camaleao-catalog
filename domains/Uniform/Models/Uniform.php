@@ -5,10 +5,12 @@ namespace Domains\Uniform\Models;
 use Domains\Category\Models\Category;
 use Domains\Shared\Traits\HasFiles;
 use Domains\Shared\Utils\FileOptions;
+use Domains\User\Models\User;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -47,8 +49,23 @@ class Uniform extends Model
             ->setAliases(['images' => 'images.*.filename']);
     }
 
+    public function isFavorited(): Attribute
+    {
+        $user = Auth::user();
+
+        return Attribute::make(
+            get: fn () => $user ? !!$this->users()->find($user->id) : false
+        );
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'favorite_uniforms')
+            ->using(FavoriteUniform::class);
     }
 }

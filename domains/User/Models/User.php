@@ -4,6 +4,8 @@ namespace Domains\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Domains\Shared\Models\FavoriteUniform;
+use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -68,5 +70,22 @@ class User extends Authenticatable
         return Attribute::make(
             get: fn () => !!$this->roles()->count()
         );
+    }
+
+    public function favorites()
+    {
+        return $this->belongsToMany(Uniform::class, 'favorite_uniforms')
+            ->withTimestamps()
+            ->using(FavoriteUniform::class);
+    }
+
+    public function toggleFavorite(Uniform $uniform)
+    {
+        if ($uniform->is_favorited) {
+            $this->favorites()->detach($uniform);
+            return;
+        }
+
+        $this->favorites()->attach($uniform);
     }
 }
