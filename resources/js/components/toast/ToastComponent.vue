@@ -12,7 +12,7 @@ const toasts = computed(() => toastStore.toasts)
 <template>
   <TransitionGroup
     tag="div"
-    class="absolute flex flex-col gap-4 bottom-2 right-0 left-0 z-50 min-w-60 max-w-60 mx-auto overflow-hidden"
+    class="absolute flex flex-col flex-col-reverse gap-4 bottom-2 right-0 left-0 z-50 min-w-60 max-w-80 mx-auto overflow-hidden"
     name="toast"
   >
     <ToastAlert
