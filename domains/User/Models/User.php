@@ -78,14 +78,4 @@ class User extends Authenticatable
             ->withTimestamps()
             ->using(FavoriteUniform::class);
     }
-
-    public function toggleFavorite(Uniform $uniform)
-    {
-        if ($uniform->is_favorited) {
-            $this->favorites()->detach($uniform);
-            return;
-        }
-
-        $this->favorites()->attach($uniform);
-    }
 }

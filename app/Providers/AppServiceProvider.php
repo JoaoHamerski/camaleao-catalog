@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Str;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
         JsonResource::withoutWrapping();
 
         $this->guessDomainsNamespaceForFactory();
+
     }
 
     public function guessDomainsNamespaceForFactory()
