@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
-import { useRouteStore } from '@/store/route-store'
 import NAVBAR_ITEMS from './navbar-items'
-
-const routeStore = useRouteStore()
 </script>
 
 <template>

@@ -79,6 +79,7 @@ const populateForm = async () => {
   const images = props.uniform.images.map(
     async (image) => await urlToFile(image.url, image.name),
   )
+
   console.log(images)
 
   const populatedData: UniformFormFields = {
