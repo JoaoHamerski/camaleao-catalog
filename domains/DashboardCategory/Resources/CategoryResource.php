@@ -20,13 +20,19 @@ class CategoryResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'image' => [
-                'name' => $this->when(
-                    Auth::user() && Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
-                    $this->image['name']
-                ) ,
-                'url' => $this->getFilePublicUrl('image')
-            ]
+            'uniforms_count' => $this->uniformsCount,
+            'image' => $this->getImage()
+        ];
+    }
+
+    public function getImage()
+    {
+        return [
+            'name' => $this->when(
+                Auth::check() && Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),
+                $this->image['name']
+            ),
+            'url' => $this->getFilePublicUrl('image')
         ];
     }
 }

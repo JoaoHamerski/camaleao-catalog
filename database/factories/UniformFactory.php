@@ -24,7 +24,7 @@ class UniformFactory extends Factory
         return [
             'name' => fake()->sentence(2),
             'category_id' => Category::inRandomOrder()->first()->id,
-            'images' => [$this->storeImage()]
+            'images' => [$this->storeImage(), $this->storeImage(), $this->storeImage()]
         ];
     }
 

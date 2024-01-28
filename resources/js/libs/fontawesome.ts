@@ -4,9 +4,14 @@ import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/faWhatsapp'
 import { faEye } from '@fortawesome/free-regular-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
 import { faFaceFrown } from '@fortawesome/free-regular-svg-icons/faFaceFrown'
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons/faAngleLeft'
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons/faAngleRight'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons/faCheckCircle'
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons/faCircleExclamation'
 import { faCircleLeft } from '@fortawesome/free-solid-svg-icons/faCircleLeft'
 import { faCircleRight } from '@fortawesome/free-solid-svg-icons/faCircleRight'
+import { faCircleXmark } from '@fortawesome/free-solid-svg-icons/faCircleXmark'
 import { faEdit } from '@fortawesome/free-solid-svg-icons/faEdit'
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons/faEllipsis'
 import { faGauge } from '@fortawesome/free-solid-svg-icons/faGauge'
@@ -45,4 +50,9 @@ library.add(
   faCircleLeft,
   faCircleRight,
   faWhatsapp,
+  faCheckCircle,
+  faCircleXmark,
+  faCircleExclamation,
+  faAngleRight,
+  faAngleLeft,
 )

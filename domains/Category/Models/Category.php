@@ -5,6 +5,7 @@ namespace Domains\Category\Models;
 use Domains\Shared\Traits\HasFiles;
 use Domains\Shared\Utils\FileOptions;
 use Domains\Uniform\Models\Uniform;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
@@ -45,6 +46,13 @@ class Category extends Model
         return FileOptions::create()
             ->setDirsMap(['image' => 'public/categorias'])
             ->setAliases(['image' => 'image.filename']);
+    }
+
+    public function uniformsCount(): Attribute
+    {
+        return Attribute::make(
+            get: fn () => $this->uniforms()->count()
+        );
     }
 
     public function uniforms(): HasMany
