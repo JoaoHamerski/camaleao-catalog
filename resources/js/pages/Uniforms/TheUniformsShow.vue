@@ -22,7 +22,11 @@ const onFavoriteClick = () => {
         useToast.info('Entre para favoritar')
       },
       onSuccess() {
-        useToast.success('Uniforme adicionado as favoritos!')
+        if (props.uniform.is_favorited) {
+          useToast.success('Uniforme adicionado as favoritos!')
+          return
+        }
+        useToast.success('Uniforme removido dos favoritos!')
       },
     },
   )
@@ -38,6 +42,7 @@ const onFavoriteClick = () => {
       <AppCarousel
         :src-slides="imagesSrc"
         pagination
+        navigation
         autoplay
         :autoplay-interval="3000"
       />

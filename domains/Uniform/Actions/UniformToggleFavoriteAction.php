@@ -12,9 +12,10 @@ class UniformToggleFavoriteAction
         $user = Auth::user();
 
         if ($uniform->is_favorited) {
-            $user->uniforms()->detach($uniform);
+            $user->favorites()->detach($uniform);
+            return;
         }
 
-        $user->uniforms()->attach($uniform);
+        $user->favorites()->attach($uniform);
     }
 }

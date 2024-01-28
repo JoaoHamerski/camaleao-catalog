@@ -6,4 +6,5 @@ export interface AppCarouselProps {
   navigation?: boolean
   autoplay?: boolean
   autoplayInterval?: number
+  carouselClass?: string
 }

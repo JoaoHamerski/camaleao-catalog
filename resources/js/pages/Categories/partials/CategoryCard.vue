@@ -24,5 +24,9 @@ defineProps<{ category: Category }>()
     >
       {{ category.name }}
     </div>
+    <div class="absolute top-4 right-4 text-white font-bold">
+      <FWIcon icon="fas fa-tshirt" />
+      {{ category.uniforms_count }}
+    </div>
   </Link>
 </template>

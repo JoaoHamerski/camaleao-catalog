@@ -12,6 +12,7 @@ use Domains\DashboardUniform\Controllers\UniformDeleteController;
 use Domains\DashboardUniform\Controllers\UniformIndexController;
 use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
+use Domains\Favorites\Controllers\MyFavoritesController;
 use Domains\Shared\Models\Permission;
 use Domains\Uniform\Controllers\UniformsShowController;
 use Domains\Uniform\Controllers\UniformToggleFavoriteController;
@@ -78,7 +79,7 @@ Route::name('most-liked.')->group(function () {
 });
 
 Route::name('favorites.')->group(function () {
-    Route::get('meus-favoritos', fn () => Inertia::render('Favorites/TheFavorites'))->name('index');
+    Route::get('meus-favoritos', MyFavoritesController::class)->name('index');
 });
 
 Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('api.')->group(function () {

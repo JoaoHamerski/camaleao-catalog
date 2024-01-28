@@ -29,8 +29,15 @@ const images = computed(() => props.uniform.images.map((item) => item.url))
 
 <template>
   <DashboardListItem :options="options">
-    <div class="w-40">
-      <AppCarousel :images-src="images" />
+    <div class="w-40 rounded">
+      <AppCarousel
+        :src-slides="images"
+        autoplay
+        :autoplay-interval="3000"
+        pagination
+        img-class="w-full h-32 object-cover"
+        carousel-class="rounded-lg shadow-xl"
+      />
     </div>
     <div>
       <span class="text-xl font-bold">{{ uniform.name }}</span>

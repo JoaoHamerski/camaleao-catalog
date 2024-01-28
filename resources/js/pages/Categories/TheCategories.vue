@@ -8,7 +8,7 @@ defineProps<{ categories: CategoryPaginated }>()
 
 <template>
   <ContentLayout>
-    <template #title> CATEGORIAS </template>
+    <template #title> Categorias </template>
     <div class="grid grid-cols-6 gap-5">
       <CategoryCard
         v-for="category in categories.data"

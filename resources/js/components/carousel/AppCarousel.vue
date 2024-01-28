@@ -80,6 +80,7 @@ onUnmounted(() => {
   <div class="relative">
     <div
       class="carousel"
+      :class="carouselClass"
       @mouseover="pauseAutoplay"
       @mouseleave="resumeAutoplay"
     >
