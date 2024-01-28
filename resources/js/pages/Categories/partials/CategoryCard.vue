@@ -12,12 +12,12 @@ defineProps<{ category: Category }>()
       })
     "
     as="div"
-    class="card w-60 h-52 bg-base-100 shadow-xl relative rounded-xl hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer"
+    class="card w-60 h-52 bg-base-100 shadow-xl rounded-xl hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer"
   >
     <img
       :src="category.image.url"
       alt="Imagem da categoria"
-      class="object-cover bg-bottom h-52 rounded-xl transition-transform"
+      class="object-cover bg-bottom h-52 rounded-xl"
     />
     <div
       class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md rounded-b-xl text-white w-full uppercase"

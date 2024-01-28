@@ -1,18 +1,11 @@
 <script setup lang="ts">
-import { Menu, MenuButton, TransitionRoot } from '@headlessui/vue'
+import { Menu, MenuButton } from '@headlessui/vue'
 import { computed } from 'vue'
-import type { DropdownItem } from '@/types/components'
+import type { AppDropdownProps } from '@/types/components'
 
 import DropdownContentItems from './DropdownContentItems.vue'
 import DropdownContentCustom from './DropdownContentCustom.vue'
-
-interface AppDropdownProps {
-  icon?: string
-  label?: string
-  btnClass?: string | string[]
-  items?: DropdownItem[]
-  align?: 'left' | 'right'
-}
+import DropdownTransitionWrapper from './DropdownTransitionWrapper.vue'
 
 const ALIGN_CLASSES = {
   left: 'left-0',
@@ -27,19 +20,19 @@ const props = withDefaults(defineProps<AppDropdownProps>(), {
   align: 'left',
 })
 
-const alignClass = computed(() => ALIGN_CLASSES[props.align])
+const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
 </script>
 
 <template>
   <Menu
     as="div"
-    class="relative inline-block"
+    class="inline-block"
   >
     <MenuButton
       as="button"
       :class="btnClass"
     >
-      <template v-if="label"> {{ label }}</template>
+      <template v-if="label">{{ label }}</template>
       <FWIcon
         v-else-if="icon"
         :icon="icon"
@@ -49,31 +42,19 @@ const alignClass = computed(() => ALIGN_CLASSES[props.align])
       </template>
     </MenuButton>
 
-    <TransitionRoot
-      enter="duration-100 ease-in"
-      enter-from="translate-y-1 opacity-0"
-      enter-to="opacity-100"
-      leave="duration-100 ease-out"
-      leave-from="translate-y-1 opacity-100"
-      leave-to="opacity-0 translate-y-1"
-    >
+    <DropdownTransitionWrapper>
       <DropdownContentCustom
         v-if="$slots['content']"
-        :class="alignClass"
+        :class="dropdownClasses"
       >
-        <template #default="{ close }">
-          <slot
-            name="content"
-            :close="close"
-          />
-        </template>
+        <slot name="content" />
       </DropdownContentCustom>
 
       <DropdownContentItems
         v-else
         :items="items"
-        :class="alignClass"
+        :class="dropdownClasses"
       />
-    </TransitionRoot>
+    </DropdownTransitionWrapper>
   </Menu>
 </template>

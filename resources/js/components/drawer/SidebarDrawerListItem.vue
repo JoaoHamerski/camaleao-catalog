@@ -1,14 +1,8 @@
 <script setup lang="ts">
 import { Link } from '@inertiajs/vue3'
+import { SidebarDrawerListItemProps } from '@/types/components'
 
-export type SidebarDrawerItemProps = {
-  label: string
-  icon: string
-  url: string
-  active: boolean
-}
-
-defineProps<SidebarDrawerItemProps>()
+defineProps<SidebarDrawerListItemProps>()
 </script>
 
 <template>

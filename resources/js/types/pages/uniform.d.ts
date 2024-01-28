@@ -5,6 +5,7 @@ export type Uniform = {
   category: Category
   slug: string
   name: string
+  is_favorited?: boolean
   images: Image[]
 }
 

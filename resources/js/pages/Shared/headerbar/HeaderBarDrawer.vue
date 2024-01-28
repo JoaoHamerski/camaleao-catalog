@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import HeaderBarDrawerHeader from './HeaderBarDrawerHeader.vue'
 import SidebarDrawer from '@/components/drawer/SidebarDrawer.vue'
-import type { SidebarDrawerItemProps } from '@/components/drawer/SidebarDrawerListItem.vue'
 import { useRouteStore } from '@/store/route-store'
+import { SidebarDrawerListItemProps } from '@/types/components'
 import { computed } from 'vue'
 const useRoute = useRouteStore()
 
-const items = computed<SidebarDrawerItemProps[]>(() => [
+const items = computed<SidebarDrawerListItemProps[]>(() => [
   {
     label: 'Categorias',
     icon: 'fas fa-shapes',

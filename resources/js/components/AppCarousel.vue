@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
 
-import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import { computed } from 'vue'
+import { AppCarouselProps } from '@/types/components'
 
-interface AppCarouselProps {
-  srcs: string[]
-  alt?: string
-  imgClass?: string
-}
+const props = withDefaults(defineProps<AppCarouselProps>(), {
+  alt: 'Imagem do carrosel',
+  imgClass: '',
+  pagination: false,
+  navigation: false,
+})
 
-const props = defineProps<AppCarouselProps>()
+const hasMultipleSlides = computed(() => props.imagesSrc.length > 1)
 
-const hasMultipleSlides = computed(() => props.srcs.length > 1)
+const showPagination = computed(
+  () => hasMultipleSlides.value && props.pagination,
+)
+
+const showNavigation = computed(() => props.navigation)
 </script>
 
 <template>
@@ -23,7 +29,7 @@ const hasMultipleSlides = computed(() => props.srcs.length > 1)
     :mouse-drag="hasMultipleSlides"
   >
     <Slide
-      v-for="src in srcs"
+      v-for="src in imagesSrc"
       :key="src"
     >
       <img
@@ -34,7 +40,8 @@ const hasMultipleSlides = computed(() => props.srcs.length > 1)
     </Slide>
 
     <template #addons>
-      <Pagination v-if="hasMultipleSlides" />
+      <Pagination v-if="showPagination" />
+      <Navigation v-if="showNavigation" />
     </template>
   </Carousel>
 </template>
