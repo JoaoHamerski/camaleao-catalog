@@ -23,6 +23,7 @@ class UniformResource extends JsonResource
             'name' => $this->name,
             'category' => new CategoryResource($this->category),
             'slug' => $this->slug,
+            'is_favorited' => $this->isFavorited,
             'images' => Arr::map($this->images, fn ($image, $index) => [
                 'name' => $this->when(
                     Auth::user() && Auth::user()->can(Permission::ACCESS_ADMIN_PANEL),

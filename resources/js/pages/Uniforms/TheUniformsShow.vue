@@ -2,10 +2,24 @@
 import { Uniform } from '@/types/pages'
 import { computed } from 'vue'
 import ContentLayout from '../Shared/layouts/ContentLayout.vue'
+import { useForm } from '@inertiajs/vue3'
 
 const props = defineProps<{ uniform: Uniform }>()
 
 const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
+
+const form = useForm({})
+
+const onFavoriteClick = () => {
+  console.log('ola')
+
+  form.post(
+    route('uniforms.toggle-favorite', {
+      uniform: props.uniform.slug,
+    }),
+    { preserveScroll: true },
+  )
+}
 </script>
 <template>
   <ContentLayout>
@@ -30,9 +44,11 @@ const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
             label="Encomendar"
           />
           <AppButton
+            :loading="form.processing"
             icon="fas fa-star"
             class="btn-warning btn-outline"
-            label="Favoritar"
+            :label="uniform.is_favorited ? 'Desfavoritar' : 'Favoritar'"
+            @click.prevent="onFavoriteClick"
           />
         </div>
       </div>
