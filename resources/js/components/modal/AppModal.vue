@@ -64,7 +64,6 @@ const closeModal = () => {
               icon="fas fa-times"
               @click.prevent="closeModal"
             />
-
             <DialogTitle
               v-if="$slots['title']"
               class="text-white text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
@@ -72,8 +71,9 @@ const closeModal = () => {
             >
               <slot name="title" />
             </DialogTitle>
-
-            <DialogDescription class="text-secondary p-5">
+            <DialogDescription
+              class="text-secondary p-5 max-h-[80vh] overflow-auto scrollbar-thin"
+            >
               <slot name="content" />
             </DialogDescription>
           </DialogPanel>

@@ -13,6 +13,18 @@ const hasError = computed(() => props.error || !!props.errorMessage)
 
 const displayEraseIcon = computed(() => !isEmpty(props.modelValue))
 
+const displayValueFn = (item) => {
+  if (!item) {
+    return ''
+  }
+
+  if (props.displayProp) {
+    return item[props.displayProp]
+  }
+
+  return props.displayValue(item)
+}
+
 const eraseIconClicked = () => {
   emit('update:modelValue', null)
 }
@@ -33,7 +45,7 @@ const eraseIconClicked = () => {
         }"
         :placeholder="placeholder"
         :name="name"
-        :display-value="displayValue"
+        :display-value="displayValueFn"
         autocomplete="off"
       />
 

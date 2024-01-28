@@ -14,6 +14,7 @@ use Domains\DashboardUniform\Controllers\UniformPatchController;
 use Domains\DashboardUniform\Controllers\UniformStoreController;
 use Domains\Shared\Models\Permission;
 use Domains\Uniform\Controllers\UniformsShowController;
+use Domains\User\Controllers\UserRegisterController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,7 @@ Route::get('/', function () {
 
 Route::middleware('guest')->name('auth.')->group(function () {
     Route::post('/entrar', UserLoginController::class)->name('login');
+    Route::post('/nova-conta', UserRegisterController::class)->name('register');
 });
 
 Route::middleware('auth')->name('auth.')->group(function () {

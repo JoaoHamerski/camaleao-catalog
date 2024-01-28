@@ -4,9 +4,11 @@ export type ComboboxItem = {
 }
 
 export type AppComboboxInputProps = {
+  by?: string
   name: string
   modelValue: object | null
   placeholder?: string
+  displayProp: string
   label?: string
   loading?: boolean
   displayValue?: (item: unknown) => string
