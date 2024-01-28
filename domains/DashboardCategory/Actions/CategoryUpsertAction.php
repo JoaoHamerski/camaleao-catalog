@@ -37,7 +37,7 @@ class CategoryUpsertAction
 
     public static function handleImage(Request $request, Category $category = null): array
     {
-        $file = Category::storeFile($request->image, 'image');
+        $file = Category::storeFiles($request->image, 'image');
 
         return [
             'name' => $request->image->getClientOriginalName(),
