@@ -32,7 +32,7 @@ const {
 const form = useForm({
   name: '',
   category: null,
-  images: [],
+  images: FileList,
 })
 
 const routes = computed(() => ({
@@ -40,7 +40,7 @@ const routes = computed(() => ({
   patch: () =>
     props.uniform
       ? route('dashboard.uniforms.patch', {
-          uniform: props.uniform.id,
+          uniform: props.uniform.slug,
         })
       : undefined,
 }))
@@ -79,6 +79,7 @@ const populateForm = async () => {
   const images = props.uniform.images.map(
     async (image) => await urlToFile(image.url, image.name),
   )
+  console.log(images)
 
   const populatedData: UniformFormFields = {
     name: props.uniform.name,
