@@ -14,7 +14,9 @@ class MyFavoritesController extends Controller
         $user = Auth::user();
 
         return Inertia::render('Favorites/TheFavorites', [
-            'uniforms' => UniformResource::collection($user->favorites)
+            'uniforms' => $user
+                ? UniformResource::collection($user->favorites)
+                : []
         ]);
     }
 }
