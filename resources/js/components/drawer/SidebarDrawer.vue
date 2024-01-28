@@ -1,18 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SidebarDrawerList from './SidebarDrawerList.vue'
-import type { SidebarDrawerItemProps } from './SidebarDrawerListItem.vue'
+import type { SidebarDrawerProps } from '@/types/components/drawer'
 
-interface SidebarDrawer {
-  id: string
-  items?: SidebarDrawerItemProps[]
-  ariaLabelOverlay?: string
-  toggleClass?: string | string[]
-}
-
-withDefaults(defineProps<SidebarDrawer>(), {
+withDefaults(defineProps<SidebarDrawerProps>(), {
   items: () => [],
-  ariaLabelOverlay: 'Fechar barra lateral',
   toggleClass: 'btn',
 })
 
@@ -44,7 +36,7 @@ const closeDrawer = () => {
     <div class="drawer-side z-50">
       <label
         :for="id"
-        :aria-label="ariaLabelOverlay"
+        aria-label="Fechar a barra lateral"
         class="drawer-overlay"
       />
 
@@ -53,7 +45,7 @@ const closeDrawer = () => {
         :items="items"
         @click.capture="closeDrawer"
       >
-        <template #header-item>
+        <template #header>
           <slot name="header" />
         </template>
       </SidebarDrawerList>

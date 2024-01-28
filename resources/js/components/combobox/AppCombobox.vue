@@ -39,7 +39,6 @@ defineEmits(['update:modelValue'])
     </ComboboxButton>
 
     <TransitionRoot
-      class="z - 50"
       enter="transition duration-100 ease-out"
       enter-from="transform scale-y-0 opacity-0"
       enter-to="transform scale-y-100 opacity-100"

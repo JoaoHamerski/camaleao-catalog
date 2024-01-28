@@ -4,19 +4,14 @@ import {
   DialogDescription,
   DialogPanel,
   DialogTitle,
-  TransitionChild,
-  TransitionRoot,
 } from '@headlessui/vue'
 import { computed } from 'vue'
-import type { AppModalSizes, AppModalColors } from '@/types/components/modal'
+import type { AppModalProps } from '@/types/components'
 import { MODAL_COLORS, MODAL_SIZES } from './modal-constants'
-import ModalOverlay from './ModalOverlay.vue'
-import AppButton from '../AppButton.vue'
 
-interface AppModalProps {
-  size?: AppModalSizes
-  color?: AppModalColors
-}
+import ModalOverlay from './ModalOverlay.vue'
+import ModalCloseButton from './ModalCloseButton.vue'
+import ModalTransitionWrapper from './ModalTransitionWrapper.vue'
 
 const props = withDefaults(defineProps<AppModalProps>(), {
   color: 'primary',
@@ -34,7 +29,8 @@ const closeModal = () => {
 </script>
 
 <template>
-  <TransitionRoot
+  <AppTransition
+    transition-as="root"
     :show="show"
     as="template"
   >
@@ -44,26 +40,14 @@ const closeModal = () => {
     >
       <ModalOverlay />
 
-      <TransitionChild
-        enter="duration-100 ease-out"
-        enter-from="opacity-0 scale-95"
-        enter-to="opacity-100 scale-100"
-        leave="duration-100 ease-in"
-        leave-from="opacity-100 scale-100"
-        leave-to="opacity-0 scale-95"
-        as="template"
-      >
+      <ModalTransitionWrapper>
         <div class="flex justify-center items-center h-full">
           <DialogPanel
             class="relative bg-base-100 rounded-lg shadow-lg"
             :class="sizeClass"
           >
-            <AppButton
-              v-if="$slots['title']"
-              class="btn-ghost text-gray-200 btn-sm rounded-full h-10 w-10 absolute right-4 top-4"
-              icon="fas fa-times"
-              @click.prevent="closeModal"
-            />
+            <ModalCloseButton @click.prevent="closeModal" />
+
             <DialogTitle
               v-if="$slots['title']"
               class="text-white text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
@@ -71,6 +55,7 @@ const closeModal = () => {
             >
               <slot name="title" />
             </DialogTitle>
+
             <DialogDescription
               class="text-secondary p-5 max-h-[80vh] overflow-auto scrollbar-thin"
             >
@@ -78,7 +63,7 @@ const closeModal = () => {
             </DialogDescription>
           </DialogPanel>
         </div>
-      </TransitionChild>
+      </ModalTransitionWrapper>
     </Dialog>
-  </TransitionRoot>
+  </AppTransition>
 </template>

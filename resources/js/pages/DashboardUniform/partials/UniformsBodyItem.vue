@@ -30,7 +30,7 @@ const images = computed(() => props.uniform.images.map((item) => item.url))
 <template>
   <DashboardListItem :options="options">
     <div class="w-40">
-      <AppCarousel :srcs="images" />
+      <AppCarousel :images-src="images" />
     </div>
     <div>
       <span class="text-xl font-bold">{{ uniform.name }}</span>

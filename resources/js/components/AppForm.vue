@@ -1,29 +1,17 @@
 <script setup lang="ts">
-import { type InertiaForm } from '@inertiajs/vue3'
 import { type VisitOptions } from '@inertiajs/core'
 import { computed } from 'vue'
 import { onMounted } from 'vue'
-
-interface AppFormProps {
-  isEdit?: boolean
-  form: InertiaForm<object>
-  routes: {
-    post?: () => string | undefined
-    patch?: () => string | undefined
-  }
-  transformedData?: (data: object) => object
-  populateForm?: () => void
-}
+import type { AppFormProps } from '@/types/components'
 
 const emit = defineEmits(['success', 'error'])
-const { form, isEdit, routes, transformedData, populateForm } = withDefaults(
-  defineProps<AppFormProps>(),
-  {
-    isEdit: false,
-    transformedData: () => ({}),
-    populateForm: () => {},
-  },
-)
+const props = withDefaults(defineProps<AppFormProps>(), {
+  isEdit: false,
+  transformedData: () => ({}),
+  populateForm: () => {},
+})
+
+const { form, isEdit, routes, transformedData, populateForm } = props
 
 const btnAttrs = computed(() =>
   isEdit
@@ -47,7 +35,6 @@ const transformedForm = computed(() =>
 )
 
 const submit = (options?: Partial<VisitOptions>) => {
-  console.log(transformedForm.value)
   if (isEdit && routes.patch) {
     transformedForm.value.post(routes.patch()!, options)
     return

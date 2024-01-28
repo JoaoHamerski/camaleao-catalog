@@ -9,7 +9,7 @@ const isMethodGet = computed(
   () => props.link?.method === undefined || props.link?.method === 'get',
 )
 
-const linkAs = computed(() => (isMethodGet.value ? 'a' : 'span'))
+const linkRenderAs = computed(() => (isMethodGet.value ? 'a' : 'span'))
 
 const componentIs = computed(() => (props.onclick ? 'button' : Link))
 
@@ -17,7 +17,7 @@ const attributes = computed(() =>
   componentIs.value === Link
     ? {
         method: props.link?.method,
-        as: linkAs.value,
+        as: linkRenderAs.value,
         href: props.link?.url,
       }
     : {

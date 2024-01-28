@@ -5,13 +5,10 @@ import { MenuItems, MenuItem } from '@headlessui/vue'
 <template>
   <MenuItems
     as="div"
-    class="absolute shadow-lg py-3 bg-base-100 rounded-lg w-52 flex flex-col gap-1"
+    class="absolute shadow-lg py-3 bg-base-100 rounded-lg w-52 flex flex-col gap-1 z-10"
   >
-    <MenuItem
-      v-slot="{ close }"
-      as="div"
-    >
-      <slot :close="close" />
+    <MenuItem as="div">
+      <slot />
     </MenuItem>
   </MenuItems>
 </template>

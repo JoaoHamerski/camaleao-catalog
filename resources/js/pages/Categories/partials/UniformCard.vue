@@ -20,7 +20,7 @@ const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
   >
     <figure>
       <AppCarousel
-        :srcs="imagesSrc"
+        :images-src="imagesSrc"
         img-class="object-cover"
         class="object-cover"
       />

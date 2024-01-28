@@ -5,14 +5,11 @@ import ContentLayout from '../Shared/layouts/ContentLayout.vue'
 import { useForm } from '@inertiajs/vue3'
 
 const props = defineProps<{ uniform: Uniform }>()
+const form = useForm({})
 
 const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
 
-const form = useForm({})
-
 const onFavoriteClick = () => {
-  console.log('ola')
-
   form.post(
     route('uniforms.toggle-favorite', {
       uniform: props.uniform.slug,
@@ -27,7 +24,7 @@ const onFavoriteClick = () => {
       CATEGORIA > {{ uniform.category.name }} > {{ uniform.name }}
     </template>
     <div class="w-1/2 mx-auto bg-base-300 rounded-xl shadow-lg">
-      <AppCarousel :srcs="imagesSrc" />
+      <AppCarousel :images-src="imagesSrc" />
       <div class="p-4 flex flex-col gap-4">
         <div class="flex flex-col gap-2">
           <div class="font-bold text-3xl">

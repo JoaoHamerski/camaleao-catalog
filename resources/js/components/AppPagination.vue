@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { PaginationLinks, PaginationMeta } from '@/types'
 import { Link } from '@inertiajs/vue3'
 import { computed } from 'vue'
+import type { AppPaginationProps } from '@/types/components'
 import { onMounted } from 'vue'
 
-const { pagination } = defineProps<{
-  pagination: PaginationLinks & PaginationMeta
-}>()
+const { pagination } = defineProps<AppPaginationProps>()
 
 const links = computed(() => {
   const links = pagination.links
@@ -17,7 +15,11 @@ const links = computed(() => {
   return links
 })
 
-const hasPages = computed(() => pagination.to > 1)
+const hasPages = computed(() => pagination.total > pagination.per_page)
+
+onMounted(() => {
+  console.log(pagination)
+})
 </script>
 
 <template>
