@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
 import { useForm } from '@inertiajs/vue3'
 import type { Category, CategoryFormFields } from '@/types/pages'
 import { urlToFile } from '@/utils/helpers'
@@ -25,7 +24,7 @@ const routes = computed(() => ({
   patch: () =>
     props.category
       ? route('dashboard.categories.patch', {
-          category: props.category.id,
+          category: props.category.slug,
         })
       : undefined,
 }))

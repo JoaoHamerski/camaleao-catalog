@@ -30,7 +30,8 @@ const openModal = () => {
     </template>
 
     <CategoryModal v-model:show="categoryCreateModal" />
-    <CategoriesBody :categories="categories.data" />
+    <CategoriesBody :categories="categories.data" />]
+
     <div class="mt-10 text-center">
       <AppPagination
         :pagination="{ ...categories.links, ...categories.meta }"
