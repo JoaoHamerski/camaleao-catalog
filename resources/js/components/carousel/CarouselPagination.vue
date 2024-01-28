@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-
 defineProps<{ slidesCount: number; activeIndex: number }>()
-
-onMounted(() => {
-  console.log('pagination')
-})
 </script>
 
 <template>

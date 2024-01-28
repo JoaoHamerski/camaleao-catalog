@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { TransitionRoot, TransitionChild } from '@headlessui/vue'
 import { pick } from 'lodash-es'
-import { onMounted } from 'vue'
 import { computed } from 'vue'
 
 interface AppTransitionProps {

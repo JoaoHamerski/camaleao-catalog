@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
 import UniformsBody from './partials/UniformsBody.vue'
 import UniformModal from './partials/UniformModal.vue'
