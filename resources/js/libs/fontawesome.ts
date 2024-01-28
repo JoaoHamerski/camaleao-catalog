@@ -1,5 +1,6 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faGoogle } from '@fortawesome/free-brands-svg-icons/faGoogle'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/faWhatsapp'
 import { faEye } from '@fortawesome/free-regular-svg-icons/faEye'
 import { faEyeSlash } from '@fortawesome/free-regular-svg-icons/faEyeSlash'
 import { faFaceFrown } from '@fortawesome/free-regular-svg-icons/faFaceFrown'
@@ -43,4 +44,5 @@ library.add(
   faSort,
   faCircleLeft,
   faCircleRight,
+  faWhatsapp,
 )
