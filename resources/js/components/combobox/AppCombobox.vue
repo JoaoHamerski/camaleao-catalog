@@ -9,7 +9,7 @@ import {
 import ComboboxCustomInput from './ComboboxCustomInput.vue'
 import { AppComboboxProps } from '@/types/components'
 
-defineProps<AppComboboxProps>()
+withDefaults(defineProps<AppComboboxProps>(), { by: 'id' })
 defineEmits(['update:modelValue'])
 </script>
 
@@ -18,7 +18,7 @@ defineEmits(['update:modelValue'])
     class="relative"
     as="div"
     :model-value="modelValue"
-    by="id"
+    :by="by"
     @update:model-value="$emit('update:modelValue', $event)"
   >
     <ComboboxButton class="w-full">
@@ -30,6 +30,7 @@ defineEmits(['update:modelValue'])
           label,
           loading,
           displayValue,
+          displayProp,
           error,
           errorMessage,
         }"
@@ -38,6 +39,7 @@ defineEmits(['update:modelValue'])
     </ComboboxButton>
 
     <TransitionRoot
+      class="z - 50"
       enter="transition duration-100 ease-out"
       enter-from="transform scale-y-0 opacity-0"
       enter-to="transform scale-y-100 opacity-100"
@@ -46,16 +48,16 @@ defineEmits(['update:modelValue'])
       leave-to="transform scale-y-0 opacity-0"
     >
       <ComboboxOptions
-        class="min-w-40 shadow-lg rounded-b-lg max-h-52 overflow-auto w-full mt-2 absolute bg-white"
+        class="min-w-40 shadow-lg rounded-b-lg max-h-52 overflow-auto w-full mt-2 absolute bg-white z-10"
       >
         <ComboboxOption
           v-for="item in items"
-          :key="item.id"
+          :key="item[by]"
           v-slot="{ selected }"
           :value="item"
         >
           <div
-            class="px-3 py-2 transition-colors cursor-pointer"
+            class="px-3 py-2 transition-colors cursor-pointer z-50"
             :class="{
               'hover:bg-base-200 active:bg-primary active:text-white':
                 !selected,
@@ -67,7 +69,7 @@ defineEmits(['update:modelValue'])
               v-bind="item"
             />
             <template v-if="!$slots['option']">
-              {{ item.name }}
+              {{ item[displayProp] }}
             </template>
           </div>
         </ComboboxOption>

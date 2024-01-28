@@ -1,5 +1,6 @@
 <?php
 
+use Domains\Shared\Models\State;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -60,5 +61,9 @@ return new class () extends Migration {
             ['name' => 'Sergipe', 'abbreviation' => 'SE'],
             ['name' => 'Tocantins', 'abbreviation' => 'TO']
         ]);
+
+        $states->each(function ($state) {
+            State::query()->create($state);
+        });
     }
 };

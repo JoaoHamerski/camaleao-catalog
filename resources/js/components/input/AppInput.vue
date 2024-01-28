@@ -8,6 +8,7 @@ import InputFooter from './InputFooter.vue'
 
 export interface AppInputProps {
   name: string
+  mask?: string
   type?: 'text' | 'password'
   accept?: string
   label?: string
@@ -22,6 +23,7 @@ export interface AppInputProps {
 const slots = useSlots()
 const props = withDefaults(defineProps<AppInputProps>(), {
   type: 'text',
+  mask: undefined,
   accept: undefined,
   label: undefined,
   error: false,
@@ -74,6 +76,7 @@ onMounted(() => {
         :class="inputClasses"
         v-bind="{
           name,
+          mask,
           type,
           hasError,
           placeholder,

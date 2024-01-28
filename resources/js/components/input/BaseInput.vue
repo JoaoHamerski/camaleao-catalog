@@ -3,6 +3,7 @@ import { nextTick, ref } from 'vue'
 
 export interface BaseInputProps {
   type: 'text' | 'password'
+  mask?: string
   hasError: boolean
 }
 

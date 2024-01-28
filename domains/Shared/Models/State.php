@@ -2,9 +2,11 @@
 
 namespace Domains\Shared\Models;
 
+use Domains\City\Models\City;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -24,5 +26,10 @@ class State extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function cities(): HasMany
+    {
+        return $this->hasMany(City::class);
     }
 }

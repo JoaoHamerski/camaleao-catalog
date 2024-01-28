@@ -11,8 +11,10 @@ import HeaderBarItems from './HeaderBarItems.vue'
 import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
 import HeaderBarDrawer from './HeaderBarDrawer.vue'
 import { useRouteStore } from '@/store/route-store'
+import RegisterModal from '../auth/RegisterModal.vue'
 
 const loginModalShow = ref(false)
+const registerModalShow = ref(false)
 
 const userStore = useUserStore()
 const routeStore = useRouteStore()
@@ -21,6 +23,11 @@ const isAuth = computed(() => userStore.isAuth)
 
 const openLoginModal = () => {
   loginModalShow.value = true
+}
+
+const onCreateAccount = () => {
+  loginModalShow.value = false
+  registerModalShow.value = true
 }
 
 watch(
@@ -53,8 +60,13 @@ watch(
       <HeaderBarUserGuest
         v-else
         @login-clicked="openLoginModal"
+        @register-clicked="onCreateAccount"
       />
     </div>
-    <LoginModal v-model:show="loginModalShow" />
+    <LoginModal
+      v-model:show="loginModalShow"
+      @create-account="onCreateAccount"
+    />
+    <RegisterModal v-model:show="registerModalShow" />
   </div>
 </template>

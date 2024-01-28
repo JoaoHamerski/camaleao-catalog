@@ -34,6 +34,7 @@ defineEmits(['login-clicked', 'register-clicked'])
         <AppButton
           label="Criar agora"
           class="btn-success btn-sm btn-block"
+          @click.prevent="$emit('register-clicked')"
         />
       </div>
     </template>

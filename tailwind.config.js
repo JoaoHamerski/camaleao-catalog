@@ -3,7 +3,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./resources/**/*.{vue,ts}', './resources/views/app.blade.php'],
-  plugins: [require('daisyui')],
+  plugins: [require('daisyui'), require('tailwind-scrollbar')],
   theme: {
     extend: {
       fontFamily: {
