@@ -18,8 +18,10 @@ class UserResource extends JsonResource
         return [
             'name' => $this->name,
             'email' => $this->email,
-            'state' => $this->city->state,
-            'birth_date' => Carbon::createFromFormat('Y-m-d', $this->birth_date)->format('d/m/Y'),
+            'state' => $this->city ? $this->city->state : null,
+            'birth_date' => $this->birth_date
+                ? Carbon::createFromFormat('Y-m-d', $this->birth_date)->format('d/m/Y')
+                : null,
             'phone' => $this->phone,
             'city' => $this->city,
             'permissions' => $this->when(
