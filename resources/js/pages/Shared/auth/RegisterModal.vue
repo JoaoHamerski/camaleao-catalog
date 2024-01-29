@@ -15,7 +15,7 @@ const onSuccess = () => {
   >
     <template #title>Nova conta</template>
     <template #content>
-      <RegisterForm @succcess="onSuccess" />
+      <RegisterForm @success="onSuccess" />
     </template>
   </AppModal>
 </template>

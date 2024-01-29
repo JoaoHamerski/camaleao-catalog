@@ -2,9 +2,6 @@
 import { useForm } from '@inertiajs/vue3'
 import { useQuery } from '@tanstack/vue-query'
 import { ref } from 'vue'
-import { onMounted } from 'vue'
-
-const emit = defineEmits(['success'])
 
 const form = useForm({
   name: '',
@@ -42,14 +39,6 @@ const onStateSelected = () => {
     .then((data) => {
       cities.value = data
     })
-}
-
-const onSubmit = () => {
-  form.post(route('auth.register'), {
-    onSuccess: () => {
-      emit('success')
-    },
-  })
 }
 </script>
 
