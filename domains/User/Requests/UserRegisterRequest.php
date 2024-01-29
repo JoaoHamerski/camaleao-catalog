@@ -2,6 +2,7 @@
 
 namespace Domains\User\Requests;
 
+use Carbon\Carbon;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,7 @@ class UserRegisterRequest extends FormRequest
 
     public function passedValidation(): void
     {
-        $this->merge(['birth_date' => '2000-02-20']);
+        $this->merge(['birth_date' => Carbon::createFromFormat('d/m/Y', $this->birth_date)->format('Y-m-d')]);
     }
 
     /**
@@ -33,8 +34,8 @@ class UserRegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
-            'email' => ['required', 'string', 'email'],
+            'name' => ['required', 'min:3'],
+            'email' => ['required', 'string', 'email', 'unique:users,email'],
             'password' => ['required', 'string', 'confirmed'],
             'birth_date' => ['required', 'date_format:d/m/Y'],
             'phone' => ['required', 'max:11', 'min:10'],

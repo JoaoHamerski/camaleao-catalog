@@ -86,6 +86,7 @@ const onStateSelected = () => {
       placeholder="Digite sua data de nascimento..."
       label="Data de nascimento"
       name="birth_date"
+      mask="##/##/####"
       :error-message="form.errors.birth_date"
     />
     <AppCombobox
@@ -123,6 +124,7 @@ const onStateSelected = () => {
       placeholder="Digite seu telefone..."
       name="phone"
       :error-message="form.errors.phone"
+      mask="['(##) # ####-####', '(##) ####-####']"
     />
 
     <template #footer>

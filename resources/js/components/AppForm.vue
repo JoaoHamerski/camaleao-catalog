@@ -7,11 +7,11 @@ import type { AppFormProps } from '@/types/components'
 const emit = defineEmits(['success', 'error'])
 const props = withDefaults(defineProps<AppFormProps>(), {
   isEdit: false,
-  transformedData: () => ({}),
+  transformOnSubmit: () => ({}),
   populateForm: () => {},
 })
 
-const { form, isEdit, routes, transformedData, populateForm } = props
+const { form, isEdit, routes, transformOnSubmit, populateForm } = props
 
 const btnAttrs = computed(() =>
   isEdit
@@ -30,7 +30,7 @@ const transformedForm = computed(() =>
   form.transform((data) => ({
     _method: submitMethod.value,
     ...data,
-    ...transformedData(data),
+    ...transformOnSubmit(data),
   })),
 )
 

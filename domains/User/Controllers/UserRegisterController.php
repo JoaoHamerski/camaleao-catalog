@@ -3,7 +3,7 @@
 namespace Domains\User\Controllers;
 
 use App\Http\Controllers\Controller;
-use Domains\City\Models\City;
+use Domains\Common\Models\City;
 use Domains\Common\Models\State;
 use Domains\User\Requests\UserRegisterRequest;
 use Illuminate\Support\Arr;

@@ -1,25 +1,12 @@
 <script setup lang="ts">
 import { computed, onMounted, ref, useSlots } from 'vue'
 
+import type { AppInputProps } from '@/types/components'
 import BaseInput from './BaseInput.vue'
 import BaseInputPassword from './BaseInputPassword.vue'
 import InputLabel from './InputLabel.vue'
 import InputFooter from './InputFooter.vue'
 
-export interface AppInputProps {
-  name: string
-  mask?: string
-  type?: 'text' | 'password'
-  accept?: string
-  label?: string
-  error?: boolean
-  errorMessage?: string
-  hint?: string
-  inputClass?: string
-  autofocus?: boolean
-  placeholder?: string
-  autocomplete?: string
-}
 const slots = useSlots()
 const props = withDefaults(defineProps<AppInputProps>(), {
   type: 'text',
