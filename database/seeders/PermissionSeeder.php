@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Domains\Shared\Actions\SyncPermissionsAction;
+use Domains\Common\Actions\SyncPermissionsAction;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder

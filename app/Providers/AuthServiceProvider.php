@@ -4,7 +4,7 @@ namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
 
-use Domains\Shared\Models\Role;
+use Domains\Common\Models\Role;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 

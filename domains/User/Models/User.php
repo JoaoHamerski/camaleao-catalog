@@ -5,8 +5,8 @@ namespace Domains\User\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use Domains\City\Models\City;
-use Domains\Shared\Models\FavoriteUniform;
-use Domains\Shared\Models\State;
+use Domains\Common\Models\FavoriteUniform;
+use Domains\Common\Models\State;
 use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;

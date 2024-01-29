@@ -1,7 +1,8 @@
 <?php
 
-namespace Domains\Uniform\Models;
+namespace Domains\Common\Models;
 
+use Domains\Uniform\Models\Uniform;
 use Domains\User\Models\User;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
