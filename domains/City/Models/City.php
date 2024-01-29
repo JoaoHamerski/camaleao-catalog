@@ -2,6 +2,7 @@
 
 namespace Domains\City\Models;
 
+use Domains\Shared\Models\State;
 use Domains\User\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,10 +29,10 @@ class City extends Model
             ->saveSlugsTo('slug');
     }
 
-    // public function state()
-    // {
-    //     return $this->belongsTo(State::class);
-    // }
+    public function state()
+    {
+        return $this->belongsTo(State::class);
+    }
 
     public function users(): HasMany
     {

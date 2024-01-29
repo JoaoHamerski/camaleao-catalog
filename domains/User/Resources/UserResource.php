@@ -2,6 +2,7 @@
 
 namespace Domains\User\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -17,6 +18,10 @@ class UserResource extends JsonResource
         return [
             'name' => $this->name,
             'email' => $this->email,
+            'state' => $this->city->state,
+            'birth_date' => Carbon::createFromFormat('Y-m-d', $this->birth_date)->format('d/m/Y'),
+            'phone' => $this->phone,
+            'city' => $this->city,
             'permissions' => $this->when(
                 $this->has_roles,
                 $this->getAllPermissions()->pluck('name')
