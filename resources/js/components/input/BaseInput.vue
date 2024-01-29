@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { nextTick, ref } from 'vue'
+import { vMaska } from 'maska'
 
 export interface BaseInputProps {
   type: 'text' | 'password'
-  mask?: string
+  mask?: string | string[]
   hasError: boolean
 }
 
@@ -38,6 +39,9 @@ defineExpose({
 <template>
   <input
     ref="input"
+    v-maska
+    :data-maska="mask"
+    :mask="'###'"
     :value="model"
     :type="type"
     @input="onInput"

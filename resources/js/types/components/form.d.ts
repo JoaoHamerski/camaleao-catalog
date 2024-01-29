@@ -7,6 +7,6 @@ export interface AppFormProps {
     post?: () => string | undefined
     patch?: () => string | undefined
   }
-  transformedData?: (data: object) => object
+  transformOnSubmit?: (data: object) => object
   populateForm?: () => void
 }
