@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Uniform } from '@/types/pages'
 import { computed } from 'vue'
-import ContentLayout from '../Shared/layouts/ContentLayout.vue'
+import ContentLayout from '../Common/layouts/ContentLayout.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 import { useToastStore } from '@/store/toast-store'
 

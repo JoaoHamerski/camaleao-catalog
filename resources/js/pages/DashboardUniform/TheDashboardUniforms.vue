@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import DashboardContentLayout from '../Shared/layouts/DashboardContentLayout.vue'
+import DashboardContentLayout from '../Common/layouts/DashboardContentLayout.vue'
 import UniformsBody from './partials/UniformsBody.vue'
 import UniformModal from './partials/UniformModal.vue'
 

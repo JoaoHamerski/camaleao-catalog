@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NoItemsFound from '@/components/NoItemsFound.vue'
-import ContentLayout from '../Shared/layouts/ContentLayout.vue'
+import ContentLayout from '../Common/layouts/ContentLayout.vue'
 </script>
 <template>
   <ContentLayout>

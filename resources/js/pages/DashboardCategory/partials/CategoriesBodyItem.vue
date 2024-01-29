@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
-import DashboardListItem from '@/pages/Shared/dashboard/DashboardListItem.vue'
+import DashboardListItem from '@/pages/Common/dashboard/DashboardListItem.vue'
 import { DropdownItem } from '@/types/components'
 
 interface CategoriesBodyItem {

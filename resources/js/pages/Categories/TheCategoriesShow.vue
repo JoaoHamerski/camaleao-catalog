@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Category } from '@/types/pages'
-import ContentLayout from '../Shared/layouts/ContentLayout.vue'
-import UniformCard from './partials/UniformCard.vue'
+import ContentLayout from '../Common/layouts/ContentLayout.vue'
+import UniformCard from '@/pages/Uniforms/partials/UniformCard.vue'
 
 defineProps<{ category: Category; uniforms: any }>()
 </script>

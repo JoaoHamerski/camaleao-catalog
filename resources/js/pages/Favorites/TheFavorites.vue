@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import NoItemsFound from '@/components/NoItemsFound.vue'
-import ContentLayout from '../Shared/layouts/ContentLayout.vue'
+import ContentLayout from '../Common/layouts/ContentLayout.vue'
 import { Uniform } from '@/types/pages'
-import UniformCard from '../Categories/partials/UniformCard.vue'
+import UniformCard from '@/pages/Uniforms/partials/UniformCard.vue'
 
 defineProps<{ uniforms: Uniform[] }>()
 </script>
