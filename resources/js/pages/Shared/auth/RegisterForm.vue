@@ -51,15 +51,16 @@ const onSubmit = () => {
     },
   })
 }
-
-onMounted(() => {
-  console.log(states.value)
-})
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
-    <div class="divider">Credenciais</div>
+  <AppForm
+    :form="form"
+    :routes="{
+      post: () => route('auth.register'),
+    }"
+  >
+    <div class="divider font-bold">Credenciais</div>
     <AppInput
       v-model="form.email"
       label="E-mail"
@@ -82,7 +83,8 @@ onMounted(() => {
       name="password"
       type="password"
     />
-    <div class="divider">Informações pessoais</div>
+
+    <div class="divider font-bold">Informações pessoais</div>
     <AppInput
       v-model="form.name"
       placeholder="Digite seu nome..."
@@ -104,10 +106,14 @@ onMounted(() => {
       placeholder="Selecione um estado..."
       label="Estado"
       name="state"
+      :display-value="(item) => (item ? item['UF-nome'] : '')"
       :error-message="form.errors.state"
-      display-prop="UF-nome"
       @update:model-value="onStateSelected"
-    />
+    >
+      <template #option="item">
+        {{ item['UF-nome'] }}
+      </template>
+    </AppCombobox>
 
     <AppCombobox
       v-model="form.city"
@@ -116,9 +122,11 @@ onMounted(() => {
       placeholder="Selecione uma cidade..."
       label="Cidade"
       name="city"
+      :display-value="(item) => (item ? item['municipio-nome'] : '')"
       :error-message="form.errors.city"
-      display-prop="municipio-nome"
-    />
+    >
+      <template #option="item"> {{ item['municipio-nome'] }}</template>
+    </AppCombobox>
 
     <AppInput
       v-model="form.phone"
@@ -128,10 +136,12 @@ onMounted(() => {
       :error-message="form.errors.phone"
     />
 
-    <AppButton
-      type="submit"
-      class="btn-success w-full"
-      label="Criar conta"
-    />
-  </form>
+    <template #footer>
+      <AppButton
+        type="submit"
+        class="btn-success w-full"
+        label="Criar conta"
+      />
+    </template>
+  </AppForm>
 </template>

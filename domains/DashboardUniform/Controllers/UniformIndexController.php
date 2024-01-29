@@ -11,7 +11,10 @@ class UniformIndexController extends Controller
 {
     public function __invoke()
     {
-        $uniforms = Uniform::query()->orderBy('created_at', 'desc')->paginate(10);
+        $uniforms = Uniform::query()
+            ->with('category')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10, ['*'], 'pagina');
 
         return Inertia::render('DashboardUniform/TheDashboardUniforms', [
             'uniforms' => UniformResource::collection($uniforms)

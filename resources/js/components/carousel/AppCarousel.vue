@@ -79,13 +79,13 @@ onUnmounted(() => {
 <template>
   <div class="relative">
     <div
-      class="carousel"
+      class="carousel w-full"
       :class="carouselClass"
       @mouseover="pauseAutoplay"
       @mouseleave="resumeAutoplay"
     >
       <div
-        class="carousel-item w-full transition-all duration-400"
+        class="carousel-item w-full transition-all duration-500"
         :style="{ transform: `translateX(-${currentIndex * 100}%)` }"
       >
         <div

@@ -9,7 +9,7 @@ defineProps<AppCardProps>()
 
 <template>
   <div class="shadow-lg rounded">
-    <div class="p-4 bg-camaleao rounded-t text-white font-bold">
+    <div class="p-4 bg-camaleao rounded-t-xl text-white font-bold">
       <slot
         v-if="$slots['title']"
         name="title"
@@ -27,7 +27,7 @@ defineProps<AppCardProps>()
       </template>
     </div>
 
-    <div class="p-3 bg-white rounded-b">
+    <div class="p-3 bg-white rounded-b-xl">
       <slot name="content" />
     </div>
   </div>

@@ -37,53 +37,7 @@ Route::get('/', function () {
     return redirect()->route('categories.index');
 })->name('home');
 
-Route::middleware('guest')->name('auth.')->group(function () {
-    Route::post('/entrar', UserLoginController::class)->name('login');
-    Route::post('/nova-conta', UserRegisterController::class)->name('register');
-});
 
-Route::middleware('auth')->name('auth.')->group(function () {
-    Route::post('/sair', UserLogoutController::class)->name('logout');
-});
-
-Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('dashboard.')->group(function () {
-    Route::get('/painel', DashboardHomeController::class)->name('index');
-
-    Route::name('categories.')->group(function () {
-        Route::get('/painel/categorias', CategoryIndexController::class)->name('index');
-        Route::post('/painel/categorias', CategoryStoreController::class)->name('store');
-        Route::patch('/painel/categories/{category}', CategoryUpdateController::class)->name('patch');
-        Route::delete('/painel/categories/{category}', CategoryDeleteController::class)->name('delete');
-    });
-
-    Route::name('uniforms.')->group(function () {
-        Route::get('/painel/uniformes', UniformIndexController::class)->name('index');
-        Route::post('/painel/uniformes', UniformStoreController::class)->name('store');
-        Route::patch('/painel/uniformes/{uniform}', UniformPatchController::class)->name('patch');
-        Route::delete('/painel/uniformes/{uniform}', UniformDeleteController::class)->name('delete');
-    });
-});
-
-Route::name('uniforms.')->group(function () {
-    Route::get('/categorias/{category}/uniformes/{uniform}', UniformsShowController::class)->name('show');
-    Route::post('/uniformes/{uniform}/favoritar', UniformToggleFavoriteController::class)->name('toggle-favorite');
-});
-
-Route::name('categories.')->group(function () {
-    Route::get('/categorias', CategoriesIndexController::class)->name('index');
-    Route::get('/categorias/{category}/uniformes', CategoriesShowController::class)->name('show');
-});
-
-Route::name('most-liked.')->group(function () {
-    Route::get('mais-curtidos', fn () => Inertia::render('MostLiked/TheMostLiked'))->name('index');
-});
-
-Route::name('favorites.')->group(function () {
-    Route::get('meus-favoritos', MyFavoritesController::class)->name('index');
-});
-
-Route::middleware(['auth', 'can:' . Permission::ACCESS_ADMIN_PANEL])->name('api.')->group(function () {
-    Route::get('/api/categorias', CategoriesGetController::class)->name('categories.get');
-});
-
-// require __DIR__ . '/auth.php';
+foreach (glob(__DIR__ . '/partials/*.php') as $file) {
+    require $file;
+}
