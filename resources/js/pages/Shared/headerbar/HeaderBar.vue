@@ -26,8 +26,7 @@ const openLoginModal = () => {
 }
 
 const onCreateAccount = () => {
-  loginModalShow.value = false
-  registerModalShow.value = true
+  loginModalShow.value = true
 }
 
 watch(
