@@ -1,6 +1,6 @@
 <?php
 
-use Domains\Shared\Models\State;
+use Domains\Common\Models\State;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;

@@ -3,8 +3,8 @@
 namespace Domains\Uniform\Models;
 
 use Domains\Category\Models\Category;
-use Domains\Shared\Traits\HasFiles;
-use Domains\Shared\Utils\FileOptions;
+use Domains\Common\Traits\HasFiles;
+use Domains\Common\Utils\FileOptions;
 use Domains\User\Models\User;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;

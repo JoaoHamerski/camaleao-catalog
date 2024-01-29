@@ -2,8 +2,8 @@
 
 namespace Domains\Category\Models;
 
-use Domains\Shared\Traits\HasFiles;
-use Domains\Shared\Utils\FileOptions;
+use Domains\Common\Traits\HasFiles;
+use Domains\Common\Utils\FileOptions;
 use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Spatie\Sluggable\HasSlug;

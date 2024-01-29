@@ -2,8 +2,8 @@
 
 namespace Domains\DashboardUniform\Resources;
 
-use Domains\DashboardCategory\Resources\CategoryResource;
-use Domains\Shared\Models\Permission;
+use Domains\Category\Resources\CategoryResource;
+use Domains\Common\Models\Permission;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;

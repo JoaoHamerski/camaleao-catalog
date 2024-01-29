@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use Domains\Shared\Utils\FileOptions;
+use Domains\Common\Utils\FileOptions;
 use PHPUnit\Framework\TestCase;
 
 class FileOptionsTest extends TestCase
