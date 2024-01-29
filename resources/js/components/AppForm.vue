@@ -80,11 +80,16 @@ onMounted(() => {
     <slot />
 
     <AppButton
+      v-if="!$slots['footer']"
       type="submit"
       :loading="form.processing"
       class="btn btn-outline"
       :class="btnAttrs.className"
       :label="btnAttrs.label"
+    />
+    <slot
+      v-else
+      name="footer"
     />
   </form>
 </template>

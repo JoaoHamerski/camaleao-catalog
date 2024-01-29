@@ -21,7 +21,7 @@ class UniformResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'category' => new CategoryResource($this->category),
+            'category' => new CategoryResource($this->whenLoaded('category')),
             'slug' => $this->slug,
             'is_favorited' => $this->isFavorited,
             'images' => Arr::map($this->images, fn ($image, $index) => [

@@ -6,11 +6,12 @@ use Domains\Category\Models\Category;
 use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Arr;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domains\Uniform\Models\Uniform>
  */
-class UniformFactory extends Factory
+class UniformFactory extends BaseFactory
 {
     protected $model = Uniform::class;
 
@@ -23,8 +24,7 @@ class UniformFactory extends Factory
     {
         return [
             'name' => fake()->sentence(2),
-            'category_id' => Category::inRandomOrder()->first()->id,
-            'images' => [$this->storeImage(), $this->storeImage(), $this->storeImage()]
+            'images' => $this->getImages()
         ];
     }
 
@@ -32,46 +32,14 @@ class UniformFactory extends Factory
      *
      * @return array<string,int>
      */
-    public function storeImage()
+    public function getImages()
     {
-        $filename = $this->generateImage();
+        $storagePath = 'storage/app/' . Uniform::getStoragePath('images');
+        $range = range(1, fake()->numberBetween(1, 4));
 
-        return [
+        return Arr::map($range, fn () => [
             'name' => fake()->sentence(3) . 'png',
-            'filename' => $filename
-        ];
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function generateImage(): string
-    {
-        $sizes = $this->getImageSizes();
-
-        $storagePath =  './storage/app/' . Uniform::getStoragePath('images');
-
-        $filepath = fake()->image($storagePath, $sizes['w'], $sizes['h']);
-
-        return Str::afterLast($filepath, '/');
-    }
-
-
-    /**
-     *
-     * @return array<string,int>
-     */
-    public function getImageSizes(): array
-    {
-        $defaultSizes = ['w' => 300, 'h' => 300];
-        $randomSizes = [
-            'w' => fake()->numberBetween(250, 500),
-            'h' => fake()->numberBetween(250, 500)
-        ];
-
-        return fake()->boolean(75)
-            ? $defaultSizes
-            : $randomSizes;
+            'filename' => $this->generateImage($storagePath)
+        ]);
     }
 }

@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Domains\Category\Models\Category>
  */
-class CategoryFactory extends Factory
+class CategoryFactory extends BaseFactory
 {
     protected $model = Category::class;
 
@@ -22,7 +22,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'image' => $this->storeImage()
+            'image' => $this->getImage()
         ];
     }
 
@@ -30,46 +30,13 @@ class CategoryFactory extends Factory
      *
      * @return array<string,int>
      */
-    public function storeImage()
+    public function getImage()
     {
-        $filename = $this->generateImage();
+        $storagePath = 'storage/app/' . Category::getStoragePath('image');
 
         return [
             'name' => fake()->sentence(3) . 'png',
-            'filename' => $filename
+            'filename' => $this->generateImage($storagePath)
         ];
-    }
-
-    /**
-     *
-     * @return string
-     */
-    public function generateImage(): string
-    {
-        $sizes = $this->getImageSizes();
-
-        $storagePath =  './storage/app/' . Category::getStoragePath('image');
-
-        $filepath = fake()->image($storagePath, $sizes['w'], $sizes['h']);
-
-        return Str::afterLast($filepath, '/');
-    }
-
-
-    /**
-     *
-     * @return array<string,int>
-     */
-    public function getImageSizes(): array
-    {
-        $defaultSizes = ['w' => 300, 'h' => 300];
-        $randomSizes = [
-            'w' => fake()->numberBetween(250, 500),
-            'h' => fake()->numberBetween(250, 500)
-        ];
-
-        return fake()->boolean(75)
-            ? $defaultSizes
-            : $randomSizes;
     }
 }

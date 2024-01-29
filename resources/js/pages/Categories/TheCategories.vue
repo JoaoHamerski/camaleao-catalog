@@ -2,6 +2,7 @@
 import { CategoryPaginated } from '@/types/pages'
 import ContentLayout from '@/pages/Shared/layouts/ContentLayout.vue'
 import CategoryCard from './partials/CategoryCard.vue'
+import NoItemsFound from '@/components/NoItemsFound.vue'
 
 defineProps<{ categories: CategoryPaginated }>()
 </script>
@@ -9,6 +10,11 @@ defineProps<{ categories: CategoryPaginated }>()
 <template>
   <ContentLayout>
     <template #title> Categorias </template>
+
+    <NoItemsFound v-if="!categories.data.length">
+      Nenhuma categoria encontrada
+    </NoItemsFound>
+
     <div class="grid grid-cols-6 gap-5">
       <CategoryCard
         v-for="category in categories.data"

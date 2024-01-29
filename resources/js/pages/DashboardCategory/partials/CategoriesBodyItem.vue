@@ -25,18 +25,28 @@ const options: DropdownItem[] = [
 </script>
 
 <template>
-  <DashboardListItem :options="options">
-    <div>
-      <img
-        :src="category.image.url"
-        class="w-36 rounded"
-        alt=""
+  <DashboardListItem
+    :options="options"
+    class="flex gap-4"
+  >
+    <div class="w-40">
+      <AppCarousel
+        :src-slides="[category.image.url]"
+        img-class="w-full h-32 object-cover"
+        carousel-class="rounded-lg shadow-xl"
       />
     </div>
     <div>
-      <span class="text-xl font-bold">
-        {{ category.name }}
-      </span>
+      <div class="text-xl font-bold">{{ category.name }}</div>
+      <div class="badge badge-primary">
+        <FWIcon
+          icon="fas fa-tshirt"
+          size="xs"
+          fixed-width
+          class="mr-1"
+        />
+        <span class="font-bold">{{ category.uniforms_count }}</span>
+      </div>
     </div>
   </DashboardListItem>
 </template>

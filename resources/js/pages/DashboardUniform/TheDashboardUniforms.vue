@@ -24,7 +24,10 @@ const openModal = () => {
     </template>
 
     <UniformModal v-model:show="uniformCreateModal" />
-
     <UniformsBody :uniforms="uniforms.data" />
+
+    <div class="mt-10 text-center">
+      <AppPagination :pagination="{ ...uniforms.meta, ...uniforms.links }" />
+    </div>
   </DashboardContentLayout>
 </template>

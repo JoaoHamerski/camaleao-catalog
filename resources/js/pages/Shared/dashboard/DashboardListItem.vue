@@ -6,12 +6,16 @@ interface DashboardListItemProps {
 }
 
 defineProps<DashboardListItemProps>()
+
+defineOptions({
+  inheritAttrs: false,
+})
 </script>
 
 <template>
   <div class="group">
     <div class="flex justify-between">
-      <div class="flex gap-4">
+      <div :class="$attrs['class']">
         <slot />
       </div>
 

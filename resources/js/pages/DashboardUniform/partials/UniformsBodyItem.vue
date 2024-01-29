@@ -28,7 +28,10 @@ const images = computed(() => props.uniform.images.map((item) => item.url))
 </script>
 
 <template>
-  <DashboardListItem :options="options">
+  <DashboardListItem
+    :options="options"
+    class="flex gap-4"
+  >
     <div class="w-40 rounded">
       <AppCarousel
         :src-slides="images"
@@ -41,6 +44,16 @@ const images = computed(() => props.uniform.images.map((item) => item.url))
     </div>
     <div>
       <span class="text-xl font-bold">{{ uniform.name }}</span>
+      <div>
+        <div class="badge badge-primary">
+          <FWIcon
+            icon="fas fa-shapes"
+            fixed-width
+            class="mr-2"
+          />
+          <span class="font-bold">{{ uniform.category.name }}</span>
+        </div>
+      </div>
     </div>
   </DashboardListItem>
 </template>
