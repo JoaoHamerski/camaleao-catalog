@@ -38,6 +38,6 @@ Route::get('/', function () {
 })->name('home');
 
 
-foreach (glob(__DIR__ . '/partials/*.php') as $file) {
+foreach (glob(__DIR__ . '/partials/*-routes.php') as $file) {
     require $file;
 }
