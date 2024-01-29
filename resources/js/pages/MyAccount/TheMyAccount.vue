@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ContentLayout from '@/pages/Shared/layouts/ContentLayout.vue'
+import ContentLayout from '@/pages/Common/layouts/ContentLayout.vue'
 import MyAccountForm from './partials/MyAccountForm.vue'
 import { User } from '@/types'
 

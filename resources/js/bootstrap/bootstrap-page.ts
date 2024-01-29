@@ -1,4 +1,4 @@
-import MainLayout from '@/pages/Shared/layouts/MainLayout.vue'
+import MainLayout from '@/pages/Common/layouts/MainLayout.vue'
 import { DefineComponent } from 'vue'
 
 export default class BootstrapPage {

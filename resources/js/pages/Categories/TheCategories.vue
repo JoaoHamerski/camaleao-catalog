@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { CategoryPaginated } from '@/types/pages'
-import ContentLayout from '@/pages/Shared/layouts/ContentLayout.vue'
+import ContentLayout from '@/pages/Common/layouts/ContentLayout.vue'
 import CategoryCard from './partials/CategoryCard.vue'
 import NoItemsFound from '@/components/NoItemsFound.vue'
 

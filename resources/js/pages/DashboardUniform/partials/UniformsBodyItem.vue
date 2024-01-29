@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import DashboardListItem from '@/pages/Shared/dashboard/DashboardListItem.vue'
+import DashboardListItem from '@/pages/Common/dashboard/DashboardListItem.vue'
 import { DropdownItem } from '@/types/components'
 import { Uniform } from '@/types/pages'
 import { computed } from 'vue'
