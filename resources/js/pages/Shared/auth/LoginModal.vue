@@ -1,10 +1,15 @@
 <script setup lang="ts">
+import AppButton from '@/components/AppButton.vue'
 import LoginForm from './LoginForm.vue'
 
 const emit = defineEmits(['create-account'])
 
 const onCreateAccountClick = () => {
   emit('create-account')
+}
+
+const onGoogleLogin = () => {
+  window.location.href = route('oauth.google')
 }
 </script>
 
@@ -38,6 +43,7 @@ const onCreateAccountClick = () => {
           icon="fab fa-google"
           label="Continue com Google"
           class="btn-outline btn-error w-full"
+          @click.prevent="onGoogleLogin"
         />
       </div>
     </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUserStore } from '@/store/user-store'
-import { DropdownItem } from '@/components/dropdown/DropdownContentItemsItem.vue'
+import type { DropdownItem } from '@/types/components'
 import { onMounted } from 'vue'
 import { ref } from 'vue'
 
@@ -19,7 +19,7 @@ const authDropdownItems = ref<DropdownItem[]>([
     icon: 'fas fa-user-circle',
     label: 'Minha conta',
     link: {
-      url: '',
+      url: route('auth.my-account'),
     },
   },
   {

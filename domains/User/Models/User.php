@@ -4,7 +4,9 @@ namespace Domains\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Domains\City\Models\City;
 use Domains\Shared\Models\FavoriteUniform;
+use Domains\Shared\Models\State;
 use Domains\Uniform\Models\Uniform;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
@@ -35,7 +37,9 @@ class User extends Authenticatable
         'email',
         'password',
         'phone',
-        'birth_date'
+        'birth_date',
+        'google_id',
+        'google_token'
     ];
 
     /**
@@ -77,5 +81,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Uniform::class, 'favorite_uniforms')
             ->withTimestamps()
             ->using(FavoriteUniform::class);
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
     }
 }
