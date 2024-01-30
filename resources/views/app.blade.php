@@ -3,7 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        @include('meta-tags')
+
+        @if (isset($page['props']['meta']))
+            @include('meta-tags', ['meta' => $page['props']['meta']])
+        @else
+            @include('meta-tags-default')
+        @endif
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
         <link rel="preconnect" href="https://fonts.bunny.net">

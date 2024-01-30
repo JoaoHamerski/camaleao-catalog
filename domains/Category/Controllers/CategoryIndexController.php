@@ -19,7 +19,8 @@ class CategoryIndexController extends Controller
         return Inertia::render('Categories/TheCategories', [
             'meta' => [
                 'title' => 'Categorias',
-                'description' => 'Categorias de uniformes da Camaleão Camisas'
+                'description' => 'Categorias de uniformes da Camaleão Camisas',
+                'image' => 'asd'
             ],
             'categories' => CategoryResource::collection($categories)
         ]);
