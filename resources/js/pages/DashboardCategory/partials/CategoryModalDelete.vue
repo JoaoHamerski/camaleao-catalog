@@ -14,6 +14,10 @@ const onCancelDelete = () => {
 }
 
 const onConfirmDelete = () => {
+  if (!props.category) {
+    return
+  }
+
   form.post(
     route('dashboard.categories.delete', {
       category: props.category.id,

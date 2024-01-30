@@ -16,11 +16,8 @@ defineEmits(['login-clicked', 'register-clicked'])
       />
     </template>
 
-    <template #content="{ close }">
-      <div
-        class="mx-4 my-4 flex flex-col gap-2"
-        @click.capture="close"
-      >
+    <template #content>
+      <div class="mx-4 my-4 flex flex-col gap-2">
         <div class="text-xs text-secondary text-center mb-2">
           Crie uma conta para salvar seus favoritos
         </div>
