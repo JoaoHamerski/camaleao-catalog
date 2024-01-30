@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeaderBarDrawerHeader from './HeaderBarDrawerHeader.vue'
+import NavbarDrawerHeader from './NavbarDrawerHeader.vue'
 import SidebarDrawer from '@/components/drawer/SidebarDrawer.vue'
 import { useRouteStore } from '@/store/route-store'
 import { SidebarDrawerListItemProps } from '@/types/components'
@@ -28,7 +28,7 @@ const items = computed<SidebarDrawerListItemProps[]>(() => [
     :items="items"
   >
     <template #header>
-      <HeaderBarDrawerHeader />
+      <NavbarDrawerHeader />
     </template>
   </SidebarDrawer>
 </template>

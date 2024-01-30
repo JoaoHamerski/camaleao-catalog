@@ -5,7 +5,7 @@ import type { SidebarDrawerProps } from '@/types/components/drawer'
 
 withDefaults(defineProps<SidebarDrawerProps>(), {
   items: () => [],
-  toggleClass: 'btn',
+  toggleClass: 'btn px-1',
 })
 
 const isOpen = ref(false)
@@ -29,7 +29,16 @@ const closeDrawer = () => {
         :for="id"
         :class="toggleClass"
       >
-        <FWIcon icon="fas fa-bars" />
+        <div class="fa-stack">
+          <FWIcon
+            icon="fas fa-shield"
+            class="fa-stack-1x text-sm rounded-full p-0.5 z-[1] ml-3 mt-3"
+          />
+          <FWIcon
+            icon="fas fa-bars"
+            class="fa-stack-1x text-lg"
+          />
+        </div>
       </label>
     </div>
 
