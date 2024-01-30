@@ -13,8 +13,11 @@ const user = computed(() => userStore.user)
       icon="fas fa-user-shield"
       size="3x"
     />
-    <div class="mt-4 font-bold">
-      {{ user?.name }}
+    <div
+      v-if="user"
+      class="mt-4 font-bold"
+    >
+      {{ user.name }}
     </div>
   </div>
   <div class="divider after:bg-camaleao before:bg-camaleao" />

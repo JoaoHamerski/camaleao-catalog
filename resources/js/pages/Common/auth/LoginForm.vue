@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useForm, usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 
 const form = useForm({
   email: '',
@@ -8,15 +7,21 @@ const form = useForm({
   remember: false,
 })
 
-const onSubmit = () => {
-  form.post(route('auth.login'))
+const onFormError = () => {
+  form.password = ''
 }
 
-const errors = computed(() => usePage().props.errors)
+const routes = {
+  post: () => route('auth.login'),
+}
 </script>
 
 <template>
-  <form @submit.prevent="onSubmit">
+  <AppForm
+    :form="form"
+    :routes="routes"
+    @error="onFormError"
+  >
     <AppInput
       v-model="form.email"
       autofocus
@@ -25,7 +30,7 @@ const errors = computed(() => usePage().props.errors)
       class="mb-3"
       placeholder="Digite seu e-mail..."
       autocomplete="email"
-      :error-message="errors.email"
+      :error-message="form.errors.email"
     />
 
     <AppInput
@@ -34,15 +39,19 @@ const errors = computed(() => usePage().props.errors)
       label="Senha"
       type="password"
       name="password"
+      autocomplete="password"
       placeholder="Digite sua senha..."
-      :error-message="errors.password"
+      :error-message="form.errors.password"
     />
 
-    <AppButton
-      :disabled="form.processing"
-      :loading="form.processing"
-      label="Entrar"
-      class="btn-primary w-full"
-    />
-  </form>
+    <template #footer>
+      <AppButton
+        type="submit"
+        :disabled="form.processing"
+        :loading="form.processing"
+        label="Entrar"
+        class="btn-primary w-full"
+      />
+    </template>
+  </AppForm>
 </template>

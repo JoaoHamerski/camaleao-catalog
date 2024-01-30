@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import NavbarDrawerHeader from './NavbarDrawerHeader.vue'
-import SidebarDrawer from '@/components/drawer/SidebarDrawer.vue'
 import { useRouteStore } from '@/store/route-store'
 import { SidebarDrawerListItemProps } from '@/types/components'
 import { computed } from 'vue'
+
+import NavbarDrawerHeader from './NavbarDrawerHeader.vue'
+import SidebarDrawer from '@/components/drawer/SidebarDrawer.vue'
+
 const useRoute = useRouteStore()
 
+defineProps<{ id: string }>()
 const items = computed<SidebarDrawerListItemProps[]>(() => [
   {
     label: 'Categorias',
@@ -24,7 +27,7 @@ const items = computed<SidebarDrawerListItemProps[]>(() => [
 
 <template>
   <SidebarDrawer
-    id="header-bar-drawer"
+    :id="id"
     :items="items"
   >
     <template #header>

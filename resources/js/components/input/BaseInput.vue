@@ -41,7 +41,6 @@ defineExpose({
     ref="input"
     v-maska
     :data-maska="mask"
-    :mask="'###'"
     :value="model"
     :type="type"
     @input="onInput"

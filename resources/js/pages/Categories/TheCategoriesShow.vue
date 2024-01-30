@@ -7,7 +7,7 @@ defineProps<{ category: Category; uniforms: any }>()
 </script>
 
 <template>
-  <ContentLayout>
+  <ContentLayout :title="category.name">
     <template #title> Categorias > {{ category.name }} </template>
 
     <div class="grid grid-cols-2 md:grid-cols-6 gap-5">

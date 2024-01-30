@@ -8,7 +8,7 @@ defineProps<{ categories: CategoryPaginated }>()
 </script>
 
 <template>
-  <ContentLayout>
+  <ContentLayout title="Categorias">
     <template #title> Categorias </template>
 
     <NoItemsFound v-if="!categories.data.length">

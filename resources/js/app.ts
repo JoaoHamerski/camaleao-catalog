@@ -9,7 +9,7 @@ import BootstrapPage from './bootstrap/bootstrap-page'
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
 
 createInertiaApp({
-  title: (title) => `${title} ${appName}`,
+  title: (title) => (title ? `${title} | ${appName}` : appName),
   resolve: BootstrapPage.resolvePageComponent,
   setup({ el, App, props, plugin }) {
     const app = createApp({ render: () => h(App, props) })

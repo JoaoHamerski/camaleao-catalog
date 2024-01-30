@@ -3,17 +3,27 @@ import { ref } from 'vue'
 import { useUserStore } from '@/store/user-store'
 import { useRouteStore } from '@/store/route-store'
 import { computed } from 'vue'
+import { DropdownItem } from '@/types/components'
 
 import NAVBAR_ITEMS from './navbar-items'
 
-import NavbarUserGuest from './NavbarUserGuest.vue'
-import LoginModal from '@/pages/Common/auth/LoginModal.vue'
 import NavbarBrand from './NavbarBrand.vue'
 import NavbarItems from './NavbarItems.vue'
-import NavbarUserAuth from './NavbarUserAuth.vue'
-import NavbarDrawer from './NavbarDrawer.vue'
-import RegisterModal from '../auth/RegisterModal.vue'
-import { DropdownItem } from '@/types/components'
+import { defineAsyncComponent } from 'vue'
+
+const NavbarDrawer = defineAsyncComponent(() => import('./NavbarDrawer.vue'))
+const NavbarUserAuth = defineAsyncComponent(
+  () => import('./NavbarUserAuth.vue'),
+)
+const NavbarUserGuest = defineAsyncComponent(
+  () => import('./NavbarUserGuest.vue'),
+)
+const RegisterModal = defineAsyncComponent(
+  () => import('@/pages/Common/auth/RegisterModal.vue'),
+)
+const LoginModal = defineAsyncComponent(
+  () => import('@/pages/Common/auth/LoginModal.vue'),
+)
 
 const loginModalShow = ref(false)
 const registerModalShow = ref(false)
@@ -32,7 +42,7 @@ const onCreateAccount = () => {
 }
 
 const dropdownMobileItems = computed(() =>
-  NAVBAR_ITEMS.map((item) => ({
+  NAVBAR_ITEMS.map<DropdownItem>((item) => ({
     label: item.label,
     link: {
       url: item.url,
@@ -50,6 +60,11 @@ const dropdownMobileItems = computed(() =>
     ]"
   >
     <div class="navbar-start gap-3 hidden md:flex">
+      <NavbarDrawer
+        v-if="userStore.hasPermission('access_admin_panel')"
+        id="header-bar-mobile"
+        class="w-fit"
+      />
       <NavbarBrand />
       <NavbarItems />
     </div>
@@ -57,6 +72,7 @@ const dropdownMobileItems = computed(() =>
     <div class="navbar-start md:hidden gap-2">
       <NavbarDrawer
         v-if="userStore.hasPermission('access_admin_panel')"
+        id="header-bar-desktop"
         class="w-fit"
       />
       <AppDropdown
