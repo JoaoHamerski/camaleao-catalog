@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Domains\Category\Models\Category;
 use Domains\Category\Resources\CategoryResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesGetController extends Controller
 {
