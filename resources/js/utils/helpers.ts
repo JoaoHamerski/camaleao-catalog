@@ -5,3 +5,10 @@ export const urlToFile = async (url: string, filename = '') => {
 
   return new File([blob], filename, { type: mimeType })
 }
+
+export const openInNewTab = (href: string) => {
+  Object.assign(document.createElement('a'), {
+    target: '_blank',
+    href,
+  }).click()
+}
