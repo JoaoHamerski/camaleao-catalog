@@ -1,1 +1,0 @@
-import{A as t,f as a,e as s,H as o,o as n}from"./app-dG7eutBm.js";const r={},c={class:"w-1/2 mx-auto"},d={class:"mb-3"};function l(e,_){return n(),a("div",c,[s("div",d,[o(e.$slots,"header")]),s("div",null,[o(e.$slots,"default")])])}const i=t(r,[["render",l]]);export{i as default};
