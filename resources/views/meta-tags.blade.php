@@ -6,4 +6,4 @@
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta property="og:title" content="{{ $page['props']['meta']['title'] }} | Camaleão Catálogo" />
 <meta property="og:description" content="{{ $page['props']['meta']['description'] }}" />
-<meta property="og:image" content="https://metatags.io/images/meta-tags.png" />
+<meta property="og:image" content="{{ url('meta-preview.png') }}" />
