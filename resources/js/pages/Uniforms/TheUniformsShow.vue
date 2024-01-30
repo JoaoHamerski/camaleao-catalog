@@ -35,7 +35,7 @@ const onFavoriteClick = () => {
 
 const onOrderClick = () => {
   const message = `Olá, tenho interesse neste uniforme: ${location.href}`
-  const href = `https://wa.me/89981171458?text="${message}"`
+  const href = `https://wa.me/5589981171458?text="${message}"`
   openInNewTab(href)
 }
 </script>
