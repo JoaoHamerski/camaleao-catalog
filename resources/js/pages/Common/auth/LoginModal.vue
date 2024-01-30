@@ -2,11 +2,11 @@
 import AppButton from '@/components/AppButton.vue'
 import LoginForm from './LoginForm.vue'
 
-const emit = defineEmits(['create-account'])
+// const emit = defineEmits(['create-account'])
 
-const onCreateAccountClick = () => {
-  emit('create-account')
-}
+// const onCreateAccountClick = () => {
+//   emit('create-account')
+// }
 
 const onGoogleLogin = () => {
   window.location.href = route('oauth.google')

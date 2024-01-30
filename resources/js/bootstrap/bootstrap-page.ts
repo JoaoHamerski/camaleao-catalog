@@ -7,15 +7,13 @@ export default class BootstrapPage {
   }
 
   protected static getRequestedPage(name: string) {
-    const pages = import.meta.glob<DefineComponent>('../pages/**/*.vue', {
-      eager: true,
-    })
+    const pages = import.meta.glob<DefineComponent>('../pages/**/*.vue')
 
-    return pages[`../pages/${name}.vue`]
+    return pages[`../pages/${name}.vue`]()
   }
 
-  public static resolvePageComponent(name: string) {
-    const page = BootstrapPage.getRequestedPage(name)
+  public static async resolvePageComponent(name: string) {
+    const page = await BootstrapPage.getRequestedPage(name)
 
     BootstrapPage.definePageLayout(page)
 
