@@ -7,7 +7,7 @@ defineProps<{ user: User }>()
 </script>
 
 <template>
-  <ContentLayout>
+  <ContentLayout title="Minha conta">
     <AppCard class="w-1/3 mx-auto">
       <template #title> Altere suas informações </template>
       <template #content>

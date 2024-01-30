@@ -17,6 +17,10 @@ class CategoryIndexController extends Controller
             ->paginate(12, ['*'], 'pagina');
 
         return Inertia::render('Categories/TheCategories', [
+            'meta' => [
+                'title' => 'Categorias',
+                'description' => 'Categorias de uniformes da Camaleão Camisas'
+            ],
             'categories' => CategoryResource::collection($categories)
         ]);
     }
