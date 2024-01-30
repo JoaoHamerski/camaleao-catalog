@@ -13,7 +13,7 @@ const onWhatsappBtnClick = () => {
     ? `Olá, me chamo ${userStore.firstName}, ${message} `
     : `Olá, ${message}`
 
-  const href = `https://wa.me/5589981171458?text="${fullMessage}"`
+  const href = `https://wa.me/5589981171458?text=${fullMessage}`
 
   openInNewTab(href)
 }

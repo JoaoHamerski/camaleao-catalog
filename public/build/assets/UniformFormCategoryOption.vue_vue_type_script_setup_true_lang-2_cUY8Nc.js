@@ -1,1 +1,0 @@
-import{d as t,f as o,e,t as a,o as n}from"./app-0UYzROca.js";const r={class:"flex items-center gap-4"},i={class:"w-12"},c=["src"],p=t({__name:"UniformFormCategoryOption",props:{item:{}},setup(m){return(s,l)=>(n(),o("div",r,[e("div",i,[e("img",{class:"rounded max-h-20",src:s.item.image.url,alt:""},null,8,c)]),e("div",null,a(s.item.name),1)]))}});export{p as _};
