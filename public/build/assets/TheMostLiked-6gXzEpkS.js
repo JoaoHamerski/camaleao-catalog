@@ -1,0 +1,1 @@
+import{N as a}from"./NoItemsFound-bk5kDUuF.js";import o from"./ContentLayout-R_y5KxtJ.js";import{d as r,c as s,w as e,o as n,a as t,h as c}from"./app-dG7eutBm.js";const _=r({__name:"TheMostLiked",setup(d){return(i,u)=>(n(),s(o,null,{title:e(()=>[t("Mais curtidos")]),default:e(()=>[c(a,null,{default:e(()=>[t(" Nada por aqui ainda ")]),_:1})]),_:1}))}});export{_ as default};
