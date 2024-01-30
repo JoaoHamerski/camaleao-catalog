@@ -4,6 +4,7 @@ import { computed } from 'vue'
 import ContentLayout from '../Common/layouts/ContentLayout.vue'
 import { Link, useForm } from '@inertiajs/vue3'
 import { useToastStore } from '@/store/toast-store'
+import { openInNewTab } from '@/utils/helpers'
 
 const props = defineProps<{ uniform: Uniform }>()
 const form = useForm({})
@@ -30,6 +31,12 @@ const onFavoriteClick = () => {
       },
     },
   )
+}
+
+const onOrderClick = () => {
+  const message = `Olá, tenho interesse neste uniforme: ${location.href}`
+  const href = `https://wa.me/89981171458?text="${message}"`
+  openInNewTab(href)
 }
 </script>
 
@@ -67,6 +74,7 @@ const onFavoriteClick = () => {
             icon="fab fa-whatsapp"
             class="btn-success"
             label="Encomendar"
+            @click.prevent="onOrderClick"
           />
           <AppButton
             :loading="form.processing"
