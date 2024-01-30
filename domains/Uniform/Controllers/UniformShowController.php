@@ -18,7 +18,7 @@ class UniformShowController extends Controller
         return Inertia::render('Uniforms/TheUniformsShow', [
             'meta' => [
                 'title' => $uniform->name,
-                'description' => 'Uniforme',
+                'description' => $uniform->name,
                 'image' => url(Storage::url('uniformes/' . $uniform->images[0]['filename']))
             ],
             'uniform' => $uniform
