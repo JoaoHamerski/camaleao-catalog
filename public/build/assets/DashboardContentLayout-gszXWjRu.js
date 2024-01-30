@@ -1,1 +1,0 @@
-import{G as t,f as a,e as s,s as o,o as l}from"./app-Eg3tWI6a.js";const n={},r={class:"w-full px-4 lg:px-0 lg:w-1/2 mx-auto"},c={class:"mb-3"};function d(e,_){return l(),a("div",r,[s("div",c,[o(e.$slots,"header")]),s("div",null,[o(e.$slots,"default")])])}const i=t(n,[["render",d]]);export{i as default};
