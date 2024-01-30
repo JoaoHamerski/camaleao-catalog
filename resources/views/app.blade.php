@@ -9,8 +9,8 @@
         <link href="https://fonts.bunny.net/css?family=cabin:400,600,700" rel="stylesheet" />
 
         <!-- Scripts -->
-        @routes
-        @vite(['resources/js/app.ts'])
+        @route
+        @vite(['resources/js/app.ts', "resources/js/pages/{$page['component']}.vue"])
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
