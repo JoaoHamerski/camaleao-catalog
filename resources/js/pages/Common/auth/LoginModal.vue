@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue'
 import LoginForm from './LoginForm.vue'
+import { useToastStore } from '@/store/toast-store'
 
-// const emit = defineEmits(['create-account'])
-
-// const onCreateAccountClick = () => {
-//   emit('create-account')
-// }
-
+const emit = defineEmits(['update:show'])
+const toast = useToastStore()
 const onGoogleLogin = () => {
   window.location.href = route('oauth.google')
+}
+
+const onFormSuccess = () => {
+  emit('update:show', false)
+
+  toast.success('Boas vindas!')
 }
 </script>
 
@@ -18,6 +21,7 @@ const onGoogleLogin = () => {
     ref="modal"
     size="xs"
     color="primary"
+    @update:show="emit('update:show', $event)"
   >
     <template #title>Entre com sua conta </template>
     <template #content>
@@ -30,7 +34,8 @@ const onGoogleLogin = () => {
         </div>
       </div>
 
-      <LoginForm />
+      <LoginForm @success="onFormSuccess" />
+
       <div class="divider my-5">OU</div>
 
       <div class="flex flex-col gap-3">

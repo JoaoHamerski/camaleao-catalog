@@ -8,7 +8,7 @@ defineProps<{ uniforms: Uniform[] }>()
 </script>
 
 <template>
-  <ContentLayout>
+  <ContentLayout title="Meus favoritos">
     <template #title> Meus favoritos </template>
 
     <NoItemsFound v-if="!uniforms.length"> Nada por aqui ainda </NoItemsFound>

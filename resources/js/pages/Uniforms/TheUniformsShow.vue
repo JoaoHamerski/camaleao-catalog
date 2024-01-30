@@ -34,7 +34,7 @@ const onFavoriteClick = () => {
 </script>
 
 <template>
-  <ContentLayout>
+  <ContentLayout :title="uniform.name">
     <template #title>
       Categorias > {{ uniform.category.name }} > {{ uniform.name }}
     </template>
