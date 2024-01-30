@@ -12,4 +12,9 @@
     .navbar-admin { @apply bg-slate-800}
     .navbar-admin .btn { @apply bg-slate-800 hover:bg-white/20 }
     .navbar-admin .active { @apply bg-white/30 }
+
+}
+
+#nprogress .bar {
+    @apply min-h-1;
 }
