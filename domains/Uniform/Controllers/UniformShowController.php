@@ -19,7 +19,7 @@ class UniformShowController extends Controller
             'meta' => [
                 'title' => $uniform->name,
                 'description' => 'Uniforme',
-                'image' => url(Storage::url('categorias/' . $uniform->images[0]['filename']))
+                'image' => url(Storage::url('uniformes/' . $uniform->images[0]['filename']))
             ],
             'uniform' => $uniform
         ]);
