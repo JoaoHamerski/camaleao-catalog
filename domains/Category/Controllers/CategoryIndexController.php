@@ -11,7 +11,10 @@ class CategoryIndexController extends Controller
 {
     public function __invoke()
     {
-        $categories = Category::query()->paginate(12, ['*'], 'pagina');
+        $categories = Category::query()
+            ->whereHas('uniforms')
+            ->orderBy('name', 'asc')
+            ->paginate(12, ['*'], 'pagina');
 
         return Inertia::render('Categories/TheCategories', [
             'categories' => CategoryResource::collection($categories)

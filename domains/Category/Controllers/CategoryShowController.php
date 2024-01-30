@@ -11,7 +11,10 @@ class CategoryShowController extends Controller
 {
     public function __invoke(Category $category)
     {
-        $uniforms = $category->uniforms()->paginate(12, ['*'], 'pagina');
+        $uniforms = $category
+            ->uniforms()
+            ->orderBy('created_at', 'desc')
+            ->paginate(12, ['*'], 'pagina');
 
         return Inertia::render('Categories/TheCategoriesShow', [
             'category' => $category,
