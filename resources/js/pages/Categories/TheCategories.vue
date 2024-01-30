@@ -15,7 +15,7 @@ defineProps<{ categories: CategoryPaginated }>()
       Nenhuma categoria encontrada
     </NoItemsFound>
 
-    <div class="grid grid-cols-6 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-5">
       <CategoryCard
         v-for="category in categories.data"
         :key="category.id"

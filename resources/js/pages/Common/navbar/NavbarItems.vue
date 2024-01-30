@@ -11,10 +11,8 @@ import NAVBAR_ITEMS from './navbar-items'
       :href="item.url"
     >
       <AppButton
-        class="text-white text-sm min-h-10 h-10 btn btn-ghost"
-        :class="[
-          { active: item.active }, // TODO: Se ativo
-        ]"
+        class="text-white text-xs md:text-sm min-h-10 h-14 md:h-10 btn btn-ghost"
+        :class="[{ active: item.active }]"
         :icon="item.icon"
         :label="item.label"
       />

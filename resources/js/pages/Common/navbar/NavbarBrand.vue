@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeaderBarBrandSvg from './HeaderBarBrandSvg.vue'
+import NavbarBrandSvg from './NavbarBrandSvg.vue'
 import { Link } from '@inertiajs/vue3'
 </script>
 
@@ -8,6 +8,6 @@ import { Link } from '@inertiajs/vue3'
     :href="route('home')"
     class="max-w-24"
   >
-    <HeaderBarBrandSvg class="fill-white" />
+    <NavbarBrandSvg class="fill-white" />
   </Link>
 </template>

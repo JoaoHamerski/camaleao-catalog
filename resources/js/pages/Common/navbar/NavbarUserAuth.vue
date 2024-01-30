@@ -47,7 +47,7 @@ onMounted(() => {
     :items="authDropdownItems"
   >
     <template #label>
-      <span class="text-white">
+      <span class="text-white hidden lg:block">
         Olá, <b>{{ userStore.firstName }}</b></span
       >
       <FWIcon

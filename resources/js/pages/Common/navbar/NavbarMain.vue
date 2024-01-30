@@ -1,17 +1,19 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUserStore } from '@/store/user-store'
-import { watch } from 'vue'
+import { useRouteStore } from '@/store/route-store'
 import { computed } from 'vue'
 
-import HeaderBarUserGuest from './HeaderBarUserGuest.vue'
+import NAVBAR_ITEMS from './navbar-items'
+
+import NavbarUserGuest from './NavbarUserGuest.vue'
 import LoginModal from '@/pages/Common/auth/LoginModal.vue'
-import HeaderBarBrand from './HeaderBarBrand.vue'
-import HeaderBarItems from './HeaderBarItems.vue'
-import HeaderBarUserAuth from './HeaderBarUserAuth.vue'
-import HeaderBarDrawer from './HeaderBarDrawer.vue'
-import { useRouteStore } from '@/store/route-store'
+import NavbarBrand from './NavbarBrand.vue'
+import NavbarItems from './NavbarItems.vue'
+import NavbarUserAuth from './NavbarUserAuth.vue'
+import NavbarDrawer from './NavbarDrawer.vue'
 import RegisterModal from '../auth/RegisterModal.vue'
+import { DropdownItem } from '@/types/components'
 
 const loginModalShow = ref(false)
 const registerModalShow = ref(false)
@@ -29,13 +31,14 @@ const onCreateAccount = () => {
   loginModalShow.value = true
 }
 
-watch(
-  () => isAuth.value,
-  () => {
-    if (isAuth.value) {
-      loginModalShow.value = false
-    }
-  },
+const dropdownMobileItems = computed(() =>
+  NAVBAR_ITEMS.map((item) => ({
+    label: item.label,
+    link: {
+      url: item.url,
+    },
+    icon: item.icon,
+  })),
 )
 </script>
 
@@ -46,17 +49,29 @@ watch(
       routeStore.isCurrent('dashboard.*') ? 'navbar-admin' : 'navbar-user',
     ]"
   >
-    <div class="navbar-start gap-5">
-      <HeaderBarDrawer
+    <div class="navbar-start gap-3 hidden md:flex">
+      <NavbarBrand />
+      <NavbarItems />
+    </div>
+
+    <div class="navbar-start md:hidden gap-2">
+      <NavbarDrawer
         v-if="userStore.hasPermission('access_admin_panel')"
         class="w-fit"
       />
-      <HeaderBarBrand />
-      <HeaderBarItems />
+      <AppDropdown
+        icon="fas fa-bars"
+        :items="dropdownMobileItems"
+      />
     </div>
+
+    <div class="navbar-center md:hidden">
+      <NavbarBrand />
+    </div>
+
     <div class="navbar-end">
-      <HeaderBarUserAuth v-if="isAuth" />
-      <HeaderBarUserGuest
+      <NavbarUserAuth v-if="isAuth" />
+      <NavbarUserGuest
         v-else
         @login-clicked="openLoginModal"
         @register-clicked="onCreateAccount"

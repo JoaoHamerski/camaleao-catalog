@@ -36,15 +36,16 @@ const onFavoriteClick = () => {
 <template>
   <ContentLayout>
     <template #title>
-      CATEGORIA > {{ uniform.category.name }} > {{ uniform.name }}
+      Categorias > {{ uniform.category.name }} > {{ uniform.name }}
     </template>
-    <div class="w-1/3 bg-base-300 rounded-xl shadow-lg">
+    <div class="md:w-1/3 bg-base-300 rounded-xl shadow-lg">
       <AppCarousel
         :src-slides="imagesSrc"
         pagination
         navigation
         autoplay
         :autoplay-interval="3000"
+        img-class="rounded-t-xl"
       />
       <div class="p-4 flex flex-col gap-4">
         <div class="flex flex-col gap-2">

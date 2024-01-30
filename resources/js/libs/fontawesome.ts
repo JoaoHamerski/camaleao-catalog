@@ -19,6 +19,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faPlus } from '@fortawesome/free-solid-svg-icons/faPlus'
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons/faRightFromBracket'
 import { faShapes } from '@fortawesome/free-solid-svg-icons/faShapes'
+import { faShield } from '@fortawesome/free-solid-svg-icons/faShield'
 import { faSort } from '@fortawesome/free-solid-svg-icons/faSort'
 import { faStar } from '@fortawesome/free-solid-svg-icons/faStar'
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes'
@@ -55,4 +56,5 @@ library.add(
   faCircleExclamation,
   faAngleRight,
   faAngleLeft,
+  faShield,
 )

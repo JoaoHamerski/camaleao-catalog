@@ -8,9 +8,9 @@ defineProps<{ category: Category; uniforms: any }>()
 
 <template>
   <ContentLayout>
-    <template #title> CATEGORIAS > {{ category.name }} </template>
+    <template #title> Categorias > {{ category.name }} </template>
 
-    <div class="grid grid-cols-6 gap-5">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-5">
       <UniformCard
         v-for="uniform in uniforms.data"
         :key="uniform.id"

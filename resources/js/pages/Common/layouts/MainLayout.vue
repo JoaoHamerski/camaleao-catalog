@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import HeaderBar from '../headerbar/HeaderBar.vue'
+import Navbar from '../navbar/NavbarMain.vue'
 import ToastComponent from '@/components/toast/ToastComponent.vue'
 </script>
 
 <template>
   <div>
     <ToastComponent />
-    <HeaderBar />
+    <Navbar />
     <div class="my-5">
       <slot />
     </div>
