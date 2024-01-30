@@ -1,1 +1,0 @@
-import{A as a,f as e,H as o,b as r,o as s}from"./app-HYdZhUgc.js";const d={},n={class:"md:px-20 px-4 mt-16"},l={key:0,class:"divider divider-start text-camaleao md:text-3xl font-bold mb-10"};function c(t,i){return s(),e("div",n,[t.$slots.title?(s(),e("div",l,[o(t.$slots,"title")])):r("",!0),o(t.$slots,"default")])}const f=a(d,[["render",c]]);export{f as default};
