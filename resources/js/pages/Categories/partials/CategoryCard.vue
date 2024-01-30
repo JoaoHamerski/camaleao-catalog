@@ -12,7 +12,7 @@ defineProps<{ category: Category }>()
       })
     "
     as="div"
-    class="card w-40 h-40 md:w-60 md:h-52 bg-base-100 shadow-xl rounded-xl hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer"
+    class="card mx-auto w-40 h-40 md:w-60 md:h-52 bg-base-100 shadow-xl rounded-xl hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer"
   >
     <img
       :src="category.image.url"
