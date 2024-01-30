@@ -1,0 +1,10 @@
+{
+  "resources/js/app.ts": {
+    "css": [
+      "assets/app--VjQLm76.css"
+    ],
+    "file": "assets/app-2D6_Ka_e.js",
+    "isEntry": true,
+    "src": "resources/js/app.ts"
+  }
+}

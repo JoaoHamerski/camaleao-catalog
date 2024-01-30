@@ -14,6 +14,10 @@ const onCancelDelete = () => {
 }
 
 const onConfirmDelete = () => {
+  if (!props.uniform) {
+    return
+  }
+
   form.post(
     route('dashboard.uniforms.delete', {
       uniform: props.uniform.slug,

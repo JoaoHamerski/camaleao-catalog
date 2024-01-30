@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { ComboboxItem } from '@/types/components'
 import { ComboboxOptions, ComboboxOption } from '@headlessui/vue'
-
-defineProps<{ items: ComboboxItem[]; by: string }>()
+defineProps<{ items: any; by: string }>()
 </script>
 
 <template>
