@@ -30,9 +30,16 @@ const attributes = computed(() =>
 <template>
   <Component
     :is="componentIs"
-    class="block text-sm px-4 py-2 cursor-pointer transition-colors duration-75 hover:bg-base-300 active:bg-primary active:text-primary-content"
+    class="flex gap-2 items-center text-sm px-4 py-2 cursor-pointer transition-colors duration-75 hover:bg-base-300 hover:text-base-content active:bg-primary active:text-primary-content"
+    :class="{
+      'bg-primary hover:bg-primary-content text-white font-bold': active,
+    }"
     v-bind="attributes"
   >
+    <img
+      :src="image"
+      class="w-8 rounded-lg"
+    />
     <FWIcon
       v-if="icon"
       class="mr-2"

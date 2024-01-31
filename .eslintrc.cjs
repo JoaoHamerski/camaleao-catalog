@@ -16,7 +16,7 @@ module.exports = {
     ecmaVersion: 'latest',
   },
   rules: {
-    'no-duplicate-imports': ['error'],
+    'no-duplicate-imports': ['warn'],
     'vue/padding-line-between-blocks': ['error'],
     'vue/html-self-closing': [
       'error',

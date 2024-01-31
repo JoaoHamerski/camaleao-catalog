@@ -9,8 +9,8 @@ export const useRouteStore = defineStore('route', () => {
     route.value = ziggyRoute()
   }
 
-  const isCurrent = (value: string) => {
-    return route.value.current(value)
+  const isCurrent = (name: string, params?: any) => {
+    return route.value.current(name, params)
   }
 
   return { route, updateRoute, isCurrent }

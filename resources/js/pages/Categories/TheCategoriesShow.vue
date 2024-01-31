@@ -3,8 +3,29 @@ import { Category, PaginatedData, Uniform } from '@/types/pages'
 import ContentLayout from '../Common/layouts/ContentLayout.vue'
 import UniformCard from '@/pages/Uniforms/partials/UniformCard.vue'
 import CardsWrapper from '../Common/CardsWrapper.vue'
+import { DropdownItem } from '@/types/components'
+import { computed } from 'vue'
+import { useRouteStore } from '@/store/route-store'
 
-defineProps<{ category: Category; uniforms: PaginatedData<Uniform> }>()
+interface TheCategoriesShowProps {
+  category: Category
+  uniforms: PaginatedData<Uniform>
+  categories: Category[]
+}
+
+const props = defineProps<TheCategoriesShowProps>()
+const routeStore = useRouteStore()
+
+const categoryItems = computed(() =>
+  props.categories.map<DropdownItem>((category) => ({
+    image: category.image.url,
+    label: category.name,
+    link: { url: route('categories.show', { category: category.slug }) },
+    active: routeStore.isCurrent('categories.show', {
+      category: category.slug,
+    }),
+  })),
+)
 </script>
 
 <template>
@@ -13,12 +34,17 @@ defineProps<{ category: Category; uniforms: PaginatedData<Uniform> }>()
       { text: 'Categorias', url: route('categories.index') },
       {
         text: category.name,
-        url: route('categories.show', { category: category.slug }),
       },
     ]"
     :pagination="{ ...uniforms.links, ...uniforms.meta }"
   >
-    <template #title> Categorias > {{ category.name }} </template>
+    <AppDropdown
+      class="mb-3"
+      btn-class="btn"
+      icon="fas fa-bars"
+      label="Categorias"
+      :items="categoryItems"
+    />
 
     <CardsWrapper>
       <UniformCard
