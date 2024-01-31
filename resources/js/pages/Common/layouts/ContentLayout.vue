@@ -1,17 +1,32 @@
 <script setup lang="ts">
-import { Head } from '@inertiajs/vue3'
-defineProps<{ title: string }>()
+import { Pagination } from '@/types/components'
+import BreadcrumbsContent, { BreadcrumbPath } from '../BreadcrumbsContent.vue'
+import { computed } from 'vue'
+
+const props = defineProps<{
+  breadcrumbPaths?: BreadcrumbPath[]
+  pagination?: Pagination
+}>()
+
+const hasBreadcrumb = computed<boolean>(() => !!props.breadcrumbPaths)
 </script>
 
 <template>
   <div class="md:px-20 px-4 mt-16">
-    <Head :title="title" />
     <div
-      v-if="$slots['title']"
+      v-if="hasBreadcrumb"
       class="divider divider-start text-camaleao md:text-3xl font-bold mb-10"
     >
-      <slot name="title" />
+      <BreadcrumbsContent :paths="breadcrumbPaths!" />
     </div>
+
     <slot />
+
+    <div
+      v-if="pagination"
+      class="text-center mt-10"
+    >
+      <AppPagination :pagination="pagination" />
+    </div>
   </div>
 </template>

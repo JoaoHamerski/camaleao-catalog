@@ -1,26 +1,32 @@
 <script setup lang="ts">
-import { Category } from '@/types/pages'
+import { Category, PaginatedData, Uniform } from '@/types/pages'
 import ContentLayout from '../Common/layouts/ContentLayout.vue'
 import UniformCard from '@/pages/Uniforms/partials/UniformCard.vue'
+import CardsWrapper from '../Common/CardsWrapper.vue'
 
-defineProps<{ category: Category; uniforms: any }>()
+defineProps<{ category: Category; uniforms: PaginatedData<Uniform> }>()
 </script>
 
 <template>
-  <ContentLayout :title="category.name">
+  <ContentLayout
+    :breadcrumb-paths="[
+      { text: 'Categorias', url: route('categories.index') },
+      {
+        text: category.name,
+        url: route('categories.show', { category: category.slug }),
+      },
+    ]"
+    :pagination="{ ...uniforms.links, ...uniforms.meta }"
+  >
     <template #title> Categorias > {{ category.name }} </template>
 
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-5">
+    <CardsWrapper>
       <UniformCard
         v-for="uniform in uniforms.data"
         :key="uniform.id"
         :uniform="uniform"
         :category="category"
       />
-    </div>
-
-    <div class="text-center mt-10">
-      <AppPagination :pagination="{ ...uniforms.meta, ...uniforms.links }" />
-    </div>
+    </CardsWrapper>
   </ContentLayout>
 </template>

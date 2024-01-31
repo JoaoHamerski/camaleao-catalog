@@ -41,7 +41,20 @@ const onOrderClick = () => {
 </script>
 
 <template>
-  <ContentLayout :title="uniform.name">
+  <ContentLayout
+    :breadcrumb-paths="[
+      { text: 'Categorias', url: route('categories.index') },
+      {
+        text: uniform.category.name,
+        url: route('categories.show', {
+          category: uniform.category.slug,
+        }),
+      },
+      {
+        text: uniform.name,
+      },
+    ]"
+  >
     <template #title>
       Categorias > {{ uniform.category.name }} > {{ uniform.name }}
     </template>

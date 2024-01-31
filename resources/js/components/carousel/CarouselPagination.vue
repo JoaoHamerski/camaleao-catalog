@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ slidesCount: number; activeIndex: number }>()
+import { CarouselPaginationProps } from '@/types/components'
+
+defineProps<CarouselPaginationProps>()
 </script>
 
 <template>

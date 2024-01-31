@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed, defineAsyncComponent } from 'vue'
 import { useUserStore } from '@/store/user-store'
 import { useRouteStore } from '@/store/route-store'
-import { computed } from 'vue'
 import { DropdownItem } from '@/types/components'
 
 import NAVBAR_ITEMS from './navbar-items'
 
 import NavbarBrand from './NavbarBrand.vue'
 import NavbarItems from './NavbarItems.vue'
-import { defineAsyncComponent } from 'vue'
 
 const NavbarDrawer = defineAsyncComponent(() => import('./NavbarDrawer.vue'))
 const NavbarUserAuth = defineAsyncComponent(

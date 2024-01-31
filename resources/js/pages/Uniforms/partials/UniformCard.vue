@@ -7,6 +7,7 @@ const props = defineProps<{ uniform: Uniform; category: Category }>()
 
 const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
 </script>
+
 <template>
   <Link
     as="div"

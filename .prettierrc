@@ -5,6 +5,5 @@
     "useTabs": false,
     "quoteProps": "consistent",
     "singleAttributePerLine": true,
-    "tabWidth": 2,
-    "plugins": ["prettier-plugin-organize-imports"]
+    "tabWidth": 2
   }

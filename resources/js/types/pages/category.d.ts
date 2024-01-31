@@ -1,5 +1,4 @@
-import { Image } from '.'
-import type { Pagination } from '../index'
+import type { Image } from '.'
 
 export type Category = {
   id: string
@@ -7,10 +6,6 @@ export type Category = {
   name: string
   uniforms_count: number
   image: Image
-}
-
-export interface CategoryPaginated extends Pagination {
-  data: Category[] | []
 }
 
 export type CategoryFormFields = {

@@ -1,11 +1,8 @@
 <script setup lang="ts">
 import { AppCarouselProps } from '@/types/components'
-import { ref } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 import CarouselPagination from './CarouselPagination.vue'
 import CarouselNavigation from './CarouselNavigation.vue'
-import { computed } from 'vue'
-import { onMounted } from 'vue'
-import { onUnmounted } from 'vue'
 
 const props = defineProps<AppCarouselProps>()
 

@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import { useUserStore } from '@/store/user-store'
 import type { DropdownItem } from '@/types/components'
-import { onMounted } from 'vue'
-import { ref } from 'vue'
 
 const userStore = useUserStore()
 
