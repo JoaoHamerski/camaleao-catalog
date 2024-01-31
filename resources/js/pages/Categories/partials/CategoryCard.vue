@@ -14,10 +14,10 @@ defineProps<{ category: Category }>()
     as="div"
     class="card mx-auto w-40 h-40 md:w-60 md:h-52 bg-base-100 shadow-xl rounded-xl hover:scale-105 hover:shadow-2xl transition-transform cursor-pointer"
   >
-    <img
+    <AppImage
       :src="category.image.url"
       alt="Imagem da categoria"
-      class="object-cover bg-bottom h-52 rounded-xl"
+      class="bg-bottom h-52 w-60 rounded-xl overflow-hidden"
     />
     <div
       class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md bg-black/10 rounded-b-xl text-white w-full uppercase"

@@ -58,7 +58,7 @@ const onOrderClick = () => {
     <template #title>
       Categorias > {{ uniform.category.name }} > {{ uniform.name }}
     </template>
-    <div class="md:w-1/3 bg-base-300 rounded-xl shadow-lg">
+    <div class="md:w-1/3 bg-base-300 rounded-xl overflow-hidden shadow-lg">
       <AppCarousel
         :src-slides="imagesSrc"
         pagination

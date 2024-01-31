@@ -17,11 +17,11 @@ const imagesSrc = computed(() => props.uniform.images.map((image) => image.url))
         uniform: uniform.slug,
       })
     "
-    class="rounded-xl w-40 md:w-60 bg-white shadow-lg group cursor-pointer"
+    class="rounded-xl overflow-hidden bg-white shadow-lg group cursor-pointer"
   >
     <AppCarousel
       :src-slides="imagesSrc"
-      img-class="object-cover h-30 md:h-40 w-full rounded-t-xl"
+      img-class="object-cover overflow-hidden h-32 "
       autoplay
       :autoplay-interval="3000"
       pagination
