@@ -20,7 +20,10 @@ defineProps<{
       <Component
         :is="path.url ? Link : 'span'"
         :href="path.url"
-        class="after:content-['>'] after:mx-2 last:after:content-none"
+        class="after:content-['>'] after:mx-2 last:after:content-none text-camaleao transition-colors"
+        :class="{
+          'hover:text-camaleao-darker': path.url,
+        }"
       >
         {{ path.text }}
       </Component>
