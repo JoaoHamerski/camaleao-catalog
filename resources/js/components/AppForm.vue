@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type VisitOptions } from '@inertiajs/core'
-import { computed } from 'vue'
-import { onMounted } from 'vue'
+import { onMounted, computed } from 'vue'
 import type { AppFormProps } from '@/types/components'
 
 const emit = defineEmits(['success', 'error'])

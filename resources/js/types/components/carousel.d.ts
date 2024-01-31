@@ -8,3 +8,8 @@ export interface AppCarouselProps {
   autoplayInterval?: number
   carouselClass?: string
 }
+
+export interface CarouselPaginationProps {
+  slidesCount: number
+  activeIndex: number
+}

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { Category, Uniform, UniformFormFields } from '@/types/pages'
 import { useForm } from '@inertiajs/vue3'
-import { computed } from 'vue'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
-import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
 import { urlToFile } from '@/utils/helpers'
+import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
 
 interface UniformFormProps {
   uniform?: Uniform

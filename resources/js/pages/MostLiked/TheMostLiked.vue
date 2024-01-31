@@ -2,6 +2,7 @@
 import NoItemsFound from '@/components/NoItemsFound.vue'
 import ContentLayout from '../Common/layouts/ContentLayout.vue'
 </script>
+
 <template>
   <ContentLayout title="Mais curtidos">
     <template #title>Mais curtidos</template>

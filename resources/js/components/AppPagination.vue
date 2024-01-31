@@ -28,6 +28,7 @@ const hasPages = computed(() => pagination.total > pagination.per_page)
       >
         <FWIcon icon="fas fa-circle-left" />
       </Link>
+
       <Link
         v-for="link in links"
         :key="link.label"
@@ -41,6 +42,7 @@ const hasPages = computed(() => pagination.total > pagination.per_page)
       >
         {{ link.label }}
       </Link>
+
       <Link
         as="button"
         :href="pagination.next || ''"
@@ -50,6 +52,7 @@ const hasPages = computed(() => pagination.total > pagination.per_page)
         <FWIcon icon="fas fa-circle-right" />
       </Link>
     </div>
+
     <div class="lg:hidden text-sm mt-2">
       Página <b>{{ pagination.current_page }}</b> de
       <b>{{ pagination.last_page }}</b>

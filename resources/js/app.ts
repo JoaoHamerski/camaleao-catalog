@@ -6,7 +6,7 @@ import { createApp, h } from 'vue'
 import Bootstrap from './bootstrap/bootstrap'
 import BootstrapPage from './bootstrap/bootstrap-page'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel'
+const appName = import.meta.env.VITE_APP_NAME || 'Camaleão Catálogo'
 
 createInertiaApp({
   title: (title) => (title ? `${title} | ${appName}` : appName),

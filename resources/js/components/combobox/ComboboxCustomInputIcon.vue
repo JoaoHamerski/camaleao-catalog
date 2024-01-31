@@ -9,6 +9,7 @@ const eraseIconClicked = () => {
   emit('remove-selected')
 }
 </script>
+
 <template>
   <span class="absolute right-4">
     <span
