@@ -11,6 +11,7 @@ export default {
       },
       colors: {
         'camaleao': 'oklch(60% 0.189 37.75)',
+        'camaleao-darker': 'oklch(50% 0.189 37.75)',
         'camaleao-content': 'oklch(99% 0.100 37.75)',
       },
     },

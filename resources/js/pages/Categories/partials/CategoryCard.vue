@@ -20,7 +20,7 @@ defineProps<{ category: Category }>()
       class="object-cover bg-bottom h-52 rounded-xl"
     />
     <div
-      class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md rounded-b-xl text-white w-full uppercase"
+      class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md bg-black/10 rounded-b-xl text-white w-full uppercase"
     >
       {{ category.name }}
     </div>
