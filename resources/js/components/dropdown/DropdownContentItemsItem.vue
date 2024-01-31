@@ -37,6 +37,7 @@ const attributes = computed(() =>
     v-bind="attributes"
   >
     <img
+      v-if="image"
       :src="image"
       class="w-8 rounded-lg"
     />
