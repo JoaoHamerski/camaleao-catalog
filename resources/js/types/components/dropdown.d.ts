@@ -9,7 +9,9 @@ export interface AppDropdownProps {
 }
 
 export type DropdownItem = {
+  image?: string
   label: string
+  active?: boolean
   icon?: string
   onclick?: () => void
   link?: {

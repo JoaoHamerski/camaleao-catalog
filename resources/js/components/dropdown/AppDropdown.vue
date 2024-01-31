@@ -5,7 +5,7 @@ import type { AppDropdownProps } from '@/types/components'
 
 import DropdownContentItems from './DropdownContentItems.vue'
 import DropdownContentCustom from './DropdownContentCustom.vue'
-import DropdownTransitionWrapper from './DropdownTransitionWrapper.vue'
+import DropdownWrapperTransition from './DropdownWrapperTransition.vue'
 
 const ALIGN_CLASSES = {
   left: 'left-0',
@@ -32,17 +32,15 @@ const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
       as="button"
       :class="btnClass"
     >
-      <template v-if="label">{{ label }}</template>
       <FWIcon
-        v-else-if="icon"
+        v-if="icon"
         :icon="icon"
       />
-      <template v-else>
-        <slot name="label" />
-      </template>
+      <span v-if="label"> {{ label }}</span>
+      <slot name="label" />
     </MenuButton>
 
-    <DropdownTransitionWrapper>
+    <DropdownWrapperTransition>
       <DropdownContentCustom
         v-if="$slots['content']"
         :class="dropdownClasses"
@@ -55,6 +53,6 @@ const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
         :items="items"
         :class="dropdownClasses"
       />
-    </DropdownTransitionWrapper>
+    </DropdownWrapperTransition>
   </Menu>
 </template>

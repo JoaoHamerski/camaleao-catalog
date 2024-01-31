@@ -12,7 +12,7 @@ defineProps<DropdownContentItemsProps>()
 
 <template>
   <MenuItems
-    class="absolute shadow-lg py-3 bg-base-100 rounded-lg w-52 flex flex-col gap-1 z-10"
+    class="absolute shadow-lg py-3 bg-base-100 rounded-lg w-52 flex flex-col gap-1 z-10 max-h-52 scrollbar-thin overflow-auto"
     as="ul"
   >
     <MenuItem
