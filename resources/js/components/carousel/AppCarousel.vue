@@ -90,7 +90,7 @@ onUnmounted(() => {
           :key="src"
           class="flex-grow-0 flex-shrink-0 w-full"
         >
-          <img
+          <AppImage
             class="mx-auto"
             :class="imgClass"
             :src="src"
