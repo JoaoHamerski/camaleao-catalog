@@ -2,7 +2,6 @@
 
 namespace Domains\Common\Utils;
 
-use Error;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
@@ -20,11 +19,5 @@ class File
         $this->filename = Str::of($filepath)->afterLast('/');
         $this->extension = $file->getClientOriginalExtension();
         $this->originalName = $file->getClientOriginalName();
-    }
-
-    public static function isFilepathValid($filepath)
-    {
-        return Str::of($filepath)->contains('/')
-            && !empty(pathinfo($filepath, PATHINFO_EXTENSION));
     }
 }

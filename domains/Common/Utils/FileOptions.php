@@ -54,5 +54,4 @@ class FileOptions
     {
         return $this->aliases;
     }
-
 }

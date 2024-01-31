@@ -21,7 +21,7 @@ const items: NavbarItemProps[] = [
   {
     icon: 'fa-heart',
     label: 'Mais curtidos',
-    url: route('most-liked.index', {}, false),
+    url: route('uniforms.most-liked', {}, false),
     get active() {
       return page.url.startsWith(this.url)
     },
