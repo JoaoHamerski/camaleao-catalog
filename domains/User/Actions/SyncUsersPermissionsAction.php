@@ -6,7 +6,7 @@ use Domains\Common\Models\Permission;
 use Domains\Common\Models\Role;
 use Illuminate\Support\Arr;
 
-class SyncPermissionsAction
+class SyncUsersPermissionsAction
 {
     public const SUPER_ADMIN_KEY = 'SUPER_ADMIN';
     public const PERMISSIONS_FILEPATH = 'domains/User/permissions.json';

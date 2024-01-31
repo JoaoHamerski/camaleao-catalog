@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Domains\Common\Actions\SyncPermissionsAction;
+use Domains\User\Actions\SyncUsersPermissionsAction;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -12,6 +12,6 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        SyncPermissionsAction::execute();
+        SyncUsersPermissionsAction::execute();
     }
 }

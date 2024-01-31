@@ -25,6 +25,10 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        require base_path('routes/console.php');
+        $consoleFiles = glob(base_path('/domains/*/Routes/console.php'));
+
+        foreach ($consoleFiles as $file) {
+            require $file;
+        }
     }
 }
