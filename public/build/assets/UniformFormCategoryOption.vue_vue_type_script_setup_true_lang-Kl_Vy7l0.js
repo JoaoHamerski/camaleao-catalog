@@ -1,1 +1,0 @@
-import{d as t,e as o,i as e,t as a,o as n}from"./app-6cvw8apd.js";const i={class:"flex items-center gap-4"},r={class:"w-12"},c=["src"],p=t({__name:"UniformFormCategoryOption",props:{item:{}},setup(m){return(s,l)=>(n(),o("div",i,[e("div",r,[e("img",{class:"rounded max-h-20",src:s.item.image.url,alt:""},null,8,c)]),e("div",null,a(s.item.name),1)]))}});export{p as _};

@@ -17,7 +17,7 @@ defineProps<{ category: Category }>()
     <AppImage
       :src="category.image.url"
       alt="Imagem da categoria"
-      class="bg-bottom h-52 w-60 rounded-xl overflow-hidden"
+      class="bg-bottom rounded-xl overflow-hidden"
     />
     <div
       class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md bg-black/10 rounded-b-xl text-white w-full uppercase"
