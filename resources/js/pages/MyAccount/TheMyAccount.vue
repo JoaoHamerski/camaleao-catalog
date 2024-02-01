@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import ContentLayout from '@/pages/Common/layouts/ContentLayout.vue'
 import { User } from '@/types'
-import { ref } from 'vue'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import DeleteAccountModal from './partials//DeleteAccountModal.vue'
 const { user } = defineProps<{ user: User }>()
 
@@ -20,7 +19,7 @@ const onDeleteBtnClick = () => {
 
 <template>
   <ContentLayout title="Minha conta">
-    <AppCard class="w-1/3">
+    <AppCard class="w-full md:w-1/2 lg:w-1/3">
       <template #title>
         <div class="flex gap-2 items-center">
           <FWIcon icon="fas fa-user-circle" />

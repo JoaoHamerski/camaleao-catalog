@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use PhpCsFixer\Fixer\FunctionNotation\VoidReturnFixer;
 
 class UserRegisterRequest extends FormRequest
 {
@@ -21,9 +22,18 @@ class UserRegisterRequest extends FormRequest
         return true;
     }
 
+    public function prepareForValidation(): void
+    {
+        $this->merge([
+            'phone' => remove_non_digits($this->phone)
+        ]);
+    }
+
     public function passedValidation(): void
     {
-        $this->merge(['birth_date' => Carbon::createFromFormat('d/m/Y', $this->birth_date)->format('Y-m-d')]);
+        $this->merge([
+            'birth_date' => Carbon::createFromFormat('d/m/Y', $this->birth_date)->format('Y-m-d')
+        ]);
     }
 
     /**

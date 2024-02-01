@@ -23,6 +23,7 @@ const btnAttrs = computed(() =>
         label: 'Cadastrar',
       },
 )
+
 const submitMethod = computed(() => (isEdit ? 'patch' : 'post'))
 
 const transformedForm = computed(() =>
