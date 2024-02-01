@@ -5,7 +5,7 @@ defineProps<{ items: any; by: string }>()
 
 <template>
   <ComboboxOptions
-    class="min-w-40 shadow-lg rounded-b-lg max-h-52 overflow-auto w-full absolute bg-white z-10"
+    class="relative min-w-40 shadow-lg rounded-b-lg max-h-52 overflow-auto w-full bg-white"
   >
     <ComboboxOption
       v-for="item in items"
@@ -14,7 +14,7 @@ defineProps<{ items: any; by: string }>()
       :value="item"
     >
       <div
-        class="px-3 py-2 transition-colors cursor-pointer z-50"
+        class="px-3 py-2 transition-colors cursor-pointer"
         :class="{
           'hover:bg-base-200 active:bg-primary active:text-white': !selected,
           'bg-primary text-white': selected,

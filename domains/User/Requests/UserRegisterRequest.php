@@ -49,8 +49,8 @@ class UserRegisterRequest extends FormRequest
             'password' => ['required', 'string', 'confirmed'],
             'birth_date' => ['required', 'date_format:d/m/Y'],
             'phone' => ['required', 'max:11', 'min:10'],
-            'state' => ['required'],
-            'city' => ['required']
+            'state' => ['required', 'array'],
+            'city' => ['required', 'array']
         ];
     }
 

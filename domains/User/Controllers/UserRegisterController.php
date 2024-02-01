@@ -13,7 +13,7 @@ class UserRegisterController extends Controller
 {
     public function __invoke(UserRegisterRequest $request)
     {
-        $city = $this->getCity($request->city);
+        $city = $this->getCity($request->city, $request->state);
 
         $user = $city->users()->create($request->all());
 
@@ -22,13 +22,13 @@ class UserRegisterController extends Controller
         return redirect()->route('home');
     }
 
-    public function getCity($city): City
+    public function getCity($city, $state): City
     {
-        $state = State::where('abbreviation', $city['UF-sigla'])->first();
+        $state = State::where('abbreviation', $state['abbreviation'])->first();
 
         return $state->cities()->firstOrCreate(
-            ['api_id' => Arr::get($city, 'municipio-id')],
-            ['name' => Arr::get($city, 'municipio-nome')]
+            ['api_id' => Arr::get($city, 'api_id')],
+            ['name' => Arr::get($city, 'name')]
         );
     }
 }

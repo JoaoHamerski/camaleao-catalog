@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useForm } from '@inertiajs/vue3'
 import { useQuery } from '@tanstack/vue-query'
-import { ref } from 'vue'
+import { get } from 'lodash-es'
+import { computed } from 'vue'
 
 const form = useForm({
   name: '',
@@ -14,40 +15,54 @@ const form = useForm({
   state: null,
 })
 
-const { data: states } = useQuery({
+const selectedStateId = computed(() => (form.state ? form.state['UF-id'] : ''))
+
+const { data: states, isFetching: statesIsFetching } = useQuery({
   queryKey: ['states'],
   queryFn: () => fetchStates(),
   initialData: [],
 })
 
-const cities = ref([])
+const { data: cities, isFetching: citiesIsFetching } = useQuery({
+  queryKey: ['cities', selectedStateId],
+  queryFn: () => fetchCities(selectedStateId.value),
+  initialData: [],
+  enabled: () => !!selectedStateId.value,
+})
 
 const fetchStates = async () =>
   await fetch(
     'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome&view=nivelado',
   ).then((response) => response.json())
 
-const onStateSelected = () => {
-  if (!form.state) {
-    return
-  }
+const fetchCities = async (stateId: string) =>
+  await fetch(
+    `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${stateId}/municipios?orderBy=nome&view=nivelado`,
+  ).then((response) => response.json())
 
-  fetch(
-    `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${form.state['UF-id']}/municipios?orderBy=nome&view=nivelado`,
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      cities.value = data
-    })
+const onStateChange = () => {
+  form.city = null
+}
+
+const transformedData = () => {
+  return {
+    state: {
+      api_id: get(form.state, 'UF-id'),
+      abbreviation: get(form.state, 'UF-sigla'),
+    },
+    city: {
+      api_id: get(form.city, 'municipio-id'),
+      name: get(form.city, 'municipio-nome'),
+    },
+  }
 }
 </script>
 
 <template>
   <AppForm
     :form="form"
-    :routes="{
-      post: () => route('auth.register'),
-    }"
+    :endpoint="route('auth.register')"
+    :transformed-data="transformedData"
   >
     <div class="divider font-bold">Credenciais</div>
     <AppInput
@@ -92,13 +107,15 @@ const onStateSelected = () => {
     <AppCombobox
       v-model="form.state"
       by="UF-id"
+      search-prop="UF-nome"
       :items="states"
       placeholder="Selecione um estado..."
       label="Estado"
       name="state"
+      :loading="statesIsFetching"
       :display-value="(item) => (item ? item['UF-nome'] : '')"
       :error-message="form.errors.state"
-      @update:model-value="onStateSelected"
+      @update:model-value="onStateChange"
     >
       <template #option="item">
         {{ item['UF-nome'] }}
@@ -108,10 +125,12 @@ const onStateSelected = () => {
     <AppCombobox
       v-model="form.city"
       by="municipio-id"
+      search-prop="municipio-nome"
       :items="cities"
       placeholder="Selecione uma cidade..."
       label="Cidade"
       name="city"
+      :loading="citiesIsFetching"
       :display-value="(item) => (item ? item['municipio-nome'] : '')"
       :error-message="form.errors.city"
     >

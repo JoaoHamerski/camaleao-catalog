@@ -10,16 +10,12 @@ const form = useForm({
 const onFormError = () => {
   form.password = ''
 }
-
-const routes = {
-  post: () => route('auth.login'),
-}
 </script>
 
 <template>
   <AppForm
     :form="form"
-    :routes="routes"
+    :endpoint="route('auth.login')"
     @error="onFormError"
   >
     <AppInput

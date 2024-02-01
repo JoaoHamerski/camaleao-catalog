@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Category, Uniform, UniformFormFields } from '@/types/pages'
 import { useForm } from '@inertiajs/vue3'
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import { urlToFile } from '@/utils/helpers'
 import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
@@ -34,15 +34,13 @@ const form = useForm({
   images: FileList,
 })
 
-const routes = computed(() => ({
-  post: () => route('dashboard.uniforms.store'),
-  patch: () =>
-    props.uniform
-      ? route('dashboard.uniforms.patch', {
-          uniform: props.uniform.slug,
-        })
-      : undefined,
-}))
+const endpoint = computed(() =>
+  props.isEdit
+    ? route('dashboard.uniforms.patch', {
+        uniform: props.uniform!.slug,
+      })
+    : route('dashboard.uniforms.store'),
+)
 
 const fetchCategories = async (): Promise<Category[]> => {
   const endpoint = route('api.categories.get', { name: categorySearch.value })
@@ -66,8 +64,8 @@ const categoryDisplayValue = (item?: Category) => {
   return item.name
 }
 
-const transformedData = (data: any) => ({
-  category: data?.category?.id || null,
+const transformedData = () => ({
+  category: form.category.id || null,
 })
 
 const populateForm = async () => {
@@ -89,16 +87,21 @@ const populateForm = async () => {
 
   Object.assign(form, populatedData)
 }
+
+onMounted(() => {
+  if (props.isEdit) {
+    populateForm()
+  }
+})
 </script>
 
 <template>
   <AppForm
     class="flex flex-col gap-8"
     :form="form"
-    :routes="routes"
-    :is-edit="isEdit"
+    :endpoint="endpoint"
     :transformed-data="transformedData"
-    :populate-form="populateForm"
+    :method="isEdit ? 'patch' : 'post'"
   >
     <AppInput
       v-model="form.name"
@@ -134,5 +137,13 @@ const populateForm = async () => {
       hint="Máx. 300kB por imagem"
       :error-message="form.errors.images"
     />
+
+    <template #footer>
+      <AppButton
+        :label="isEdit ? 'Atualizar' : 'Cadastrar'"
+        class="btn btn-outline"
+        :class="isEdit ? 'btn-primary' : 'btn-success'"
+      />
+    </template>
   </AppForm>
 </template>

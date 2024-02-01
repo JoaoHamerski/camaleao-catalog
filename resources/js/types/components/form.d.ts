@@ -1,12 +1,10 @@
 import { type InertiaForm } from '@inertiajs/vue3'
+import { type Method } from '@inertiajs/core'
 
 export interface AppFormProps {
-  isEdit?: boolean
+  method?: Method
   form: InertiaForm<object>
-  routes: {
-    post?: () => string | undefined
-    patch?: () => string | undefined
-  }
-  transformOnSubmit?: (data: object) => object
+  endpoint: string
+  transformedData?: () => object
   populateForm?: () => void
 }

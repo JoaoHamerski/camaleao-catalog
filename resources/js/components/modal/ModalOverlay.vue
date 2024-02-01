@@ -12,7 +12,7 @@ import { TransitionChild } from '@headlessui/vue'
     leave-to="opacity-0"
   >
     <div
-      class="absolute inset-0 bg-black/30"
+      class="fixed inset-0 bg-black/30"
       aria-hidden="true"
     />
   </TransitionChild>
