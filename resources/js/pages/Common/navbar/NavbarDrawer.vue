@@ -28,6 +28,7 @@ const items = computed<SidebarDrawerListItemProps[]>(() => [
 <template>
   <SidebarDrawer
     :id="id"
+    toggle-class="btn btn-ghost px-1 border-none text-white"
     :items="items"
   >
     <template #header>

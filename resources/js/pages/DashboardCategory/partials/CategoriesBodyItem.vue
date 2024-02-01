@@ -32,7 +32,7 @@ const options: DropdownItem[] = [
     <div class="w-40">
       <AppCarousel
         :src-slides="[category.image.url]"
-        img-class="w-full h-32 object-cover"
+        img-class="md:h-32 object-cover"
         carousel-class="rounded-lg shadow-xl"
       />
     </div>

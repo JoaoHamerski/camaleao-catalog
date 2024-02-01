@@ -25,6 +25,7 @@ const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
 
 <template>
   <Menu
+    v-slot="{ close }"
     as="div"
     class="inline-block"
   >
@@ -40,7 +41,7 @@ const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
       <slot name="label" />
     </MenuButton>
 
-    <DropdownWrapperTransition>
+    <DropdownWrapperTransition @click.capture="close">
       <DropdownContentCustom
         v-if="$slots['content']"
         :class="dropdownClasses"

@@ -10,6 +10,8 @@ const deleteModal = ref(false)
 const userInfo = computed(() => [
   { label: 'Nome', value: user.name },
   { label: 'Email', value: user.email },
+  { label: 'Telefone', value: user.phone },
+  { label: 'Data de nascimento', value: user.birth_date },
 ])
 
 const onDeleteBtnClick = () => {
@@ -35,8 +37,8 @@ const onDeleteBtnClick = () => {
               :key="info.label"
               class="my-3 flex"
             >
-              <b class="w-24">{{ info.label }}:</b>
-              <span>{{ info.value }}</span>
+              <b class="w-40">{{ info.label }}:</b>
+              <span>{{ info.value || 'N/A' }}</span>
             </li>
           </ul>
           <div>

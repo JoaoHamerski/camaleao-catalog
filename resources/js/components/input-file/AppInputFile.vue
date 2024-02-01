@@ -3,6 +3,7 @@ import InputLabel from '@/components/input/InputLabel.vue'
 import InputError from '../input/InputError.vue'
 import InputHint from '../input/InputHint.vue'
 import { computed } from 'vue'
+import InputFooter from '../input/InputFooter.vue'
 
 interface AppInputFileProps {
   label?: string
@@ -63,10 +64,10 @@ const onInput = (event: Event) => {
     />
 
     <div class="label flex-col items-start">
-      <InputError :error="errorMessage" />
-      <InputHint v-if="hint">
-        {{ hint }}
-      </InputHint>
+      <InputFooter
+        :error="errorMessage"
+        :hint="hint"
+      />
     </div>
   </label>
 </template>

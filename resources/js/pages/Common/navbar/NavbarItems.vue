@@ -12,7 +12,7 @@ import NAVBAR_ITEMS from './navbar-items'
     >
       <AppButton
         class="text-white text-xs md:text-sm min-h-10 h-14 md:h-10 btn btn-ghost"
-        :class="[{ active: item.active }]"
+        :class="[{ 'btn-active': item.active }]"
         :icon="item.icon"
         :label="item.label"
       />

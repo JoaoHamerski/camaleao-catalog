@@ -45,7 +45,6 @@ const closeModal = () => {
           <DialogPanel
             class="fixed bg-base-100 rounded-lg shadow-lg"
             :class="sizeClass"
-            tabindex="0"
           >
             <ModalCloseButton @click.prevent="closeModal" />
 
