@@ -25,7 +25,7 @@ class UniformStoreRequest extends FormRequest
             'name' => ['required'],
             'category' => ['required', 'exists:categories,id'],
             'images' => ['array', 'required'],
-            'images.*' => ['file']
+            'images.*' => ['required', 'file', 'extensions:jpg,png', 'mimes:jpg,png', 'max:300']
         ];
     }
 }

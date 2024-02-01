@@ -64,9 +64,11 @@ const categoryDisplayValue = (item?: Category) => {
   return item.name
 }
 
-const transformedData = () => ({
-  category: form.category.id || null,
-})
+const transformedData = () => {
+  return {
+    category: form?.category?.id || null,
+  }
+}
 
 const populateForm = async () => {
   if (!props.uniform) {

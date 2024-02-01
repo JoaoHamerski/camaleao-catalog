@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, defineAsyncComponent } from 'vue'
 import { useUserStore } from '@/store/user-store'
-import { useRouteStore } from '@/store/route-store'
 import { DropdownItem } from '@/types/components'
-
-import NAVBAR_ITEMS from './navbar-items'
-
 import NavbarBrand from './NavbarBrand.vue'
 import NavbarItems from './NavbarItems.vue'
 
@@ -22,6 +18,9 @@ const RegisterModal = defineAsyncComponent(
 const LoginModal = defineAsyncComponent(
   () => import('@/pages/Common/auth/LoginModal.vue'),
 )
+
+import NAVBAR_ITEMS from './navbar-items'
+import { useRouteStore } from '@/store/route-store'
 
 const loginModalShow = ref(false)
 const registerModalShow = ref(false)
@@ -52,10 +51,8 @@ const dropdownMobileItems = computed(() =>
 
 <template>
   <div
-    class="navbar px-5 transition-colors"
-    :class="[
-      routeStore.isCurrent('dashboard.*') ? 'navbar-admin' : 'navbar-user',
-    ]"
+    class="navbar px-5 transition-colors bg-camaleao"
+    :class="{ 'bg-slate-700': routeStore.isCurrent('dashboard.*') }"
   >
     <div class="navbar-start gap-3 hidden md:flex">
       <NavbarDrawer
@@ -91,6 +88,7 @@ const dropdownMobileItems = computed(() =>
         @register-clicked="onCreateAccount"
       />
     </div>
+
     <LoginModal
       v-model:show="loginModalShow"
       @create-account="onCreateAccount"
