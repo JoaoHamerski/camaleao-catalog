@@ -12,5 +12,6 @@ export type AppComboboxInputProps = {
 }
 
 export type AppComboboxProps = AppComboboxInputProps & {
+  searchProp?: string
   items: Record<string, any>[]
 }

@@ -43,8 +43,9 @@ const closeModal = () => {
       <ModalTransitionWrapper>
         <div class="flex justify-center items-center h-full">
           <DialogPanel
-            class="relative bg-base-100 rounded-lg shadow-lg"
+            class="fixed bg-base-100 rounded-lg shadow-lg"
             :class="sizeClass"
+            tabindex="0"
           >
             <ModalCloseButton @click.prevent="closeModal" />
 

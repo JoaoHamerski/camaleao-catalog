@@ -3,22 +3,54 @@ import { Combobox } from '@headlessui/vue'
 import ComboboxCustomInput from './ComboboxCustomInput.vue'
 import ComboboxCustomOptions from './ComboboxCustomOptions.vue'
 import { AppComboboxProps } from '@/types/components'
+import { computed, ref } from 'vue'
 
-withDefaults(defineProps<AppComboboxProps>(), {
+const emit = defineEmits(['update:modelValue'])
+const props = withDefaults(defineProps<AppComboboxProps>(), {
   by: 'id',
   loading: false,
 })
 
-defineEmits(['update:modelValue'])
+const filterItem = (item: any) =>
+  item[props.searchProp!].toLowerCase().includes(search.value.toLowerCase())
+
+const search = ref('')
+const computedItems = computed(() =>
+  props.searchProp ? props.items.filter(filterItem) : props.items,
+)
+
+const onSearch = (event: Event) => {
+  const target = event.target as HTMLInputElement
+
+  search.value = target.value
+}
+
+const onSelect = (value: any) => {
+  emit('update:modelValue', value)
+
+  if (value === null) {
+    search.value = ''
+    return
+  }
+
+  if (props.searchProp) {
+    search.value = value[props.searchProp]
+    return
+  }
+}
+
+const onRemoveSelected = () => {
+  search.value = ''
+  emit('update:modelValue', null)
+}
 </script>
 
 <template>
   <Combobox
-    class="relative"
     as="div"
     :model-value="modelValue"
     :by="by"
-    @update:model-value="$emit('update:modelValue', $event)"
+    @update:model-value="onSelect"
   >
     <ComboboxCustomInput
       v-bind="{
@@ -31,18 +63,19 @@ defineEmits(['update:modelValue'])
         error,
         errorMessage,
       }"
-      @update:model-value="$emit('update:modelValue', $event)"
+      @remove-selected="onRemoveSelected"
+      @input="onSearch"
     />
 
     <AppTransition
       transition-as="root"
-      enter="transition-all duration-100"
+      enter="transition-all duration-100 origin-top"
       enter-from="transform scale-y-0 opacity-0"
       enter-to="transform scale-y-100 opacity-100"
       leave-as-enter
     >
       <ComboboxCustomOptions
-        :items="items"
+        :items="computedItems"
         :by="by"
       >
         <template #option="item">

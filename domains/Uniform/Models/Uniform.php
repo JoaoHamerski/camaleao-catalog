@@ -23,7 +23,7 @@ class Uniform extends Model
 
     protected $fillable = [
         'name',
-        'images'
+        'images',
     ];
 
     protected $casts = [

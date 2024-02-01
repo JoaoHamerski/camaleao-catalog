@@ -8,15 +8,15 @@ import InputFooter from '../input/InputFooter.vue'
 import InputLabel from '../input/InputLabel.vue'
 import ComboboxCustomInputIcon from './ComboboxCustomInputIcon.vue'
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['remove-selected'])
 const props = defineProps<AppComboboxInputProps>()
 
 const hasError = computed(() => props.error || !!props.errorMessage)
 
 const showEraseIcon = computed(() => !isEmpty(props.modelValue))
 
-const removSelected = () => {
-  emit('update:modelValue', null)
+const removeSelected = () => {
+  emit('remove-selected', null)
 }
 </script>
 
@@ -43,7 +43,7 @@ const removSelected = () => {
         <ComboboxCustomInputIcon
           :loading="loading"
           :show-erase-icon="showEraseIcon"
-          @remove-selected="removSelected"
+          @remove-selected="removeSelected"
         />
       </div>
       <InputFooter

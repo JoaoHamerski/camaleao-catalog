@@ -2,7 +2,7 @@
 import { useForm } from '@inertiajs/vue3'
 import type { Category, CategoryFormFields } from '@/types/pages'
 import { urlToFile } from '@/utils/helpers'
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 
 interface CategoryFormProps {
   category?: Category
@@ -19,15 +19,13 @@ const form = useForm<CategoryFormFields>({
   image: null,
 })
 
-const routes = computed(() => ({
-  post: () => route('dashboard.categories.store'),
-  patch: () =>
-    props.category
-      ? route('dashboard.categories.patch', {
-          category: props.category.slug,
-        })
-      : undefined,
-}))
+const endpoint = computed(() =>
+  props.isEdit
+    ? route('dashboard.categories.patch', {
+        category: props.category!.slug,
+      })
+    : route('dashboard.categories.store'),
+)
 
 const populateForm = async () => {
   if (!props.category) {
@@ -41,15 +39,21 @@ const populateForm = async () => {
 
   Object.assign(form, populatedData)
 }
+
+onMounted(() => {
+  if (props.isEdit) {
+    populateForm()
+  }
+})
 </script>
 
 <template>
   <AppForm
     class="flex flex-col gap-8"
     :form="form"
-    :routes="routes"
+    :endpoint="endpoint"
     :is-edit="isEdit"
-    :populate-form="populateForm"
+    :method="isEdit ? 'patch' : 'post'"
   >
     <AppInput
       v-model="form.name"
@@ -68,5 +72,13 @@ const populateForm = async () => {
       name="image"
       :error-message="form.errors.image"
     />
+
+    <template #footer>
+      <AppButton
+        :label="isEdit ? 'Atualizar' : 'Cadastrar'"
+        class="btn btn-outline"
+        :class="isEdit ? 'btn-primary' : 'btn-success'"
+      />
+    </template>
   </AppForm>
 </template>

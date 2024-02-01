@@ -14,6 +14,7 @@ class UniformUpsertAction
         $category = Category::find($request->get('category'));
 
         if ($uniform) {
+            $uniform->category()->associate($category);
             $uniform->update([
                 ...$request->all(),
                 'images' => self::handleFiles($request)
