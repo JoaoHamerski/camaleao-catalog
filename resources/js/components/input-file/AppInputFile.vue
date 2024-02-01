@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import InputLabel from '@/components/input/InputLabel.vue'
-import InputError from '../input/InputError.vue'
-import InputHint from '../input/InputHint.vue'
-import { computed } from 'vue'
 import InputFooter from '../input/InputFooter.vue'
+import { computed } from 'vue'
 
 interface AppInputFileProps {
   label?: string
