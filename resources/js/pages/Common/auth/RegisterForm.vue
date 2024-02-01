@@ -148,6 +148,7 @@ const transformedData = () => {
 
     <template #footer>
       <AppButton
+        :loading="form.processing"
         type="submit"
         class="btn-success w-full"
         label="Criar conta"

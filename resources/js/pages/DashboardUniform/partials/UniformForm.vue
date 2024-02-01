@@ -146,6 +146,7 @@ onMounted(() => {
 
     <template #footer>
       <AppButton
+        :loading="form.processing"
         :label="isEdit ? 'Atualizar' : 'Cadastrar'"
         class="btn btn-outline"
         :class="isEdit ? 'btn-primary' : 'btn-success'"
