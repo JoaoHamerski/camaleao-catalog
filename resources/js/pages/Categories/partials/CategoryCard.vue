@@ -17,13 +17,15 @@ defineProps<{ category: Category }>()
     <AppImage
       :src="category.image.url"
       alt="Imagem da categoria"
-      class="bg-bottom rounded-xl overflow-hidden"
+      class="rounded-xl overflow-hidden"
     />
+
     <div
       class="px-5 py-2 font-bold text-lg absolute bottom-0 backdrop-blur-md bg-black/10 rounded-b-xl text-white w-full uppercase"
     >
       {{ category.name }}
     </div>
+
     <div
       class="absolute flex items-baseline gap-1 top-3 right-3 text-white font-bold bg-black/50 px-2 py-1 rounded-full"
     >

@@ -14,7 +14,7 @@ const onLoad = () => {
 </script>
 
 <template>
-  <div class="flex justify-center items-center bg-base-content">
+  <div class="flex justify-center items-center bg-base-300">
     <div
       v-if="!isLoaded"
       class="skeleton w-full h-full rounded-none"

@@ -14,13 +14,13 @@ const adminPanelItem: DropdownItem = {
 }
 
 const authDropdownItems = ref<DropdownItem[]>([
-  // {
-  //   icon: 'fas fa-user-circle',
-  //   label: 'Minha conta',
-  //   link: {
-  //     url: route('auth.my-account'),
-  //   },
-  // },
+  {
+    icon: 'fas fa-user-circle',
+    label: 'Minha conta',
+    link: {
+      url: route('auth.my-account'),
+    },
+  },
   {
     icon: 'fas fa-right-from-bracket',
     label: 'Sair',
