@@ -28,10 +28,14 @@ const {
   initialData: [],
 })
 
-const form = useForm({
-  name: '',
-  category: null,
-  images: FileList,
+const form = useForm<{
+  name?: string
+  category?: Category | null
+  images?: FileList
+}>({
+  name: undefined,
+  category: undefined,
+  images: undefined,
 })
 
 const endpoint = computed(() =>
@@ -66,7 +70,7 @@ const categoryDisplayValue = (item?: Category) => {
 
 const transformedData = () => {
   return {
-    category: form?.category?.id || null,
+    category: form.category?.id || null,
   }
 }
 

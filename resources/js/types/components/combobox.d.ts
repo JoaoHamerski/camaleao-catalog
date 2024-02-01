@@ -1,7 +1,7 @@
 export type AppComboboxInputProps = {
   by?: string
   name: string
-  modelValue: object | null
+  modelValue: object | null | undefined
   placeholder?: string
   label?: string
   loading?: boolean
