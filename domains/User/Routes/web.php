@@ -2,6 +2,7 @@
 
 use Domains\User\Controllers\OAuthGoogleController;
 use Domains\User\Controllers\OAuthGoogleFallbackController;
+use Domains\User\Controllers\UserAccountDeleteController;
 use Domains\User\Controllers\UserLoginController;
 use Domains\User\Controllers\UserLogoutController;
 use Domains\User\Controllers\UserMyAccountController;
@@ -16,7 +17,8 @@ Route::middleware('guest')->name('auth.')->group(function () {
 
 Route::middleware('auth')->name('auth.')->group(function () {
     Route::get('/minha-conta', UserMyAccountController::class)->name('my-account');
-    Route::patch('/minha-conta', UserMyAccountUpdateController::class)->name('my-account-update');
+    Route::delete('/minha-conta', UserAccountDeleteController::class)->name('delete-account');
+    // Route::patch('/minha-conta', UserMyAccountUpdateController::class)->name('my-account-update');
     Route::post('/sair', UserLogoutController::class)->name('logout');
 });
 
