@@ -6,11 +6,9 @@ import { createApp, h } from 'vue'
 import Bootstrap from './bootstrap/bootstrap'
 import BootstrapPage from './bootstrap/bootstrap-page'
 
-const appName = import.meta.env.VITE_APP_NAME || 'Camaleão Catálogo'
-
 createInertiaApp({
-  title: (title) => (title ? `${title} | ${appName}` : appName),
-  resolve: BootstrapPage.resolvePageComponent,
+  title: BootstrapPage.defineTitle,
+  resolve: BootstrapPage.resolveComponent,
   setup({ el, App, props, plugin }) {
     const app = createApp({ render: () => h(App, props) })
     const bootstrap = new Bootstrap(app)
