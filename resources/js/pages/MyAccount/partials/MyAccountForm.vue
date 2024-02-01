@@ -61,9 +61,7 @@ onMounted(async () => {
   <AppForm
     is-edit
     :form="form"
-    :routes="{
-      patch: () => route('auth.my-account-update'),
-    }"
+    :endpoint="route('uaht.my-account-update')"
   >
     <AppInput
       v-model="form.email"
