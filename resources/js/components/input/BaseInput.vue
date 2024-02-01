@@ -40,6 +40,7 @@ defineExpose({
   <input
     ref="input"
     v-maska
+    data-maska-eager
     :data-maska="mask"
     :value="model"
     :type="type"

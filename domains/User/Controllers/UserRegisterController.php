@@ -15,7 +15,6 @@ class UserRegisterController extends Controller
     {
         $city = $this->getCity($request->city);
 
-
         $user = $city->users()->create($request->all());
 
         Auth::login($user);

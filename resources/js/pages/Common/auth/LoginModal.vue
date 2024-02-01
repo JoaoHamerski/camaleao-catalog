@@ -5,6 +5,7 @@ import { useToastStore } from '@/store/toast-store'
 
 const emit = defineEmits(['update:show'])
 const toast = useToastStore()
+
 const onGoogleLogin = () => {
   window.location.href = route('oauth.google')
 }

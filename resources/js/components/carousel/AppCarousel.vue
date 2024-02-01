@@ -88,7 +88,7 @@ onUnmounted(() => {
         <div
           v-for="src in srcSlides"
           :key="src"
-          class="flex-grow-0 flex-shrink-0 w-full"
+          class="flex-grow-0 flex-shrink-0 w-full flex items-center bg-black/80"
         >
           <AppImage
             class="mx-auto"
