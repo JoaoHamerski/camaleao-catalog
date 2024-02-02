@@ -1,0 +1,1 @@
+import{_ as s,f as t,o as c,e as n,i as a,g as r,k as _}from"./app-4V71j3Vc.js";const d={},f={class:"text-center py-10 text-secondary"},i={class:"mb-4"};function l(e,m){const o=t("FWIcon");return c(),n("div",f,[a("div",i,[r(o,{icon:"far fa-face-frown",size:"3x"})]),_(e.$slots,"default")])}const x=s(d,[["render",l]]);export{x as N};
