@@ -20,7 +20,7 @@ const onDeleteBtnClick = () => {
 </script>
 
 <template>
-  <ContentLayout title="Minha conta">
+  <ContentLayout>
     <AppCard class="w-full md:w-1/2 lg:w-1/3">
       <template #title>
         <div class="flex gap-2 items-center">

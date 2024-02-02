@@ -28,14 +28,10 @@ const {
   initialData: [],
 })
 
-const form = useForm<{
-  name?: string
-  category?: Category | null
-  images?: FileList
-}>({
-  name: undefined,
-  category: undefined,
-  images: undefined,
+const form = useForm<UniformFormFields>({
+  name: '',
+  category: null,
+  images: [],
 })
 
 const endpoint = computed(() =>
