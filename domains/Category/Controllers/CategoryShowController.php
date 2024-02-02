@@ -18,7 +18,10 @@ class CategoryShowController extends Controller
             ->orderBy('created_at', 'desc')
             ->paginate(12, ['*'], 'pagina');
 
-        $categories = Category::query()->orderBy('name', 'asc')->get();
+        $categories = CategoryResource::collection(
+            Category::query()->whereHas('uniforms')->orderBy('name', 'asc')->get()
+        );
+
         return Inertia::render('Categories/TheCategoriesShow', [
             'meta' => [
                 'title' => $category->name,

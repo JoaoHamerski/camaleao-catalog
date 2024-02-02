@@ -64,6 +64,13 @@ const transformedData = () => {
     :endpoint="route('auth.register')"
     :transformed-data="transformedData"
   >
+    <div class="mb-10">
+      <AppButton
+        class="btn btn-error w-full btn-outline"
+        icon="fab fa-google"
+        label="Continue com Google"
+      />
+    </div>
     <div class="divider font-bold">Credenciais</div>
     <AppInput
       v-model="form.email"

@@ -19,7 +19,7 @@ const routeStore = useRouteStore()
 const categoryItems = computed(() =>
   props.categories.map<DropdownItem>((category) => ({
     image: category.image.url,
-    label: category.name,
+    label: `${category.name} (${category.uniforms_count})`,
     link: { url: route('categories.show', { category: category.slug }) },
     active: routeStore.isCurrent('categories.show', {
       category: category.slug,
