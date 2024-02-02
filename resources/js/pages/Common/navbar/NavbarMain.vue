@@ -71,6 +71,7 @@ const dropdownMobileItems = computed(() =>
         class="w-fit"
       />
       <AppDropdown
+        aria-label="Menu principal de navegação"
         btn-class="btn btn-ghost text-white"
         icon="fas fa-bars"
         :items="dropdownMobileItems"
