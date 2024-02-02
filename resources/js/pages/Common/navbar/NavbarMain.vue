@@ -71,6 +71,7 @@ const dropdownMobileItems = computed(() =>
         class="w-fit"
       />
       <AppDropdown
+        btn-class="btn btn-ghost text-white"
         icon="fas fa-bars"
         :items="dropdownMobileItems"
       />

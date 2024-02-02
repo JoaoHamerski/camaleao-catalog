@@ -5,3 +5,10 @@
 #nprogress .bar {
     @apply min-h-1;
 }
+
+:root,
+html,
+body,
+#app {
+    @apply min-h-[100vh] flex flex-col
+}
