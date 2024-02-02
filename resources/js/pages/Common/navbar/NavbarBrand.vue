@@ -5,6 +5,7 @@ import { Link } from '@inertiajs/vue3'
 
 <template>
   <Link
+    aria-label="Acessar página inicial"
     :href="route('home')"
     class="max-w-24"
   >

@@ -8,6 +8,7 @@ defineEmits(['login-clicked', 'register-clicked'])
     :btn-class="[
       'btn btn-sm border-none bg-camaleao hover:bg-camaleao-darker w-10 h-10 rounded-full',
     ]"
+    aria-label="Janela para autenticação ou criação de conta"
     align="right"
   >
     <template #label>
