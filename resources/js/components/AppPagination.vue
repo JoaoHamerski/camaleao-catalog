@@ -21,6 +21,7 @@ const hasPages = computed(() => pagination.total > pagination.per_page)
   <div v-if="hasPages">
     <div class="join">
       <Link
+        aria-label="Página anterior"
         as="button"
         :href="pagination.prev || ''"
         class="btn join-item w-20"
@@ -44,6 +45,7 @@ const hasPages = computed(() => pagination.total > pagination.per_page)
       </Link>
 
       <Link
+        aria-label="Próxima página"
         as="button"
         :href="pagination.next || ''"
         class="btn join-item w-20"

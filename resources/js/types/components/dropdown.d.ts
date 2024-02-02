@@ -1,6 +1,7 @@
 import type { Method } from '@inertiajs/core'
 
 export interface AppDropdownProps {
+  ariaLabel?: string
   icon?: string
   label?: string
   btnClass?: string | string[]

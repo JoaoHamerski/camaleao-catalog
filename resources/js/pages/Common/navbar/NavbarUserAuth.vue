@@ -44,6 +44,7 @@ onMounted(() => {
     :btn-class="['btn btn-sm btn-ghost h-10 rounded-full']"
     align="right"
     :items="authDropdownItems"
+    arial-label="Menu de itens principais"
   >
     <template #label>
       <span class="text-white hidden lg:block">

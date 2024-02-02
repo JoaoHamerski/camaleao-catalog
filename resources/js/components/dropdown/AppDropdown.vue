@@ -30,6 +30,7 @@ const dropdownClasses = computed(() => [ALIGN_CLASSES[props.align]])
     class="inline-block"
   >
     <MenuButton
+      :aria-label="ariaLabel"
       as="button"
       :class="btnClass"
     >

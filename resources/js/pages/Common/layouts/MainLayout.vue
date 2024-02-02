@@ -38,7 +38,7 @@ const onWhatsappBtnClick = () => {
         </aside>
       </div>
 
-      <aside class="flex text-gray-400 mt-3 text-xs">
+      <aside class="flex text-gray-700 mt-3 text-xs">
         <span>Desenvolvedor:</span>
         <a
           class="link"

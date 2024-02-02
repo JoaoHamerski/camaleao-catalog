@@ -1,5 +1,5 @@
 import type { Toast, ToastOptions, ToastType } from '@/types/store'
-import { uniqueId } from 'lodash-es'
+import uniqueId from 'lodash/uniqueId'
 import { defineStore } from 'pinia'
 
 const DEFAULT_TIMEOUT = 4000
