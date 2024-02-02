@@ -1,1 +1,0 @@
-import{_ as o}from"./ContentLayout.vue_vue_type_script_setup_true_lang-JLJrzhQ5.js";import"./BreadcrumbsContent.vue_vue_type_script_setup_true_lang-cBdM36JY.js";import"./app-BRcYgmMQ.js";export{o as default};
