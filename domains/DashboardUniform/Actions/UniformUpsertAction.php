@@ -17,7 +17,7 @@ class UniformUpsertAction
             $uniform->category()->associate($category);
             $uniform->update([
                 ...$request->all(),
-                'images' => self::handleFiles($request)
+                'images' => self::handleFiles($request, $uniform)
             ]);
 
             return;
@@ -29,9 +29,13 @@ class UniformUpsertAction
         ]);
     }
 
-    public static function handleFiles(Request $request)
+    public static function handleFiles(Request $request, Uniform $uniform = null)
     {
         $files = Uniform::storeFiles($request->images, 'images');
+
+        if ($uniform) {
+            $uniform->deleteFile('images');
+        }
 
         return Arr::map($files, fn ($file) => [
             'filename' => $file->filename,

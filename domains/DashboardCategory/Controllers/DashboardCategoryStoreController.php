@@ -5,7 +5,6 @@ namespace Domains\DashboardCategory\Controllers;
 use App\Http\Controllers\Controller;
 use Domains\DashboardCategory\Actions\CategoryUpsertAction;
 use Domains\DashboardCategory\Requests\CategoryRequest;
-use Illuminate\Support\Facades\DB;
 
 class DashboardCategoryStoreController extends Controller
 {

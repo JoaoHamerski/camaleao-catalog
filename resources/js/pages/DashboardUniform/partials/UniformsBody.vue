@@ -4,6 +4,7 @@ import UniformModal from './UniformModal.vue'
 import UniformsBodyItem from './UniformsBodyItem.vue'
 import { ref } from 'vue'
 import UniformModalDelete from './UniformModalDelete.vue'
+import NoItemsFound from '@/components/NoItemsFound.vue'
 
 interface UniformsBodyProps {
   uniforms: Uniform[]
@@ -40,6 +41,10 @@ const onEditUniform = (uniform: any) => {
         v-model:show="deleteUniformModal.show"
         :uniform="deleteUniformModal.uniform"
       />
+
+      <NoItemsFound v-if="!uniforms.length">
+        Nenhum item encontrado
+      </NoItemsFound>
 
       <div v-auto-animate>
         <UniformsBodyItem

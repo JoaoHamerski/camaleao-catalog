@@ -39,6 +39,10 @@ class CategoryUpsertAction
     {
         $file = Category::storeFiles($request->image, 'image');
 
+        if ($category) {
+            $category->deleteFile('image');
+        }
+
         return [
             'name' => $request->image->getClientOriginalName(),
             'filename' => $file->filename

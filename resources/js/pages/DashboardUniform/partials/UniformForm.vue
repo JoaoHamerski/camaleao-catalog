@@ -5,6 +5,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useQuery } from '@tanstack/vue-query'
 import { urlToFile } from '@/utils/helpers'
 import UniformFormCategoryOption from './UniformFormCategoryOption.vue'
+import { get } from 'lodash-es'
 
 interface UniformFormProps {
   uniform?: Uniform
@@ -132,12 +133,12 @@ onMounted(() => {
 
     <AppInputFile
       v-model="form.images"
-      name="images"
+      name="images.0"
       label="Imagens do uniforme"
       multiple
       accept="image/*"
       hint="Máx. 300kB por imagem"
-      :error-message="form.errors.images"
+      :error-message="form.errors.images || form.errors['images.0']"
     />
 
     <template #footer>

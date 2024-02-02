@@ -28,4 +28,12 @@ class UniformStoreRequest extends FormRequest
             'images.*' => ['required', 'file', 'extensions:jpg,png', 'mimes:jpg,png', 'max:300']
         ];
     }
+
+    public function messages(): array
+    {
+
+        return [
+            'images.*.max' => 'Tamanho máximo por arquivo: 300kB'
+        ];
+    }
 }
