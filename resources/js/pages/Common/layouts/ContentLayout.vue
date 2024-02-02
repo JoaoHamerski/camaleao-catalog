@@ -2,6 +2,7 @@
 import { Pagination } from '@/types/components'
 import BreadcrumbsContent, { BreadcrumbPath } from '../BreadcrumbsContent.vue'
 import { computed } from 'vue'
+import { Head } from '@inertiajs/vue3'
 
 const props = defineProps<{
   breadcrumbPaths?: BreadcrumbPath[]
@@ -13,6 +14,7 @@ const hasBreadcrumb = computed<boolean>(() => !!props.breadcrumbPaths)
 
 <template>
   <div class="md:px-20 px-4 mt-16">
+    <Head :title="$page?.props?.meta?.title || ''" />
     <div
       v-if="hasBreadcrumb"
       class="divider divider-start text-camaleao md:text-3xl font-bold mb-10"
