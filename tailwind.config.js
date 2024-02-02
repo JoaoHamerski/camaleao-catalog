@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [...defaultTheme.fontFamily.sans, 'Cabin'],
+        sans: ['Cabin', ...defaultTheme.fontFamily.sans],
       },
       colors: {
         'camaleao': 'oklch(57% 0.189 37.75)',
