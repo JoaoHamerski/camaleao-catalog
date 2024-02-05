@@ -34,7 +34,6 @@
     "@vue/typescript": "^1.8.20",
     "@vueuse/core": "^10.7.2",
     "autoprefixer": "^10.4.12",
-    "daisyui": "^4.6.0",
     "eslint": "^8.56.0",
     "eslint-plugin-storybook": "^0.6.15",
     "laravel-vite-plugin": "^1.0.1",
@@ -53,6 +52,7 @@
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
+    "daisyui": "^4.6.1",
     "lodash-es": "^4.17.21",
     "maska": "^2.1.11",
     "pinia": "^2.1.7",

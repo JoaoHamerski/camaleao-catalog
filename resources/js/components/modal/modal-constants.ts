@@ -1,8 +1,8 @@
 export const MODAL_SIZES = {
-  xs: 'md:w-1/4 md:mx-0 w-full mx-3',
-  sm: 'md:w-1/3 md:mx-0 w-full mx-3',
-  md: 'md:w-2/5 md:mx-0 w-full mx-3',
-  lg: 'md:w-1/2 md:mx-0 w-full mx-3',
+  xs: 'md:w-1/2 w-11/12 lg:w-1/3 xl:w-1/4 mx-3',
+  sm: 'md:w-1/3 w-11/12 mx-3',
+  md: 'md:w-2/5 w-11/12 mx-3',
+  lg: 'md:w-1/2 w-11/12 mx-3',
 }
 
 export const MODAL_COLORS = {

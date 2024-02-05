@@ -6,7 +6,13 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: ['eslint:recommended', 'plugin:vue/vue3-recommended', '@vue/eslint-config-typescript', '@vue/eslint-config-prettier', 'plugin:storybook/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/vue3-recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier',
+    'plugin:storybook/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
   },

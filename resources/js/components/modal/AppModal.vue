@@ -35,22 +35,22 @@ const closeModal = () => {
     as="template"
   >
     <Dialog
-      class="absolute inset-0 w-full h-full z-50"
+      class="absolute inset-0 z-50 h-full w-full"
       @close="closeModal"
     >
       <ModalOverlay />
 
       <ModalTransitionWrapper>
-        <div class="flex justify-center items-center h-full">
+        <div class="flex items-center justify-center h-full">
           <DialogPanel
-            class="fixed bg-base-100 rounded-lg shadow-lg"
+            class="fixed rounded-lg shadow-lg bg-base-100"
             :class="sizeClass"
           >
             <ModalCloseButton @click.prevent="closeModal" />
 
             <DialogTitle
               v-if="$slots['title']"
-              class="text-white text-xl font-semibold mb-3 p-5 rounded-t-lg border-b-2 flex items-center gap-3"
+              class="flex items-center gap-3 p-5 mb-3 text-xl font-semibold text-white border-b-2 rounded-t-lg"
               :class="colorClass"
             >
               <slot name="title" />
