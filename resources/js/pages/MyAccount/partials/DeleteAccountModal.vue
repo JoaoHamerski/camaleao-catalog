@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { useToastStore } from '@/store/toast-store'
+import { User } from '@/types'
 import { useForm } from '@inertiajs/vue3'
+
+defineProps<{ user: User }>()
 
 const toastStore = useToastStore()
 const form = useForm({
@@ -28,9 +31,10 @@ const onSubmit = () => {
   >
     <template #title> Deletar conta </template>
     <template #content>
-      <div class="text-xl text-center font-bold">Você tem certeza?</div>
+      <div class="text-xl text-center font-bold mb-10">Você tem certeza?</div>
       <form @submit.prevent="onSubmit">
         <AppInput
+          v-if="user.has_password"
           v-model="form.password"
           type="password"
           name="password"

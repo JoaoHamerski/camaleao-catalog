@@ -29,7 +29,10 @@ const onDeleteBtnClick = () => {
         </div>
       </template>
       <template #content>
-        <DeleteAccountModal v-model:show="deleteModal" />
+        <DeleteAccountModal
+          v-model:show="deleteModal"
+          :user="user"
+        />
         <div class="mx-3 flex flex-col gap-10 mb-4">
           <ul>
             <li
