@@ -28,6 +28,7 @@ class UserResource extends JsonResource
                 $this->has_roles,
                 $this->getAllPermissions()->pluck('name')
             ),
+            'has_password' => !!$this->password,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];
